@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Base\BaseController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\Backend\LoginRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
 
 class LoginController extends BaseController
 {
@@ -25,7 +28,7 @@ class LoginController extends BaseController
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/management';
 
     /**
      * Create a new controller instance.
@@ -39,6 +42,31 @@ class LoginController extends BaseController
 
     public function getLogin() 
     {
+        if (Auth::guard('backend')->check()) {
+            return redirect()->route('backend.dashboard.index');
+        }
+        
         return view('backend.auth.login');
+    }
+
+    public function postLogin(LoginRequest $request) 
+    {
+        $data = [
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+        ];
+
+        if (Auth::guard('backend')->attempt($data)) {
+            return redirect()->route('backend.dashboard.index');
+        }
+
+        // Login failed
+        return redirect()->back()->withErrors(new MessageBag(['errorLogin' => getMessage('backend_login_failed')]))->withInput();
+    }
+
+    public function logout() 
+    {
+        Auth::guard('backend')->logout();
+        return redirect()->route('backend.login.get');
     }
 }

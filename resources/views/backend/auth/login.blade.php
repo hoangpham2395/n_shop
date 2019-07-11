@@ -13,7 +13,7 @@
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{asset('vendors/AdminLTE/css/AdminLTE.min.css')}}">
 	<!-- iCheck -->
-	<link rel="stylesheet" href="{{asset('vendors/iCheck/css/blue.css')}}">
+	<link rel="stylesheet" href="{{asset('vendors/iCheck/css/red.css')}}">
 
   	<!--[if lt IE 9]>
   		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -32,13 +32,23 @@
 		<div class="login-box-body">
 			<p class="login-box-msg">{{ getMessage('login_box_message') }}</p>
 
-			<form action="" method="post">
+			@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{$error}}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
+
+			{!! Form::open(['route' => 'backend.login.post']) !!}
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" placeholder="{{transm('admin.email')}}">
+					{!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => transm('admin.email')]) !!}
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="{{transm('admin.password')}}">
+					{!! Form::password('password', ['class' => 'form-control', 'placeholder' => transm('admin.password')]) !!}
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="row">
@@ -47,7 +57,7 @@
 						<button type="submit" class="btn btn-primary btn-block btn-flat">{{ transa('login') }}</button>
 					</div>
 				</div>
-			</form>
+			{!! Form::close() !!}
 		</div>
 		<!-- /.login-box-body -->
 	</div>

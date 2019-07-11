@@ -48,7 +48,7 @@ return [
         ],
         'backend' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
         ],
     ],
 
@@ -75,9 +75,9 @@ return [
             'model' => App\User::class,
         ],
 
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'table' => App\App\Model\Entities\Admin::class,
+            'model' => App\Model\Entities\Admin::class,
         ],
     ],
 
