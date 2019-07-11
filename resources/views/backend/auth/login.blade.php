@@ -7,13 +7,13 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
-	<link rel="stylesheet" href="{{asset('vendors/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="{{asset('vendors/AdminLTE/css/AdminLTE.min.css')}}">
+	<link rel="stylesheet" href="{{asset('vendor/AdminLTE/css/AdminLTE.min.css')}}">
 	<!-- iCheck -->
-	<link rel="stylesheet" href="{{asset('vendors/iCheck/css/red.css')}}">
+	<link rel="stylesheet" href="{{asset('vendor/iCheck/css/red.css')}}">
 
   	<!--[if lt IE 9]>
   		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -64,11 +64,11 @@
 	<!-- /.login-box -->
 
 	<!-- jQuery 3 -->
-	<script src="{{asset('vendors/jquery/jquery.min.js')}}"></script>
+	<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 	<!-- Bootstrap 3.3.7 -->
-	<script src="{{asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<!-- iCheck -->
-	<script src="{{asset('vendors/iCheck/js/icheck.min.js')}}"></script>
+	<script src="{{asset('vendor/iCheck/js/icheck.min.js')}}"></script>
 	<script>
 		$(function () {
 			$('input').iCheck({
