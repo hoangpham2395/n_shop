@@ -20,6 +20,6 @@ class BackendAuth
             return $next($request);
         }
 
-        return redirect()->route('backend.login.index');
+        return redirect()->route('backend.login.get');
     }
 }

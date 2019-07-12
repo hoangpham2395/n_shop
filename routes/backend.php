@@ -6,4 +6,7 @@ Route::get('logout', ['as' => 'backend.logout', 'uses' => 'Auth\LoginController@
 
 Route::group(['middleware' => ['auth.backend']], function() {
 	Route::get('/', ['as' => 'backend.dashboard.index', 'uses' => 'DashboardController@index']);
+
+	// Admin
+	Route::resource('admin', 'AdminController');
 });
