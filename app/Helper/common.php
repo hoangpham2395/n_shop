@@ -59,3 +59,10 @@ if (!function_exists('transm')) {
 		return trans('model.' . $key, $params);
 	}
 }
+
+if (!function_exists('logError')) {
+    function logError($msg) 
+    {
+
+    }
+}

@@ -8,5 +8,5 @@ Route::group(['middleware' => ['auth.backend']], function() {
 	Route::get('/', ['as' => 'backend.dashboard.index', 'uses' => 'DashboardController@index']);
 
 	// Admin
-	Route::resource('admin', 'AdminController');
+	Route::resource('admin', 'AdminController')->names('backend.admin');
 });

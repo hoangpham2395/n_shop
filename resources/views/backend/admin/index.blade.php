@@ -17,12 +17,74 @@
 <section class="content">
 	<div class="row">
 		<div class="col-xs-12">
+			@include('layouts.backend.notify')
+
+			<div class="box box-danger">
+				<div class="box-header">
+					<h3 class="box-title">{{transa('search')}}</h3>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					{!! Form::open(['backend.admin.index', 'method' => 'GET']) !!}
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>{{transm('admin.name')}}</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+										{!! Form::text('name', Request::get('name'), ['class' => 'form-control', 'placeholder' => transm('admin.name')]) !!}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>{{transm('admin.email')}}</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+										{!! Form::text('email', Request::get('email'), ['class' => 'form-control', 'placeholder' => transm('admin.email')]) !!}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>{{transm('admin.role_type')}}</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+										{!! Form::select('role_type', getConfig('role_type'), Request::get('role_type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> {{transa('search')}}</button>
+								<a href="{{route('backend.admin.index')}}" class="btn btn-default"><i class="fa fa-share"></i> {{transa('reset')}}</a>
+							</div>
+						</div>
+					{!! Form::close() !!}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<div class="col-xs-12">
 			<div class="box box-danger">
 				<div class="box-header">
 					<h3 class="box-title">{{transa('admin.index')}}</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
+					<div class="row">
+						<div class="col-sm-12 margin-bottom">
+							<a href="{{route('backend.admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> {{transa('add')}}</a>
+						</div>
+					</div>
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
@@ -35,16 +97,16 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Trident</td>
-								<td>Internet
-									Explorer 4.0
-								</td>
-								<td>Win 95+</td>
-								<td> 4</td>
-								<td class="text-center"><a href="#" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></td>
-								<td class="text-center"><a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
-							</tr>
+							@foreach ($entities as $entity)
+								<tr>
+									<td>{{ $entity->id }}</td>
+									<td>{{ $entity->name }}</td>
+									<td>{{ $entity->email }}</td>
+									<td>{!! $entity->getRoleType() !!}</td>
+									<td class="text-center"><a href="{{route('backend.admin.edit', $entity->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></td>
+									<td class="text-center"><a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+								</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>
