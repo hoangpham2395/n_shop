@@ -21,12 +21,12 @@
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="{{asset('images/common/avatar.png')}}" class="user-image" alt="User Image">
-						<span class="hidden-xs">{{Auth::guard('backend')->user()->name}}</span>
+						<span class="hidden-xs">{{backendGuard()->user()->name}}</span>
 					</a>
 					<ul class="dropdown-menu">
 						<li class="user-footer">
 							<div class="pull-left">
-								<a href="{{route('backend.admin.edit', Auth::guard('backend')->user()->id)}}" class="btn btn-default btn-flat">{{transa('profile')}}</a>
+								<a href="{{route('backend.admin.edit', backendGuard()->user()->id)}}" class="btn btn-default btn-flat">{{transa('profile')}}</a>
 							</div>
 							<div class="pull-right">
 								<a href="{{route('backend.logout')}}" class="btn btn-default btn-flat">{{transa('logout')}}</a>

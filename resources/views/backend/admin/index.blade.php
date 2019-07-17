@@ -85,30 +85,45 @@
 							<a href="{{route('backend.admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> {{transa('add')}}</a>
 						</div>
 					</div>
-					<table class="table table-bordered table-hover">
-						<thead>
-							<tr>
-								<th>{{transm('admin.id')}}</th>
-								<th>{{transm('admin.name')}}</th>
-								<th>{{transm('admin.email')}}</th>
-								<th>{{transm('admin.role_type')}}</th>
-								<th class="text-center">{{transa('edit')}}</th>
-								<th class="text-center">{{transa('delete')}}</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach ($entities as $entity)
-								<tr>
-									<td>{{ $entity->id }}</td>
-									<td>{{ $entity->name }}</td>
-									<td>{{ $entity->email }}</td>
-									<td>{!! $entity->getRoleType() !!}</td>
-									<td class="text-center"><a href="{{route('backend.admin.edit', $entity->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></td>
-									<td class="text-center"><a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
-								</tr>
-							@endforeach
-						</tbody>
-					</table>
+					@if (!empty($entities) && $entities->total() > 0)
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover">
+								<thead>
+									<tr>
+										<th>{{transm('admin.id')}}</th>
+										<th>{{transm('admin.name')}}</th>
+										<th>{{transm('admin.email')}}</th>
+										<th>{{transm('admin.role_type')}}</th>
+										<th class="text-center">{{transa('edit')}}</th>
+										<th class="text-center">{{transa('delete')}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($entities as $entity)
+										<tr>
+											<td>{{ $entity->id }}</td>
+											<td>{{ $entity->name }}</td>
+											<td>{{ $entity->email }}</td>
+											<td>{!! $entity->getRoleType() !!}</td>
+											<td class="text-center">
+												<a href="{{route('backend.admin.edit', $entity->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+											</td>
+											<td class="text-center">
+												@if ($entity->allowDelete())
+													<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#del_confirm" data-route="{{route('backend.admin.destroy', $entity->id)}}" onclick="SystemController.delete(this);">
+														<i class="fa fa-trash"></i>
+													</button>
+												@endif
+											</td>
+										</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+						@include('layouts.backend.pagination', ['object' => 'admin'])
+					@else
+						@include('layouts.backend.no_result', ['object' => 'admin'])
+					@endif
 				</div>
 				<!-- /.box-body -->
 			</div>
@@ -119,4 +134,26 @@
 	<!-- /.row -->
 </section>
 <!-- /.content -->
+
+<!-- Modal -->
+<div id="del_confirm" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">{{transa('delete')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p>{{getMessage('delete_confirm')}}</p>
+			</div>
+			<div class="modal-footer">
+				{!! Form::open(['method' => 'DELETE', 'id' => 'del_form']) !!}
+				<button type="submit" class="btn btn-danger">{{transa('confirm')}}</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{transa('cancel')}}</button>
+				{!! Form::close() !!}
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 @endsection

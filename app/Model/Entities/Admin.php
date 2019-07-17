@@ -2,10 +2,12 @@
 namespace App\Model\Entities;
 
 use App\Model\Base\BaseAuth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Presenters\PAdmin;
 
 class Admin extends BaseAuth 
 {
+	use SoftDeletes;
 	use PAdmin;
 
 	protected $table = 'admin';

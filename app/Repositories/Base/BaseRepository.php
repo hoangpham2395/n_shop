@@ -13,10 +13,7 @@ class BaseRepository
 	{
 		$this->app = $app;
 		$this->makeModel();
-		$this->getModel();
 	}
-
-	// abstract public function model();
 
 	public function model() 
 	{
@@ -29,7 +26,7 @@ class BaseRepository
         	$model = $this->app->make($this->model());
         	return $this->model = $model;
     	} catch(ModelNotFoundException $e) {
-    		
+			logError($e);	
     	}
 
     }
@@ -60,6 +57,12 @@ class BaseRepository
 
 	public function update($id, $data = []) 
 	{
-		return $this->getModel()->update($id, $data);
+		$data['id'] = $id;
+		return $this->getModel()->update($data);
+	}
+
+	public function destroy($id) 
+	{
+		return $this->getModel()->destroy($id);
 	}
 }

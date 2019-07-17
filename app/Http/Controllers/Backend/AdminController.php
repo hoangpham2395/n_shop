@@ -18,6 +18,10 @@ class AdminController extends BaseController
 
 	public function index() 
 	{
+		if (!$this->_checkPermission()) {
+			return abort('404');
+		}
+
 		$dataSearch = Input::all();
 		$entities = $this->getRepository()->getListForBackend($dataSearch);
 		return view('backend.admin.index', compact('entities'));
@@ -25,11 +29,19 @@ class AdminController extends BaseController
 
 	public function create() 
 	{
+		if (!$this->_checkPermission()) {
+			return abort('404');
+		}
+
 		return view('backend.admin.create');
 	}
 
 	public function store(StoreAdminRequest $request) 
 	{
+		if (!$this->_checkPermission()) {
+			return abort('404');
+		}
+
 		$data = $request->all();
 
 		DB::beginTransaction();
@@ -48,12 +60,27 @@ class AdminController extends BaseController
 	public function edit($id) 
 	{
 		$entity = $this->getRepository()->findById($id);
+
+		if (empty($entity) || (!$this->_checkPermission() && !$entity->isOwner())) {
+			return abort('404');
+		}
+
 		return view('backend.admin.edit', compact('entity'));
 	}
 
 	public function update(UpdateAdminRequest $request, $id) 
 	{
+		$entity = $this->getRepository()->findById($id);
+
+		if (empty($entity) || (!$this->_checkPermission() && !$entity->isOwner())) {
+			return abort('404');
+		}
+
 		$data = $request->all();
+
+		if ($entity->isOwner()) {
+			$data['role_type'] = $entity->role_type;
+		}
 
 		DB::beginTransaction();
 
@@ -66,5 +93,27 @@ class AdminController extends BaseController
 			DB::rollBack();
 		}
 		return redirect()->route('backend.admin.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
+	}
+
+	public function destroy($id) 
+	{
+		$entity = $this->getRepository()->findById($id);
+
+		if (empty($entity) || !$this->_checkPermission() || $entity->isOwner()) {
+			return abort('404');
+		}
+
+		try {
+			$this->getRepository()->destroy($id);
+			return redirect()->route('backend.admin.index')->with(['success' => getMessage('delete_success')]);
+		} catch (\Exception $e) {
+			logError($e);
+		}
+		return redirect()->route('backend.admin.index')->withErrors(new MessageBag(['delete_failed' => getMessage('delete_failed')]));
+	}
+
+	protected function _checkPermission() 
+	{
+		return backendGuard()->user()->isSuperAdmin();
 	}
 }

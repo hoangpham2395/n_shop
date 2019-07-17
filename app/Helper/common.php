@@ -66,3 +66,13 @@ if (!function_exists('logError')) {
 
     }
 }
+
+if (! function_exists('backendGuard')) {
+    /**
+     * @return mixed
+     */
+    function backendGuard()
+    {
+        return Auth::guard('backend');
+    }
+}

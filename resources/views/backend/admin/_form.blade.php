@@ -28,8 +28,11 @@
 			<label class="required">{{transm('admin.role_type')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-				{!! Form::select('role_type', getConfig('role_type'), null, ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+				{!! Form::select('role_type', getConfig('role_type'), null, ['class' => 'form-control', 'placeholder' => getConfig('select_default'), 'disabled' => (!empty($entity->id) ? $entity->isOwner() : false)]) !!}
 			</div>
+			@if (!empty($entity->id))
+				<input type="hidden" name="role_type" value="{{$entity->role_type}}">
+			@endif
 		</div>
 	</div>
 </div>
