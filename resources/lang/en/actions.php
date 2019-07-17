@@ -12,6 +12,7 @@ return [
 	'reset' => 'Reset',
 	'cancel' => 'Hủy',
 	'confirm' => 'Xác nhận',
+	'dashboard' => 'Bảng điều khiển',
 
 	'admin' => [
 		'index' => 'Danh sách admin',
