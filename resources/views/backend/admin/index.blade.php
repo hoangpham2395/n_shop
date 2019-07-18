@@ -3,12 +3,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		Admin
+		{{transa('admin.name')}}
 		<small>{{transa('list')}}</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="{{route('backend.dashboard.index')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li><a href="#">Admin</a></li>
+		<li><a href="#">{{transa('admin.name')}}</a></li>
 		<li class="active">{{transa('list')}}</li>
 	</ol>
 </section>
@@ -120,9 +120,9 @@
 								</tbody>
 							</table>
 						</div>
-						@include('layouts.backend.pagination', ['object' => 'admin'])
+						@include('layouts.backend.pagination', ['object' => transa('admin.name')])
 					@else
-						@include('layouts.backend.no_result', ['object' => 'admin'])
+						@include('layouts.backend.no_result', ['object' => transa('admin.name')])
 					@endif
 				</div>
 				<!-- /.box-body -->
@@ -136,24 +136,6 @@
 <!-- /.content -->
 
 <!-- Modal -->
-<div id="del_confirm" class="modal fade" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">{{transa('delete')}}</h4>
-			</div>
-			<div class="modal-body">
-				<p>{{getMessage('delete_confirm')}}</p>
-			</div>
-			<div class="modal-footer">
-				{!! Form::open(['method' => 'DELETE', 'id' => 'del_form']) !!}
-				<button type="submit" class="btn btn-danger">{{transa('confirm')}}</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">{{transa('cancel')}}</button>
-				{!! Form::close() !!}
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+@include('layouts.backend.modal_del_confirm')
 
 @endsection

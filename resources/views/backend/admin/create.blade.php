@@ -2,12 +2,12 @@
 @section('content')
 <section class="content-header">
 	<h1>
-		Admin
+		{{transa('admin.name')}}
 		<small>{{transa('add')}}</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="{{route('backend.dashboard.index')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li><a href="{{route('backend.admin.index')}}">Admin</a></li>
+		<li><a href="{{route('backend.admin.index')}}">{{transa('admin.name')}}</a></li>
 		<li class="active">{{transa('add')}}</li>
 	</ol>
 </section>

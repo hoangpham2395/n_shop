@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests\Backend\StoreAdminRequest;
 use App\Http\Requests\Backend\UpdateAdminRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\MessageBag;
 
 class AdminController extends BaseController 
 {
@@ -22,9 +23,7 @@ class AdminController extends BaseController
 			return abort('404');
 		}
 
-		$dataSearch = Input::all();
-		$entities = $this->getRepository()->getListForBackend($dataSearch);
-		return view('backend.admin.index', compact('entities'));
+		return parent::index();
 	}
 
 	public function create() 
@@ -33,7 +32,7 @@ class AdminController extends BaseController
 			return abort('404');
 		}
 
-		return view('backend.admin.create');
+		return parent::create();
 	}
 
 	public function store(StoreAdminRequest $request) 
@@ -42,19 +41,7 @@ class AdminController extends BaseController
 			return abort('404');
 		}
 
-		$data = $request->all();
-
-		DB::beginTransaction();
-
-		try {
-			$this->getRepository()->create($data);
-			DB::commit();
-			return redirect()->route('backend.admin.index')->with(['success' => getMessage('create_success')]);
-		} catch (\Exception $e) {
-			logError($e);
-			DB::rollBack();
-		}
-		return redirect()->route('backend.admin.index')->withErrors(new MessageBag(['create_failed' => getMessage('create_failed')]));
+		return parent::store($request);
 	}
 
 	public function edit($id) 
