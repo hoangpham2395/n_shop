@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\StoreAdminRequest;
 use App\Http\Requests\Backend\UpdateAdminRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
+use Illuminate\Http\Request;
 
 class AdminController extends BaseController 
 {
@@ -63,7 +64,7 @@ class AdminController extends BaseController
 			return abort('404');
 		}
 
-		$data = $request->all();
+		$data = array_merge($request->all(), $this->_prepareUpdate());
 
 		if ($entity->isOwner()) {
 			$data['role_type'] = $entity->role_type;

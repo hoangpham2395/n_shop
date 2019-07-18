@@ -9,4 +9,5 @@ Route::group(['middleware' => ['auth.backend']], function() {
 
 	// Admin
 	Route::resource('admin', 'AdminController')->names('backend.admin');
+	Route::resource('categories', 'CategoriesController')->names('backend.categories');
 });

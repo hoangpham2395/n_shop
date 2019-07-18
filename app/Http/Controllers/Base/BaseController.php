@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Base;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest as Request;
 use Illuminate\Support\MessageBag;
 
 class BaseController extends Controller 
@@ -51,7 +51,7 @@ class BaseController extends Controller
 
 	public function store(Request $request) 
 	{
-		$data = $request->all();
+		$data = array_merge($request->all(), $this->_prepareStore());
 
 		DB::beginTransaction();
 
@@ -85,7 +85,7 @@ class BaseController extends Controller
 			return abort('404');
 		}
 
-		$data = $request->all();
+		$data = array_merge($request->all(), $this->_prepareUpdate());
 
 		DB::beginTransaction();
 
@@ -115,5 +115,23 @@ class BaseController extends Controller
 			logError($e);
 		}
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['delete_failed' => getMessage('delete_failed')]));
+	}
+
+	protected function _prepareStore() 
+	{
+		$insId = backendGuard()->check() ? backendGuard()->user()->id : getConstant('ADMIN_ID_DEFAULT'); 
+
+		return [
+			'ins_id' => $insId,
+		];
+	}
+
+	protected function _prepareUpdate() 
+	{
+		$updId = backendGuard()->check() ? backendGuard()->user()->id : getConstant('ADMIN_ID_DEFAULT'); 
+
+		return [
+			'upd_id' => $updId,
+		];
 	}
 }

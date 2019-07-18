@@ -15,9 +15,17 @@ return [
 	'dashboard' => 'Bảng điều khiển',
 
 	'admin' => [
+		'name' => 'Admin',
 		'index' => 'Danh sách admin',
 		'create' => 'Thêm mới admin',
 		'edit' => 'Cập nhật thông tin admin',
 		'delete' => 'Xóa tài khoản admin',
+	],
+	'categories' => [
+		'name' => 'Danh mục',
+		'index' => 'Danh sách danh mục',
+		'create' => 'Thêm mới danh mục',
+		'edit' => 'Cập nhật danh mục',
+		'delete' => 'Xóa danh mục',
 	],
 ];
