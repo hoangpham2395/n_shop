@@ -46,7 +46,7 @@ class AdminController extends BaseController
 			return abort('404');
 		}
 
-		return $this->storeBase($request);
+		return $this->storeBase();
 	}
 
 	public function edit($id) 
@@ -68,12 +68,20 @@ class AdminController extends BaseController
 			return abort('404');
 		}
 
-		$data = array_merge($request->all(), $this->_prepareUpdate());
+		$data = $this->_getFormData(false);
 
+		// Filter data
 		if ($entity->isOwner()) {
 			$data['role_type'] = $entity->role_type;
 		}
 
+		if (empty($data['password'])) {
+			unset($data['password']);
+		}
+
+		unset($data['confirm_password']);
+
+		// Update
 		DB::beginTransaction();
 
 		try {
@@ -84,6 +92,7 @@ class AdminController extends BaseController
 			logError($e);
 			DB::rollBack();
 		}
+		
 		return redirect()->route('backend.admin.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
 	}
 

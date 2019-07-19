@@ -57,8 +57,7 @@ class BaseRepository
 
 	public function update($id, $data = []) 
 	{
-		$data['id'] = $id;
-		return $this->getModel()->update($data);
+		return $this->getModel()->where('id', $id)->update($data);
 	}
 
 	public function destroy($id) 

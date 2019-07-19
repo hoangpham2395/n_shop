@@ -50,9 +50,9 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.create');
 	}
 
-	public function storeBase($request) 
+	public function storeBase() 
 	{
-		$data = array_merge($request->all(), $this->_prepareStore());
+		$data = $this->_getFormData();
 
 		DB::beginTransaction();
 
@@ -78,7 +78,7 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.edit', compact('entity'));
 	}
 
-	public function updateBase($request, $id) 
+	public function updateBase($id) 
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -86,7 +86,7 @@ class BaseController extends Controller
 			return abort('404');
 		}
 
-		$data = array_merge($request->all(), $this->_prepareUpdate());
+		$data = $this->_getFormData(false);
 
 		DB::beginTransaction();
 
@@ -118,21 +118,27 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['delete_failed' => getMessage('delete_failed')]));
 	}
 
-	protected function _prepareStore() 
+	protected function _getFormData($isStore = true) 
 	{
-		$insId = backendGuard()->check() ? backendGuard()->user()->id : getConstant('ADMIN_ID_DEFAULT'); 
+		$data = Input::all();
 
-		return [
-			'ins_id' => $insId,
-		];
-	}
+		// Filter data
+		if (!empty($data['_method'])) {
+			unset($data['_method']);
+		}
 
-	protected function _prepareUpdate() 
-	{
-		$updId = backendGuard()->check() ? backendGuard()->user()->id : getConstant('ADMIN_ID_DEFAULT'); 
+		if (!empty($data['_token'])) {
+			unset($data['_token']);
+		}
 
-		return [
-			'upd_id' => $updId,
-		];
+		$adminId = backendGuard()->check() ? backendGuard()->user()->id : getConstant('ADMIN_ID_DEFAULT');
+
+		if ($isStore) {
+			$data['ins_id'] = $adminId;
+		} else {
+			$data['upd_id'] = $adminId;
+		}
+
+		return $data;
 	}
 }
