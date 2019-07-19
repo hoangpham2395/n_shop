@@ -23,14 +23,27 @@
 			<li class="header"></li>
 			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-user"></i> <span>Admin</span>
+					<i class="fa fa-user"></i> <span>{{transa('admin.name')}}</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-circle-o"></i> {{transa('list')}}</a></li>
-					<li><a href="#"><i class="fa fa-circle-o"></i> {{transa('add')}}</a></li>
+					<li><a href="{{route('backend.admin.index')}}"><i class="fa fa-circle-o"></i> {{transa('list')}}</a></li>
+					<li><a href="{{route('backend.admin.create')}}"><i class="fa fa-circle-o"></i> {{transa('add')}}</a></li>
+				</ul>
+			</li>
+			<li class="header"></li>
+			<li class="treeview">
+				<a href="#">
+					<i class="fa fa-th-list"></i> <span>{{transa('categories.name')}}</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="{{route('backend.categories.index')}}"><i class="fa fa-circle-o"></i> {{transa('list')}}</a></li>
+					<li><a href="{{route('backend.categories.create')}}"><i class="fa fa-circle-o"></i> {{transa('add')}}</a></li>
 				</ul>
 			</li>
 			<li class="header"></li>

@@ -15,6 +15,11 @@ class CategoriesController extends BaseController
 
 	public function store(CategoryRequest $request) 
 	{
-		return parent::store($request);
+		return $this->storeBase();
+	}
+
+	public function update(CategoryRequest $request, $id) 
+	{
+		return $this->updateBase($id);
 	}
 }

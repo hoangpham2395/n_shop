@@ -23,10 +23,16 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'category_name' => 'required',
-            'category_slug' => 'required|unique:categories,category_slug',
+            'category_slug' => 'required|unique:categories,category_slug,NULL,id,deleted_at,NULL',
         ];
+
+        if (!empty($this->request->get('id'))) {
+            $rules['category_slug'] = 'required|unique:categories,category_slug,'. $this->request->get('id') .',id,deleted_at,NULL';
+        }
+
+        return $rules;
     }
 
     public function attributes() 
