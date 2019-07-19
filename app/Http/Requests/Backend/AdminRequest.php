@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAdminRequest extends FormRequest
+class AdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,21 @@ class UpdateAdminRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'email' => 'required|email|unique:admin,email,'. $this->request->get('id'),
+        $rules = [
+            'email' => 'required|email|unique:admin,email,NULL,id,deleted_at,NULL',
             'name' => 'required',
             'role_type' => 'required|in:'. getConstant('ROLE_TYPE_SUPER_ADMIN') .','. getConstant('ROLE_TYPE_ADMIN'),
-            'password' => 'nullable|min:6|max:25',
-            'confirm_password' => 'nullable|same:password|min:6|max:25',
+            'password' => 'required|min:6|max:25',
+            'confirm_password' => 'required|same:password|min:6|max:25',
         ];
+
+        if (!empty($this->request->get('id'))) {
+            $rules['email'] = 'required|email|unique:admin,email,'. $this->request->get('id') .',id,deleted_at,NULL';
+            $rules['password'] = 'nullable|min:6|max:25';
+            $rules['confirm_password'] = 'nullable|same:password|min:6|max:25';
+        }
+
+        return $rules;
     }
 
     public function attributes() 

@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Base\BaseController;
 use App\Repositories\AdminRepository;
 use Illuminate\Support\Facades\Input;
-use App\Http\Requests\Backend\StoreAdminRequest;
-use App\Http\Requests\Backend\UpdateAdminRequest;
+use App\Http\Requests\Backend\AdminRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
@@ -16,6 +15,11 @@ class AdminController extends BaseController
 	{
 		$this->setRepository($adminRepository);
 		parent::__construct();
+	}
+
+	public function request() 
+	{
+		return AdminRequest::class;
 	}
 
 	public function index() 
@@ -36,13 +40,13 @@ class AdminController extends BaseController
 		return parent::create();
 	}
 
-	public function store(StoreAdminRequest $request) 
+	public function store(AdminRequest $request) 
 	{
 		if (!$this->_checkPermission()) {
 			return abort('404');
 		}
 
-		return parent::store($request);
+		return $this->storeBase($request);
 	}
 
 	public function edit($id) 
@@ -56,7 +60,7 @@ class AdminController extends BaseController
 		return view('backend.admin.edit', compact('entity'));
 	}
 
-	public function update(UpdateAdminRequest $request, $id) 
+	public function update(AdminRequest $request, $id) 
 	{
 		$entity = $this->getRepository()->findById($id);
 

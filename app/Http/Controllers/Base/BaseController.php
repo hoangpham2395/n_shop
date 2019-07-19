@@ -4,13 +4,19 @@ namespace App\Http\Controllers\Base;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Foundation\Http\FormRequest as Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
 class BaseController extends Controller 
 {
 	protected $_repository;
 	protected $_alias;
+	protected $_request;
+
+	public function __construct() 
+	{
+		$this->setAlias($this->getRepository()->getModel()->getTable());
+	}
 
 	public function getRepository() 
 	{
@@ -32,11 +38,6 @@ class BaseController extends Controller
 		return $this->_alias;
 	}
 
-	public function __construct() 
-	{
-		$this->setAlias($this->getRepository()->getModel()->getTable());
-	}
-
 	public function index() 
 	{
 		$dataSearch = Input::all();
@@ -49,7 +50,7 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.create');
 	}
 
-	public function store(Request $request) 
+	public function storeBase($request) 
 	{
 		$data = array_merge($request->all(), $this->_prepareStore());
 
@@ -77,7 +78,7 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.edit', compact('entity'));
 	}
 
-	public function update(Request $request, $id) 
+	public function updateBase($request, $id) 
 	{
 		$entity = $this->getRepository()->findById($id);
 
