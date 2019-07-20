@@ -47,6 +47,15 @@ class BaseRepository
 		->paginate(getConfig('paginate.backend.default', 20));
 	}
 
+	public function getListForDropDown($field = '', $fieldId = 'id') 
+	{
+		if (empty($field)) {
+			return [];
+		}
+
+		return $this->getModel()->orderBy($fieldId, 'DESC')->get()->pluck($field, $fieldId)->toArray();
+	}
+
 	public function findById($id) 
 	{
 		return $this->getModel()->where('id', $id)->first();

@@ -67,6 +67,17 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['create_failed' => getMessage('create_failed')]));
 	}
 
+	public function show($id) 
+	{
+		$entity = $this->getRepository()->findById($id);
+
+		if (empty($entity)) {
+			return abort('404');
+		}
+
+		return view('backend.'. $this->getAlias() .'.show', compact('entity'));
+	}
+
 	public function edit($id) 
 	{
 		$entity = $this->getRepository()->findById($id);

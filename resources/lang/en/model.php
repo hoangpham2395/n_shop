@@ -18,6 +18,7 @@ return [
 	'products' => [
 		'id' => 'ID',
 		'product_code' => 'Mã sản phẩm', 
+		'category_id' => 'Danh mục',
 		'product_name' => 'Tên sản phẩm', 
 		'product_slug' => 'Slug sản phẩm', 
 		'made_in' => 'Xuất xứ', 

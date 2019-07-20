@@ -13,19 +13,28 @@ return [
 	'cancel' => 'Hủy',
 	'confirm' => 'Xác nhận',
 	'dashboard' => 'Bảng điều khiển',
+	'detail' => 'Chi tiết',
 
 	'admin' => [
 		'name' => 'Admin',
 		'index' => 'Danh sách admin',
-		'create' => 'Thêm mới admin',
+		'create' => 'Thêm admin mới',
 		'edit' => 'Cập nhật thông tin admin',
 		'delete' => 'Xóa tài khoản admin',
 	],
 	'categories' => [
 		'name' => 'Danh mục',
 		'index' => 'Danh sách danh mục',
-		'create' => 'Thêm mới danh mục',
+		'create' => 'Thêm danh mục mới',
 		'edit' => 'Cập nhật danh mục',
 		'delete' => 'Xóa danh mục',
+	],
+	'products' => [
+		'name' => 'Sản phẩm',
+		'index' => 'Danh sách sản phẩm',
+		'create' => 'Thêm sản phẩm mới',
+		'edit' => 'Cập nhật thông tin sản phẩm',
+		'show' => 'Chi tiết sản phẩm',
+		'delete' => 'Xóa sản phẩm',
 	],
 ];
