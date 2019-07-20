@@ -42,7 +42,9 @@ class BaseRepository
 			foreach ($params as $field => $value) {
 				$q = $q->where($field, 'LIKE', '%'.$value.'%');
 			}
-		})->paginate(getConfig('paginate.backend.default', 20));
+		})
+		->orderBy('id', 'DESC')
+		->paginate(getConfig('paginate.backend.default', 20));
 	}
 
 	public function findById($id) 

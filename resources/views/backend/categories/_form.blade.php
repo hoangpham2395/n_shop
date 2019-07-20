@@ -8,7 +8,7 @@
 			<label class="required">{{transm('categories.category_name')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
-				{!! Form::text('category_name', null, ['class' => 'form-control', 'placeholder' => transm('categories.category_name'), 'onchange' => 'SystemController.changeToSlug(this)']) !!}
+				{!! Form::text('category_name', null, ['class' => 'form-control', 'placeholder' => transm('categories.category_name'), 'onkeyup' => 'SystemController.changeToSlug(this)']) !!}
 			</div>
 		</div>
 	</div>
