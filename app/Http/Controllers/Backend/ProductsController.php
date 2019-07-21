@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Base\BaseController;
 use App\Repositories\ProductRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ProductOptionRepository;
 use App\Http\Requests\Backend\ProductRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
@@ -11,6 +12,7 @@ use Illuminate\Support\MessageBag;
 class ProductsController extends BaseController 
 {
 	protected $_categoryRepository;
+	protected $_productOptionRepository;
 
 	public function setCategoryRepository($categoryRepository) 
 	{
@@ -22,12 +24,24 @@ class ProductsController extends BaseController
 		return $this->_categoryRepository;
 	}
 
+	public function setProductOptionRepository($productOptionRepository) 
+	{
+		$this->_productOptionRepository = $productOptionRepository;
+	}
+
+	public function getProductOptionRepository() 
+	{
+		return $this->_productOptionRepository;
+	}
+
 	public function __construct(
 		ProductRepository $productRepository,
-		CategoryRepository $categoryRepository
+		CategoryRepository $categoryRepository,
+		ProductOptionRepository $productOptionRepository
 	) {
 		$this->setRepository($productRepository);
 		$this->setCategoryRepository($categoryRepository);
+		$this->setProductOptionRepository($productOptionRepository);
 		parent::__construct();
 	}
 
@@ -45,6 +59,15 @@ class ProductsController extends BaseController
 
 		try {
 			$this->getRepository()->create($data);
+
+			// Add product_option
+			$productOptions = array_get($data, 'product_opion', []);
+			$nextId = $this->getNextInsertId();
+			foreach ($productOptions as $productOpion) {
+				$productOpion['product_id'] = $nextId;
+				$this->getProductOptionRepository()->create($productOpion);
+			}
+
 			DB::commit();
 			return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('create_success')]);
 		} catch (\Exception $e) {
@@ -68,6 +91,24 @@ class ProductsController extends BaseController
 
 	public function update(ProductRequest $request, $id) 
 	{
-		return $this->updateBase($id);
+		$entity = $this->getRepository()->findById($id);
+
+		if (empty($entity)) {
+			return abort('404');
+		}
+
+		$data = $this->_getFormData(false);
+
+		DB::beginTransaction();
+
+		try {
+			$this->getRepository()->update($id, $data);
+			DB::commit();
+			return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('update_success')]);
+		} catch (\Exception $e) {
+			logError($e);
+			DB::rollBack();
+		}
+		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
 	}
 }

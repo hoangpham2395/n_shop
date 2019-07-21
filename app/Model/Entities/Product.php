@@ -3,12 +3,12 @@ namespace App\Model\Entities;
 
 use App\Model\Base\Base;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Model\Presenters\PPrice;
+use App\Model\Presenters\PProduct;
 
 class Product extends Base 
 {
 	use SoftDeletes;
-	use PPrice;
+	use PProduct;
 
 	protected $table = 'products';
 	protected $primaryKey = 'id';

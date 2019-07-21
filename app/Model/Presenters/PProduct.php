@@ -1,7 +1,7 @@
 <?php
 namespace App\Model\Presenters;
 
-trait PPrice 
+trait PProduct 
 {
 	public function getPrice() 
 	{

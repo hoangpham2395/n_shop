@@ -27,5 +27,8 @@ return [
 		'content' => 'Nội dung', 
 		'sale' => 'Khuyến mại', 
 		'price_sale' => 'Giá khuyến mại',
+		'size' => 'Size',
+		'color' => 'Màu',
+		'count' => 'Số lượng',
 	],
 ];

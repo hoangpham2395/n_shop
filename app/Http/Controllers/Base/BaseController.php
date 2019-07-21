@@ -152,4 +152,15 @@ class BaseController extends Controller
 
 		return $data;
 	}
+
+	public function getNextInsertId()
+    {
+    	try {
+    		$statement = DB::select("SHOW TABLE STATUS LIKE '{$table}'");
+            $nextId = $statement[0]->Auto_increment;
+    	} catch (\Exception $e) {
+    		logError($e);
+    		return 0;
+    	}
+    }
 }
