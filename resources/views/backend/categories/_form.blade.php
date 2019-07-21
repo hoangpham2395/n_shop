@@ -18,7 +18,7 @@
 		<div class="form-group">
 			<label class="required">{{transm('categories.category_slug')}}</label>
 			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+				<span class="input-group-addon"><i class="fa fa-link"></i></span>
 				{!! Form::text('category_slug', null, ['id'=> 'slug', 'class' => 'form-control', 'placeholder' => transm('categories.category_slug'), 'readonly' => true]) !!}
 			</div>
 		</div>
