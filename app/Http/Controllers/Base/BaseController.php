@@ -156,8 +156,9 @@ class BaseController extends Controller
 	public function getNextInsertId()
     {
     	try {
-    		$statement = DB::select("SHOW TABLE STATUS LIKE '{$table}'");
+    		$statement = DB::select("SHOW TABLE STATUS LIKE '". $this->getRepository()->getModel()->getTable() ."'");
             $nextId = $statement[0]->Auto_increment;
+            return $nextId;
     	} catch (\Exception $e) {
     		logError($e);
     		return 0;

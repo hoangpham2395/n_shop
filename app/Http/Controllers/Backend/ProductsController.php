@@ -54,6 +54,7 @@ class ProductsController extends BaseController
 	public function store(ProductRequest $request) 
 	{
 		$data = $this->_getFormData();
+		$nextId = $this->getNextInsertId();
 
 		$productOptions = array_get($data, 'product_option', []);
 		unset($data['product_opion']);
@@ -64,7 +65,6 @@ class ProductsController extends BaseController
 			$this->getRepository()->create($data);
 
 			// Add product_option
-			$nextId = $this->getNextInsertId();
 			foreach ($productOptions as $productOpion) {
 				$productOpion['product_id'] = $nextId;
 				$this->getProductOptionRepository()->create($productOpion);

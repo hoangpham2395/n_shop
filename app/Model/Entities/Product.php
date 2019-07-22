@@ -18,4 +18,9 @@ class Product extends Base
 	{
 		return $this->belongsTo(Category::class, 'category_id', 'id');
 	}
+
+	public function productOptions() 
+	{
+		return $this->hasMany(ProductOption::class, 'product_id', 'id');
+	}
 }
