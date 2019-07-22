@@ -55,13 +55,15 @@ class ProductsController extends BaseController
 	{
 		$data = $this->_getFormData();
 
+		$productOptions = array_get($data, 'product_option', []);
+		unset($data['product_opion']);
+
 		DB::beginTransaction();
 
 		try {
 			$this->getRepository()->create($data);
 
 			// Add product_option
-			$productOptions = array_get($data, 'product_opion', []);
 			$nextId = $this->getNextInsertId();
 			foreach ($productOptions as $productOpion) {
 				$productOpion['product_id'] = $nextId;
@@ -71,6 +73,7 @@ class ProductsController extends BaseController
 			DB::commit();
 			return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('create_success')]);
 		} catch (\Exception $e) {
+			dd($e);
 			logError($e);
 			DB::rollBack();
 		}
