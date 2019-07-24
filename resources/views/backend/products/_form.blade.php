@@ -63,8 +63,12 @@
 	</div>
 </div>
 <!-- Product option -->
-@php 
-	$options = !empty($entity->id) ? $entity->productOptions : null;
+@php
+	$options = !empty($entity->id) ? $entity->productOptions->toArray() : null;
+	// Get old value after validate
+	if (old('product_option')) {
+		$options = old('product_option');
+	}
 @endphp
 <div class="product_option_list">
 	@if (empty($options))
@@ -74,7 +78,7 @@
 			@include('backend.products._option', ['idx' => $idx, 'item' => $option])
 		@endforeach
 
-		@if (empty($options->count()))
+		@if (empty(count($options)))
 			@include('backend.products._option', ['idx' => 0])
 		@endif
 	@endif

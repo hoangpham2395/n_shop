@@ -1,6 +1,6 @@
 @php 
 	$idx = !empty($idx) ? $idx : 0; 
-	$item = !empty($item) ? $item->toArray() : null;
+	$item = !empty($item) ? $item : null;
 	$id = !empty($item->id) ? $item->id : $idx;
 @endphp
 
@@ -17,7 +17,7 @@
 							<label class="required">{{transm('products.size')}}</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-arrows-h"></i></span>
-								{!! Form::text('product_option[][size]', array_get($item, 'size'), ['class' => 'form-control', 'placeholoder' => transm('products.size')]) !!}
+								{!! Form::text('product_option[][size]', array_get($item, 'size'), ['class' => 'form-control', 'placeholoder' => transm('products.size'), 'required' => true]) !!}
 							</div>
 						</div>
 					</div>
