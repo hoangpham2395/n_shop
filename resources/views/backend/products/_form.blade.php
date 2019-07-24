@@ -64,23 +64,19 @@
 </div>
 <!-- Product option -->
 @php
-	$options = !empty($entity->id) ? $entity->productOptions->toArray() : null;
+	$options = !empty($entity->id) ? $entity->productOptions->toArray() : [];
 	// Get old value after validate
 	if (old('product_option')) {
 		$options = old('product_option');
 	}
 @endphp
 <div class="product_option_list">
-	@if (empty($options))
-		@include('backend.products._option', ['idx' => 0])
-	@else
-		@foreach ($options as $idx => $option)
-			@include('backend.products._option', ['idx' => $idx, 'item' => $option])
-		@endforeach
+	@foreach ($options as $idx => $option)
+		@include('backend.products._option', ['idx' => $idx, 'item' => $option])
+	@endforeach
 
-		@if (empty(count($options)))
-			@include('backend.products._option', ['idx' => 0])
-		@endif
+	@if (empty(count($options)))
+		@include('backend.products._option', ['idx' => 0])
 	@endif
 </div>
 <div class="row margin-bottom">
