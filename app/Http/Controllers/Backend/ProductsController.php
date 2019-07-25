@@ -102,16 +102,59 @@ class ProductsController extends BaseController
 
 		$data = $this->_getFormData(false);
 
+		// Get data product option
+		$newProductOptions = array_get($data, 'product_option', []);
+		unset($data['product_option']);
+
+		$oldProductOptions = $entity->productOptions;
+
 		DB::beginTransaction();
 
 		try {
 			$this->getRepository()->update($id, $data);
+
+			// Delete old product option
+			foreach ($oldProductOptions as $oldProductOption) {
+				$this->getProductOptionRepository()->destroy($oldProductOption->id);
+			}
+
+			// Add new product option
+			foreach ($newProductOptions as $newProductOption) {
+				$newProductOption['product_id'] = $id;
+				$newProductOption['ins_id'] = backendGuard()->user()->id;
+				$this->getProductOptionRepository()->create($newProductOption);
+			}
+
 			DB::commit();
 			return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('update_success')]);
 		} catch (\Exception $e) {
+			dd($e);
 			logError($e);
 			DB::rollBack();
 		}
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
+	}
+
+	public function destroy($id) {
+		$entity = $this->getRepository()->findById($id);
+
+		if (empty($entity)) {
+			return abort('404');
+		}
+
+		try {
+			$this->getRepository()->destroy($id);
+
+			// delete product option
+			$oldProductOptions = $entity->productOptions;
+			foreach ($oldProductOptions as $oldProductOption) {
+				$this->getProductOptionRepository()->destroy($oldProductOption->id);
+			}
+
+			return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('delete_success')]);
+		} catch (\Exception $e) {
+			logError($e);
+		}
+		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['delete_failed' => getMessage('delete_failed')]));
 	}
 }

@@ -17,7 +17,7 @@
 							<label class="required">{{transm('products.size')}}</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-arrows-h"></i></span>
-								{!! Form::text('product_option[][size]', array_get($item, 'size'), ['class' => 'form-control', 'placeholoder' => transm('products.size'), 'required' => true]) !!}
+								{!! Form::text('product_option['.$id.'][size]', array_get($item, 'size'), ['class' => 'form-control', 'placeholoder' => transm('products.size'), 'required' => true]) !!}
 							</div>
 						</div>
 					</div>
@@ -26,7 +26,7 @@
 							<label>{{transm('products.color')}}</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-star"></i></span>
-								{!! Form::text('product_option[][color]', array_get($item, 'color'), ['class' => 'form-control', 'placeholoder' => transm('products.color')]) !!}
+								{!! Form::text('product_option['.$id.'][color]', array_get($item, 'color'), ['class' => 'form-control', 'placeholoder' => transm('products.color')]) !!}
 							</div>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 							<label>{{transm('products.count')}}</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-calculator"></i></span>
-								{!! Form::number('product_option[][count]', array_get($item, 'count'), ['class' => 'form-control', 'placeholoder' => transm('products.count')]) !!}
+								{!! Form::number('product_option['.$id.'][count]', array_get($item, 'count'), ['class' => 'form-control', 'placeholoder' => transm('products.count')]) !!}
 							</div>
 						</div>
 					</div>
