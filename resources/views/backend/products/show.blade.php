@@ -77,10 +77,12 @@
 						</div>
 
 						<div class="col-sm-12">
-							<a href="{{route('backend.products.edit', $entity->id)}}" class="btn btn-primary"><i class="fa fa-pencil"></i> {{transa('edit')}}</a>
+							<a href="{{route('backend.products.upload_image', $entity->id)}}" class="btn btn-success"><i class="fa fa-picture-o"></i> {{transa('products.add_image')}}</a> &nbsp;
+							<a href="{{route('backend.products.edit', $entity->id)}}" class="btn btn-primary"><i class="fa fa-pencil"></i> {{transa('edit')}}</a> &nbsp;
 							<button class="btn btn-danger" data-toggle="modal" data-target="#del_confirm" data-route="{{route('backend.products.destroy', $entity->id)}}" onclick="SystemController.delete(this);">
 								<i class="fa fa-trash"></i> {{transa('delete')}}
-							</button>
+							</button> &nbsp;
+							<a href="{{route('backend.products.index')}}" class="btn btn-default"><i class="fa fa-share"></i> {{transa('back')}}</a>						
 						</div>
 					</div>
 					

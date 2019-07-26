@@ -1,5 +1,11 @@
 @if (!empty($entity->id))
 	<input type="hidden" name="id" value="{{$entity->id}}">
+
+	<div class="row">
+		<div class="col-sm-12 text-right">
+			<a href="{{route('backend.products.upload_image')}}" class="btn btn-success"><i class="fa fa-picture-o"></i> {{transa('products.add_image')}}</a>
+		</div>
+	</div>
 @endif
 
 <div class="row">

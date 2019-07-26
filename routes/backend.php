@@ -10,5 +10,8 @@ Route::group(['middleware' => ['auth.backend']], function() {
 	// Admin
 	Route::resource('admin', 'AdminController')->names('backend.admin');
 	Route::resource('categories', 'CategoriesController')->names('backend.categories');
+
+	Route::get('products/{id}/upload-image', ['as' => 'backend.products.upload_image', 'uses' => 'ProductImageController@uploadImage']);
+	Route::post('products/:id/upload-image', ['as' => 'backend.products.post_upload_image', 'uses' => 'ProductImageController@postUploadImage']);
 	Route::resource('products', 'ProductsController')->names('backend.products');
 });

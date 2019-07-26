@@ -15,6 +15,7 @@ return [
 	'dashboard' => 'Bảng điều khiển',
 	'detail' => 'Chi tiết',
 	'option' => 'Tùy chọn',
+	'back' => 'Quay lại',
 
 	'admin' => [
 		'name' => 'Admin',
@@ -37,6 +38,7 @@ return [
 		'edit' => 'Cập nhật thông tin sản phẩm',
 		'show' => 'Chi tiết sản phẩm',
 		'delete' => 'Xóa sản phẩm',
+		'add_image' => 'Thêm ảnh',
 	],
 	'product_option' => [
 		'add' => 'Thêm tùy chọn',
