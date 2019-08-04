@@ -75,8 +75,8 @@
 			{!! Form::file('image', ['class' => 'form-control', 'placeholoder' => transm('products.image'), 'onchange' => 'ProductsController.uploadImage(this, "#product_image")']) !!}
 		</div>
 	</div>
-	<div class="col-sm-12" style="margin-bottom: 30px;">
-		<img id="product_image" src="{{!empty($entity->id) ? $entity->getUrlImage() : asset(getConfig('url_no_image'))}}" width="40%">
+	<div class="col-sm-6" style="margin-bottom: 30px;">
+		<img id="product_image" src="{{!empty($entity->id) ? $entity->getUrlImage() : getConfig('url_no_image')}}" width="50%">
 	</div>
 </div>
 <!-- Product option -->

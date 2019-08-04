@@ -15,5 +15,5 @@ return [
 			'default' => 20,
 		],
 	],
-	'url_no_image' => 'images/common/no_image.png',
+	'url_no_image' => asset('images/common/no_image.png'),
 ];
