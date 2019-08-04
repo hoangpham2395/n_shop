@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
+use Storage;
 
 class BaseController extends Controller 
 {
@@ -162,6 +163,42 @@ class BaseController extends Controller
     	} catch (\Exception $e) {
     		logError($e);
     		return 0;
+    	}
+    }
+
+    protected function _uploadFile($request, $fileField)
+    {
+        // Check exist
+        if (!$request->hasFile($fileField)) {
+            return;
+        }
+
+        $id = !empty($request->get('id')) ? $request->get('id') : $this->getNextInsertId(); 
+
+        // Upload file to tmp folder
+        try {
+        	$fileOriginalName = $request->file($fileField)->getClientOriginalName();
+        	$contentFile = file_get_contents($request->file($fileField)->getRealPath());
+        	$newFileName = '/'. $this->getAlias() .'/'. date('Y') .'/'. date('m') .'/'. date('d') .'/'. $id .'_'. $fileOriginalName;
+
+            Storage::disk('media')->put($newFileName, $contentFile);
+
+            return '/media'. $newFileName;
+        } catch(\Exception $e) {
+        	logError($e);
+        }
+    }
+
+    protected function _deleteFile($urlFile)
+    {
+    	try {
+    		if (empty($urlFile) || !file_exists(public_path($urlFile))) {
+    			return;
+    		}
+
+        	Storage::disk('public_path')->delete($urlFile);
+    	} catch (\Exception $e) {
+    		logError($e);
     	}
     }
 }

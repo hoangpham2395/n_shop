@@ -17,4 +17,9 @@ trait PProduct
 	{
 		return formatMoney($this->price_sale);
 	}
+
+	public function getUrlImage() 
+	{
+		return (!$this->image || !file_exists(public_path($this->image))) ? getConfig('url_no_image') : asset($this->image);
+	}
 }

@@ -24,6 +24,7 @@ return [
 		'made_in' => 'Xuất xứ', 
 		'material' => 'Chất liệu', 
 		'price' => 'Giá', 
+		'image' => 'Ảnh',
 		'content' => 'Nội dung', 
 		'sale' => 'Khuyến mại', 
 		'price_sale' => 'Giá khuyến mại',

@@ -62,6 +62,8 @@ class ProductsController extends BaseController
 		DB::beginTransaction();
 
 		try {
+			// Update image, return file name
+			$data['image'] = $this->_uploadFile($request, 'image');
 			$this->getRepository()->create($data);
 
 			// Add product_option
@@ -71,7 +73,7 @@ class ProductsController extends BaseController
 			}
 
 			DB::commit();
-			return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('create_success')]);
+			return redirect()->route('backend.'. $this->getAlias() .'.show', $nextId)->with(['success' => getMessage('create_success')]);
 		} catch (\Exception $e) {
 			dd($e);
 			logError($e);
@@ -111,6 +113,14 @@ class ProductsController extends BaseController
 		DB::beginTransaction();
 
 		try {
+			if (!empty($data['image'])) {
+				// Delete old image
+				$this->_deleteFile($entity->image);
+
+				// Upload new image
+				$data['image'] = $this->_uploadFile($request, 'image');
+			}
+
 			$this->getRepository()->update($id, $data);
 
 			// Delete old product option
@@ -126,13 +136,13 @@ class ProductsController extends BaseController
 			}
 
 			DB::commit();
-			return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('update_success')]);
+			return redirect()->route('backend.'. $this->getAlias() .'.show', $id)->with(['success' => getMessage('update_success')]);
 		} catch (\Exception $e) {
 			dd($e);
 			logError($e);
 			DB::rollBack();
 		}
-		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
+		return redirect()->route('backend.'. $this->getAlias() .'.show', $id)->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
 	}
 
 	public function destroy($id) {

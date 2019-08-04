@@ -3,7 +3,7 @@
 
 	<div class="row">
 		<div class="col-sm-12 text-right">
-			<a href="{{route('backend.products.upload_image')}}" class="btn btn-success"><i class="fa fa-picture-o"></i> {{transa('products.add_image')}}</a>
+			<a href="{{route('backend.products.upload_image', $entity->id)}}" class="btn btn-success"><i class="fa fa-picture-o"></i> {{transa('products.add_image')}}</a>
 		</div>
 	</div>
 @endif
@@ -68,6 +68,17 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="form-group">
+			<label>{{transm('products.image')}}</label>
+			{!! Form::file('image', ['class' => 'form-control', 'placeholoder' => transm('products.image'), 'onchange' => 'ProductsController.uploadImage(this, "#product_image")']) !!}
+		</div>
+	</div>
+	<div class="col-sm-12" style="margin-bottom: 30px;">
+		<img id="product_image" src="{{!empty($entity->id) ? $entity->getUrlImage() : asset(getConfig('url_no_image'))}}" width="40%">
+	</div>
+</div>
 <!-- Product option -->
 @php
 	$options = !empty($entity->id) ? $entity->productOptions->toArray() : [];
@@ -87,7 +98,7 @@
 </div>
 <div class="row margin-bottom">
 	<div class="col-sm-12">
-		<button type="button" class="btn btn-success" onclick="ProductsController.addOption(this);">
+		<button type="button" class="btn btn-primary" onclick="ProductsController.addOption(this);">
 			<i class="fa fa-plus"></i> {{transa('product_option.add')}}
 		</button>
 	</div>
@@ -136,6 +147,6 @@
 <div class="row">
 	<div class="col-sm-12">
 		<button type="submit" class="btn btn-success">{{transa('confirm')}}</button>
-		<a href="{{route('backend.admin.index')}}" class="btn btn-default">{{transa('cancel')}}</a>
+		<a href="{{route('backend.products.index')}}" class="btn btn-default">{{transa('cancel')}}</a>
 	</div>
 </div>

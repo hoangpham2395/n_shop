@@ -24,7 +24,7 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-					{!! Form::model($entity, ['route' => ['backend.products.update', $entity->id], 'method' => 'PATCH']) !!}
+					{!! Form::model($entity, ['route' => ['backend.products.update', $entity->id], 'method' => 'PATCH', 'files' => true]) !!}
 						@include('backend.products._form')
 					{!! Form::close() !!}
 				</div>

@@ -29,6 +29,7 @@ class ProductRequest extends FormRequest
             'product_name' => 'required',
             'product_slug' => 'required|unique:products,product_slug,NULL,id,deleted_at,NULL',
             'price' => 'required|numeric',
+            'image' => 'nullable|max:5000|mimes:jpeg,png,gif,jpg',
         ];
 
         if (!empty($this->request->get('id'))) {

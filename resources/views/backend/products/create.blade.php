@@ -24,7 +24,7 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-					{!! Form::open(['route' => 'backend.products.store']) !!}
+					{!! Form::open(['route' => 'backend.products.store', 'files' => true]) !!}
 						@include('backend.products._form')
 					{!! Form::close() !!}
 				</div>

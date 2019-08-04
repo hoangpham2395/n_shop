@@ -16,6 +16,7 @@ return [
 	'detail' => 'Chi tiết',
 	'option' => 'Tùy chọn',
 	'back' => 'Quay lại',
+	'image' => 'Ảnh',
 
 	'admin' => [
 		'name' => 'Admin',
@@ -43,5 +44,9 @@ return [
 	'product_option' => [
 		'add' => 'Thêm tùy chọn',
 		'delete' => 'Xóa tùy chọn',
+	],
+	'product_image' => [
+		'add' => 'Thêm ảnh',
+		'delete' => 'Xóa ảnh',
 	],
 ];

@@ -17,6 +17,8 @@
 <section class="content">
 	<div class="row">
 		<div class="col-xs-12">
+			@include('layouts.backend.notify')
+			
 			<div class="box box-danger">
 				<div class="box-header">
 					<h3 class="box-title">{{transa('products.show')}}</h3>
@@ -24,7 +26,9 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="row">
-						<div class="col-sm-4"></div>
+						<div class="col-sm-4">
+							<img src="{{$entity->image}}" width="100%">
+						</div>
 						<div class="col-sm-8">
 							<table class="table table-bordered">
 								<thead>
