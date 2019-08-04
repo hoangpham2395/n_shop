@@ -31,7 +31,7 @@
 								<div class="form-group">
 									<label>{{transm('products.product_code')}}</label>
 									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+										<span class="input-group-addon"><i class="fa fa-barcode"></i></span>
 										{!! Form::text('product_name', Request::get('product_code'), ['class' => 'form-control', 'placeholder' => transm('products.product_code')]) !!}
 									</div>
 								</div>
@@ -40,15 +40,36 @@
 								<div class="form-group">
 									<label>{{transm('products.product_name')}}</label>
 									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+										<span class="input-group-addon"><i class="fa fa-thumbs-o-up"></i></span>
 										{!! Form::text('product_name', Request::get('product_name'), ['class' => 'form-control', 'placeholder' => transm('products.product_name')]) !!}
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>{{transm('products.category_id')}}</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+										{!! Form::select('category_id', $categories, Request::get('category_id'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>{{transm('products.price')}}</label>
+									<div class="input-group" style="display: flex; justify-content: center; align-items: center;">
+										{!! Form::number('min_price', Request::get('min_price'), ['class' => 'form-control']) !!}
+										<span style="margin: 0 5px;">~</span>
+										{!! Form::number('max_price', Request::get('max_price'), ['class' => 'form-control']) !!}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
 							<div class="col-sm-12 text-center">
-								<button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> {{transa('search')}}</button>
+								<button type="submit" class="btn btn-danger margin-right"><i class="fa fa-search"></i> {{transa('search')}}</button>
 								<a href="{{route('backend.products.index')}}" class="btn btn-default"><i class="fa fa-share"></i> {{transa('reset')}}</a>
 							</div>
 						</div>

@@ -8,6 +8,7 @@ use App\Repositories\ProductOptionRepository;
 use App\Http\Requests\Backend\ProductRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Input;
 
 class ProductsController extends BaseController 
 {
@@ -43,6 +44,14 @@ class ProductsController extends BaseController
 		$this->setCategoryRepository($categoryRepository);
 		$this->setProductOptionRepository($productOptionRepository);
 		parent::__construct();
+	}
+
+	public function index() 
+	{
+		$dataSearch = Input::all();
+		$entities = $this->getRepository()->getListForBackend($dataSearch);
+		$categories = $this->getCategoryRepository()->getListForDropDown('category_name');
+		return view('backend.'. $this->getAlias() .'.index', compact('entities', 'categories'));
 	}
 
 	public function create() 
