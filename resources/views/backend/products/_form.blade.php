@@ -14,7 +14,7 @@
 			<label class="required">{{transm('products.product_code')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-				{!! Form::text('product_code', null, ['class' => 'form-control', 'placeholder' => transm('products.product_code')]) !!}
+				{!! Form::text('product_code', null, ['class' => 'form-control', 'placeholder' => transm('products.product_code'), 'required' => true]) !!}
 			</div>
 		</div>
 	</div>
@@ -23,7 +23,7 @@
 			<label class="required">{{transm('products.category_id')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
-				{!! Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+				{!! Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => getConfig('select_default'), 'required' => true]) !!}
 			</div>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 			<label class="required">{{transm('products.product_name')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-thumbs-o-up"></i></span>
-				{!! Form::text('product_name', null, ['class' => 'form-control', 'placeholder' => transm('products.product_name'), 'onkeyup' => 'SystemController.changeToSlug(this)']) !!}
+				{!! Form::text('product_name', null, ['class' => 'form-control', 'placeholder' => transm('products.product_name'), 'onkeyup' => 'SystemController.changeToSlug(this)', 'required' => true]) !!}
 			</div>
 		</div>
 	</div>
@@ -43,7 +43,7 @@
 			<label class="required">{{transm('products.product_slug')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-link"></i></span>
-				{!! Form::text('product_slug', null, ['id' => 'slug', 'class' => 'form-control', 'placeholder' => transm('products.product_slug'), 'readonly' => true]) !!}
+				{!! Form::text('product_slug', null, ['id' => 'slug', 'class' => 'form-control', 'placeholder' => transm('products.product_slug'), 'readonly' => true, 'required' => true]) !!}
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 			<label class="required">{{transm('products.price')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-money"></i></span>
-				{!! Form::number('price', null, ['class' => 'form-control', 'placeholder' => transm('products.price'), 'min' => 0]) !!}
+				{!! Form::number('price', null, ['class' => 'form-control', 'placeholder' => transm('products.price'), 'min' => 0, 'required' => true]) !!}
 			</div>
 		</div>
 	</div>
