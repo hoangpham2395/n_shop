@@ -22,4 +22,15 @@ trait PProduct
 	{
 		return (!$this->image || !file_exists(public_path($this->image))) ? getConfig('url_no_image') : asset($this->image);
 	}
+
+	public function getListImages() 
+	{
+		$r = [$this->getUrlImage()];
+
+		foreach ($this->productImages as $productImage) {
+			$r[] = $productImage->image;
+		}
+
+		return $r;
+	}
 }

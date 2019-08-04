@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Base\BaseController;
 use App\Repositories\ProductRepository;
 use App\Repositories\ProductImageRepository;
-use App\Http\Requests\Backend\ProductRequest;
+use App\Http\Requests\Backend\ProductImageRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
 
@@ -35,17 +35,50 @@ class ProductImageController extends BaseController
 
 	public function uploadImage($id) 
 	{
-		$product = $this->getProductRepository()->findById($id);
-		if (empty($product)) {
+		$entity = $this->getProductRepository()->findById($id);
+		if (empty($entity)) {
 			return abort('404');
 		}
 
-		$entities = $product->productImages;
-		return view('backend.product_image.form', compact('product', 'entities'));
+		$entities = $entity->productImages;
+		return view('backend.product_image.form', compact('entity', 'entities'));
 	}
 
-	public function postUploadImage() 
+	public function postUploadImage(ProductImageRequest $request, $id) 
 	{
+		$entity = $this->getProductRepository()->findById($id);
+		if (empty($entity)) {
+			return abort('404');
+		}		
 
+		$oldProductImages = $entity->productImages;
+		$data = $this->_getFormData();
+
+		DB::beginTransaction();
+		try {
+			// Delete old image
+			foreach ($oldProductImages as $oldProductImage) {
+				$this->_deleteFile($oldProductImage->image);
+				$this->getRepository()->destroy($oldProductImage->id);
+			}
+
+			// Add new image
+			foreach ($data['image'] as $key => $image) {
+				$imageName = $this->_uploadFile($request, 'image.'. $key);
+				$newProductImage = [
+					'product_id' => $id,
+					'image' => $imageName,
+					'ins_id' => backendGuard()->check() ? backendGuard()->user()->id : getConstant('ADMIN_ID_DEFAULT'),
+				];
+				$this->getRepository()->create($newProductImage);
+			}
+
+			DB::commit();
+			return redirect()->route('backend.products.show', $id)->with(['success' => getMessage('create_success')]);
+		} catch (\Exception $e) {
+			logError($e);
+			DB::rollBack();
+		}
+		return redirect()->route('backend.products.show', $id)->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
 	}
 }

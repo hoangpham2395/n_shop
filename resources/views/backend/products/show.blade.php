@@ -27,7 +27,15 @@
 				<div class="box-body">
 					<div class="row">
 						<div class="col-sm-4">
-							<img src="{{$entity->image}}" width="100%">
+							<div class="clearfix">
+				                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+				                	@foreach ($entity->getListImages() as $urlImage)
+					                	<li data-thumb="{{asset($urlImage)}}"> 
+					                		<img src="{{asset($urlImage)}}" width="100%" />
+					                	</li>
+				                	@endforeach
+				                </ul>
+				            </div>
 						</div>
 						<div class="col-sm-8">
 							<table class="table table-bordered">
@@ -105,3 +113,27 @@
 @include('layouts.backend.modal_del_confirm')
 
 @endsection
+
+@push('tag_headers')
+<link rel="stylesheet" href="{{asset('vendor/lightSlider/css/lightslider.css')}}">
+@endpush
+
+@push('scripts')
+<script src="{{asset('vendor/lightSlider/js/lightslider.js')}}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#image-gallery').lightSlider({
+			gallery:true,
+			item:1,
+			thumbItem:9,
+			slideMargin: 0,
+			speed:500,
+			auto:true,
+			loop:true,
+			onSliderLoad: function() {
+				$('#image-gallery').removeClass('cS-hidden');
+			}  
+		});
+	});
+</script>
+@endpush
