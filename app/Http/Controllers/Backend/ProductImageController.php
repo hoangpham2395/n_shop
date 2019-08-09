@@ -62,6 +62,8 @@ class ProductImageController extends BaseController
 				$this->getRepository()->destroy($oldProductImage->id);
 			}
 
+			$data['image'] = array_get($data, 'image', []);
+
 			// Add new image
 			foreach ($data['image'] as $key => $image) {
 				$imageName = $this->_uploadFile($request, 'image.'. $key);

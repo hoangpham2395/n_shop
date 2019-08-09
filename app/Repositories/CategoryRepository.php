@@ -10,4 +10,9 @@ class CategoryRepository extends BaseRepository
 	{
 		return Category::class;
 	}
+
+	public function getListParentCategories() 
+	{
+		return $this->getModel()->where('category_parent', '=', null)->pluck('category_name', 'id')->toArray();
+	}
 }

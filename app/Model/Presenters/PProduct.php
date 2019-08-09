@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Presenters;
 
+use Carbon\Carbon;
+
 trait PProduct 
 {
 	public function getPrice() 
@@ -11,6 +13,16 @@ trait PProduct
 	public function getCategory() 
 	{
 		return $this->category->category_name;
+	}
+
+	public function getCategoryName() 
+	{
+		return !empty($this->category) ? $this->category->category_name : '';
+	}
+
+	public function getCategorySlug() 
+	{
+		return !empty($this->category) ? $this->category->category_slug : '';
 	}
 
 	public function getPriceSale() 
@@ -32,5 +44,11 @@ trait PProduct
 		}
 
 		return $r;
+	}
+
+	public function getClassNew() 
+	{
+		$date = Carbon::now()->subDays(7); // 7 days ago
+		return ($this->created_at->gt($date) || $this->updated_at->gt($date)) ? 'block2-labelnew' : '';
 	}
 }

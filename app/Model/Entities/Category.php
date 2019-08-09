@@ -18,4 +18,14 @@ class Category extends Base
 	{
 		return $this->hasMany(Product::class, 'category_id', 'id');
 	}
+
+	public function subCategories() 
+	{
+		return $this->hasMany(Category::class, 'category_parent', 'id');
+	}
+
+	public function category() 
+	{
+		return $this->belongsTo(Category::class, 'category_parent', 'id');
+	}
 }

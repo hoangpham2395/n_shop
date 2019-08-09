@@ -5,6 +5,6 @@ trait PCategory
 {
 	public function getCategoryParent() 
 	{
-		return '';
+		return !empty($this->category) ? $this->category->category_name : '';
 	}
 }
