@@ -38,6 +38,11 @@ class BaseRepository
 
 	public function getListForBackend($params = []) 
 	{
+		// Pagination
+		if (!empty($params['page'])) {
+			unset($params['page']);
+		}
+		
 		return $this->getModel()->where(function($q) use($params) {
 			foreach ($params as $field => $value) {
 				$q = $q->where($field, 'LIKE', '%'.$value.'%');

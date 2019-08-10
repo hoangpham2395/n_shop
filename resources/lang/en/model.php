@@ -14,6 +14,7 @@ return [
 		'category_parent' => 'Danh mục cha',
 		'category_name' => 'Tên danh mục',
 		'category_slug' => 'Slug danh mục',
+		'category_type' => 'Kiểu danh mục',
 	],
 	'products' => [
 		'id' => 'ID',

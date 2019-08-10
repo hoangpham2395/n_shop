@@ -27,12 +27,21 @@
 				<div class="box-body">
 					{!! Form::open(['backend.categories.index', 'method' => 'GET']) !!}
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-sm-6">
 								<div class="form-group">
 									<label>{{transm('categories.category_name')}}</label>
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
 										{!! Form::text('category_name', Request::get('category_name'), ['class' => 'form-control', 'placeholder' => transm('categories.category_name')]) !!}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>{{transm('categories.category_type')}}</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+										{!! Form::select('category_type', getConfig('type_category'), Request::get('category_type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
 									</div>
 								</div>
 							</div>

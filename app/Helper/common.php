@@ -63,7 +63,7 @@ if (!function_exists('transm')) {
 if (!function_exists('logError')) {
     function logError($msg) 
     {
-
+        dd($msg);
     }
 }
 
@@ -105,5 +105,12 @@ if (!function_exists('formatMoney')) {
     function formatMoney($money) {
         $format = number_format($money, 0, "," , ".");
         return $format;
+    }
+}
+
+if (!function_exists('toSql')) {
+    function toSql($query)
+    {
+        return str_replace_array('?', $query->getBindings(), $query->toSql());
     }
 }

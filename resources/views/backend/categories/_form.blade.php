@@ -30,7 +30,7 @@
 			<label>{{transm('categories.category_parent')}}</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-th-list"></i></span>
-				{!! Form::select('category_parent', [], null, ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+				{!! Form::select('category_parent', $parentCategories, null, ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
 			</div>
 		</div>
 	</div>
@@ -38,6 +38,6 @@
 <div class="row">
 	<div class="col-sm-12">
 		<button type="submit" class="btn btn-success">{{transa('confirm')}}</button>
-		<a href="{{route('backend.admin.index')}}" class="btn btn-default">{{transa('cancel')}}</a>
+		<a href="{{route('backend.categories.index')}}" class="btn btn-default">{{transa('cancel')}}</a>
 	</div>
 </div>
