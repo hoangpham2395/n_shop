@@ -36,11 +36,11 @@ return [
 	],
 	'categories_id_default' => [1, 2, 3, 4, 5, 6],
 	'categories_image_default' => [
-		'ao' => asset('images/categories/quan_ao.png'),
-		'quan' => asset('images/categories/quan_ao.png'),
+		'ao' => asset('images/categories/ao.png'),
+		'quan' => asset('images/categories/quan.png'),
 		'dam-vay' => asset('images/categories/dam_vay.png'),
-		'giay-dep' => asset('images/categories/dam_vay.png'),
-		'tui' => asset('images/categories/dam_vay.png'),
+		'giay-dep' => asset('images/categories/giay_dep.jpg'),
+		'tui' => asset('images/categories/tui.jpg'),
 		'phu-kien' => asset('images/categories/phu_kien.png'),
 	],
 

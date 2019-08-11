@@ -13,6 +13,10 @@ class ProductRepository extends BaseRepository
 
 	public function getListForBackend($params = []) 
 	{
+		if (!empty($params['page'])) {
+			unset($params['page']);
+		}
+
 		return $this->getModel()->where(function($q) use($params) {
 			if (!empty($params['category_id'])) {
 				$q = $q->where('category_id', $params['category_id']);
@@ -39,8 +43,12 @@ class ProductRepository extends BaseRepository
 
 	public function getListForFrontend($params = []) 
 	{
+		if (!empty($params['page'])) {
+			unset($params['page']);
+		}
+		
 		return $this->getModel()
-		// ->where(function($q) use($params) {
+		->where(function($q) use($params) {
 		// 	if (!empty($params['category_id'])) {
 		// 		$q = $q->where('category_id', $params['category_id']);
 		// 	}
@@ -56,10 +64,10 @@ class ProductRepository extends BaseRepository
 		// 	}
 		// 	unset($params['max_price']);
 
-		// 	foreach ($params as $field => $value) {
-		// 		$q = $q->where($field, 'LIKE', '%'.$value.'%');
-		// 	}
-		// })
+			foreach ($params as $field => $value) {
+				$q = $q->where($field, 'LIKE', '%'.$value.'%');
+			}
+		})
 		->orderBy('id', 'DESC')
 		->paginate(getConfig('paginate.frontend.default', 12));
 	}
@@ -81,5 +89,20 @@ class ProductRepository extends BaseRepository
 			->where('id', '!=', $id)
 			->orderBy('id', 'DESC')
 			->limit(8)->get();
+	}
+
+	public function getListByCategory($categoryIds = [], $params = []) 
+	{
+		return $this->getModel()->where(function ($q) use ($categoryIds, $params) {
+			if (!empty($categoryIds)) {
+				$q = $q->whereIn('category_id', $categoryIds);
+			}
+
+			foreach ($params as $field => $value) {
+				$q = $q->where($field, 'LIKE', '%'.$value.'%');
+			}
+		})
+		->orderBy('id', 'DESC')
+		->paginate(getConfig('paginate.frontend.default', 12));
 	}
 }
