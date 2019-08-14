@@ -41,37 +41,6 @@ class ProductRepository extends BaseRepository
 		->paginate(getConfig('paginate.backend.default', 20));
 	}
 
-	public function getListForFrontend($params = []) 
-	{
-		if (!empty($params['page'])) {
-			unset($params['page']);
-		}
-		
-		return $this->getModel()
-		->where(function($q) use($params) {
-		// 	if (!empty($params['category_id'])) {
-		// 		$q = $q->where('category_id', $params['category_id']);
-		// 	}
-		// 	unset($params['category_id']);
-
-		// 	if (!empty($params['min_price'])) {
-		// 		$q = $q->where('price', '>=', $params['min_price']);
-		// 	}
-		// 	unset($params['min_price']);
-
-		// 	if (!empty($params['max_price'])) {
-		// 		$q = $q->where('price', '<=', $params['max_price']);
-		// 	}
-		// 	unset($params['max_price']);
-
-			foreach ($params as $field => $value) {
-				$q = $q->where($field, 'LIKE', '%'.$value.'%');
-			}
-		})
-		->orderBy('id', 'DESC')
-		->paginate(getConfig('paginate.frontend.default', 12));
-	}
-
 	public function getListForHome() 
 	{
 		return $this->getModel()->orderBy('id', 'DESC')->limit(8)->get();
@@ -91,18 +60,68 @@ class ProductRepository extends BaseRepository
 			->limit(8)->get();
 	}
 
+	public function queryGetList($params = []) {
+		if (!empty($params['page'])) {
+			unset($params['page']);
+		}
+
+		$sort = array_get($params, 'sort', 0);
+		$sortField = 'id';
+		$sortType = 'DESC';
+
+		switch ($sort) {
+			case 1:
+				$sortField = 'product_name'; $sortType = 'ASC';
+				break;
+			case 2:
+				$sortField = 'product_name'; $sortType = 'DESC';
+				break;
+			case 3:
+				$sortField = 'price'; $sortType = 'ASC';
+				break;
+			case 4:
+				$sortField = 'price'; $sortType = 'DESC';
+				break;
+			
+			default:
+				$sortField = 'id'; $sortType = 'DESC';
+				break;
+		}
+		
+		return $this->getModel()
+		->where(function($q) use($params) {
+			if (!empty($params['product_code'])) {
+				$q = $q->where('product_code', 'LIKE', '%'. $params['product_code'] .'%');
+			}
+
+			if (!empty($params['product_name'])) {
+				$q = $q->where('product_name', 'LIKE', '%'. $params['product_code'] .'%');
+			}
+
+			if (!empty($params['min_price'])) {
+				$q = $q->where('price', '>=', $params['min_price']);
+			}
+
+			if (!empty($params['max_price'])) {
+				$q = $q->where('price', '<=', $params['max_price']);
+			}
+		})
+		->orderBy($sortField, $sortType);
+	}
+
+	public function getListForFrontend($params = []) 
+	{
+		return $this->queryGetList($params)->paginate(getConfig('paginate.frontend.default', 12));
+	}
+
 	public function getListByCategory($categoryIds = [], $params = []) 
 	{
-		return $this->getModel()->where(function ($q) use ($categoryIds, $params) {
+		return $this->queryGetList($params)
+		->where(function ($q) use ($categoryIds) {
 			if (!empty($categoryIds)) {
 				$q = $q->whereIn('category_id', $categoryIds);
 			}
-
-			foreach ($params as $field => $value) {
-				$q = $q->where($field, 'LIKE', '%'.$value.'%');
-			}
 		})
-		->orderBy('id', 'DESC')
 		->paginate(getConfig('paginate.frontend.default', 12));
 	}
 }

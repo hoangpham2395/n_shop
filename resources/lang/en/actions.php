@@ -17,6 +17,15 @@ return [
 	'option' => 'Tùy chọn',
 	'back' => 'Quay lại',
 	'image' => 'Ảnh',
+	'filter' => 'Lọc',
+	'category' => 'Danh mục',
+	'all' => 'Tất cả',
+	'introduce' => 'Giới thiệu',
+	'policy' => 'Chính sách',
+	'blog' => 'Góc chia sẻ',
+	'contact' => 'Liên hệ',
+	'sort_by' => 'Sắp xếp theo',
+	'home' => 'Trang chủ',
 
 	'admin' => [
 		'name' => 'Admin',
@@ -40,6 +49,9 @@ return [
 		'show' => 'Chi tiết sản phẩm',
 		'delete' => 'Xóa sản phẩm',
 		'add_image' => 'Thêm ảnh',
+		'new' => 'Hàng mới',
+		'sale' => 'Khuyến mại',
+		'all' => 'Tất cả sản phẩm',
 	],
 	'product_option' => [
 		'add' => 'Thêm tùy chọn',

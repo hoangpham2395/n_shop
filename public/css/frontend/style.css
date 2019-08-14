@@ -83,3 +83,13 @@
 .page-item:first-child .page-link, .page-item:last-child .page-link {
     border-radius: 50%;
 }
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flex-start {
+    display: flex;
+    justify-content: flex-start;
+}
