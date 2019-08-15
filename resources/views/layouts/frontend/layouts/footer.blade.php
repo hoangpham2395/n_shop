@@ -1,15 +1,20 @@
 <footer class="bg6 p-t-25 p-b-25 p-l-45 p-r-45">
 	<div class="flex-w p-b-45">
 		<!-- Logo -->
-		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: 35%">
+		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: 40%">
 			<h4 class="s-text12 p-b-30 text-center">
 				<img src="{{asset('images/icons/logo.png')}}">
 			</h4>
 			<div>
 				<p class="s-text7 w-size27">
 					Cảm ơn bạn đã thăm trang web của chúng tôi! <br>
-					Chúng tôi nhận đặt hàng US & UK & Spain, bao gồm buôn và lẻ. Chúng tôi cam kết mang lại chất lượng tốt và giá cả hợp lý cho người tiêu dùng.
+					Chúng tôi nhận đặt hàng US & UK & Euro, bao gồm buôn và lẻ. Chúng tôi cam kết mang lại chất lượng tốt và giá cả hợp lý cho người tiêu dùng. Thông tin liên hệ:
 				</p>
+				<ul class="p-t-5">
+					<li class="p-b-9"><p class="s-text7 red"><i class="fa fa-phone"></i> &nbsp; {{getConfig('owner.phone')}}</p></li>
+					<li class="p-b-9"><p class="s-text7"><i class="fa fa-envelope"></i> &nbsp; {{getConfig('owner.email')}}</p></li>
+					<li class="p-b-9"><a href="{{getConfig('owner.map')}}" target="blank" class="s-text7"><i class="fa fa-map-marker"></i> &nbsp; {{getConfig('owner.address')}}</a></li>
+				</ul>
 			</div>
 		</div>
 
@@ -38,14 +43,8 @@
 		</div>
 
 		<!-- Info -->
-		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: 30%">
-			<h4 class="s-text12 p-b-30">Thông tin</h4>
-			<ul>
-				<li class="p-b-9"><a href="{{getConfig('owner.facebook_url')}}" target="blank"><i class="fa fa-facebook-official"></i> &nbsp; {{getConfig('owner.facebook_name')}}</a></li>
-				<li class="p-b-9"><p><i class="fa fa-envelope"></i> &nbsp; {{getConfig('owner.email')}}</p></li>
-				<li class="p-b-9"><p><i class="fa fa-phone"></i> &nbsp; {{getConfig('owner.phone')}}</p></li>
-				<li class="p-b-9"><a href="{{getConfig('owner.map')}}" target="blank"><i class="fa fa-map-marker"></i> &nbsp; {{getConfig('owner.address')}}</a></li>
-			</ul>
+		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: 25%">
+			@include('layouts.frontend.facebook')
 		</div>
 	</div>
 

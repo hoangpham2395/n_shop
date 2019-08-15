@@ -26,6 +26,7 @@ return [
 	'contact' => 'Liên hệ',
 	'sort_by' => 'Sắp xếp theo',
 	'home' => 'Trang chủ',
+	'send' => 'Gửi',
 
 	'admin' => [
 		'name' => 'Admin',
