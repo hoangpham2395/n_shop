@@ -16,6 +16,7 @@ return [
 		],
 	],
 	'url_no_image' => asset('images/common/no_image.png'),
+	'money_unit' => '₫',
 
 	// Info
 	'owner' => [

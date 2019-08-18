@@ -95,5 +95,35 @@
 }
 
 .red {
-    color: red;
+    color: red !important;
+}
+
+.right {
+    float: right;
+}
+
+.order_list_product li {
+    border-bottom: 2px dashed #d9d9d9;
+}
+
+.order_list_product li:last-child {
+    border-bottom: none;
+}
+
+.cart-remove-item {
+    display: block;
+    width: 24px;
+    height: 24px;
+    font-size: 15px !important;
+    line-height: 19px !important;
+    border-radius: 100%;
+    color: #ccc;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid currentColor;
+}
+
+.cart-remove-item:hover {
+    color: #000;
+    cursor: pointer;
 }

@@ -27,6 +27,14 @@ return [
 	'sort_by' => 'Sắp xếp theo',
 	'home' => 'Trang chủ',
 	'send' => 'Gửi',
+	'add_to_cart' => 'Thêm vào giỏ',
+	'see' => 'Xem',
+	'buy' => 'Mua',
+	'payment' => 'Thanh toán',
+	'continue_view' => 'Xem tiếp',
+	'my_orders' => 'Đơn hàng của bạn',
+	'order' => 'Đặt hàng',
+	'my_cart' => 'Giỏ hàng của bạn',
 
 	'admin' => [
 		'name' => 'Admin',
@@ -53,6 +61,7 @@ return [
 		'new' => 'Hàng mới',
 		'sale' => 'Khuyến mại',
 		'all' => 'Tất cả sản phẩm',
+		'cart' => 'Giỏ hàng',
 	],
 	'product_option' => [
 		'add' => 'Thêm tùy chọn',
@@ -61,5 +70,9 @@ return [
 	'product_image' => [
 		'add' => 'Thêm ảnh',
 		'delete' => 'Xóa ảnh',
+	],
+	'orders' => [
+		'index' => 'Danh sách hóa đơn',
+		'detail' => 'Thanh toán',
 	],
 ];

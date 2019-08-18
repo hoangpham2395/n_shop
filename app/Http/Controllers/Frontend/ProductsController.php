@@ -5,6 +5,8 @@ use App\Http\Controllers\Base\BaseController;
 use App\Repositories\ProductRepository;
 use Illuminate\Support\Facades\Input;
 use App\Repositories\CategoryRepository;
+use Illuminate\Http\Request;
+use Session;
 
 class ProductsController extends BaseController 
 {
@@ -76,5 +78,39 @@ class ProductsController extends BaseController
 	{
 		$products = $this->getRepository()->getListForFrontend(Input::all());
 		return view('frontend.products.index', compact('products'));
+	}
+
+	public function cart() 
+	{
+		return view('frontend.products.cart');
+	}
+
+	public function addCart(Request $request) 
+	{
+		$data = $request->all();
+		$id = array_get($data, 'id');
+
+		$product = $this->getRepository()->findById($id);
+		if (empty($product)) {
+			return response()->json([
+				'status' => false,
+				'message' => getMessage('product_not_exist'),
+			]);
+		}
+
+		Session::put('products_cart[]', $product->toArray());
+
+
+		return response()->json([
+			'status' => true,
+			'message' => 'Success',
+			'data' => $product->toArray(),
+			'html' => view('layouts.frontend.header_cart'),
+		]);
+	}
+
+	public function payment() 
+	{
+		return view('frontend.orders.payment');
 	}
 }

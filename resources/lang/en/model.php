@@ -39,4 +39,22 @@ return [
 		'tel' => 'Số điện thoại',
 		'content' => 'Nội dung',
 	],
+	'orders' => [
+		'id' => 'ID',
+		'status' => 'Trạng thái',
+		'user_id' => 'Người dùng',
+		'user_name' => 'Họ tên',
+		'user_tel' => 'Số điện thoại',
+		'user_email' => 'Email',
+		'user_address' => 'Địa chỉ',
+		'Content' => 'Ghi chú',
+		'total_price' => 'Tiền hóa đơn',
+	],
+	'order_detail' => [
+		'id' => 'ID',
+		'order_id' => 'Hóa đơn',
+		'product_id' => 'Sản phẩm',
+		'quantity' => 'Số lượng',
+		'total_price_unit' => 'Tổng',
+	],
 ];

@@ -10,5 +10,9 @@ Route::get('/chinh-sach.html', ['as' => 'frontend.pages.policy', 'uses' => 'Page
 Route::get('/danh-sach-san-pham.html', ['as' => 'frontend.products.index', 'uses' => 'ProductsController@index']);
 Route::get('/hang-moi.html', ['as' => 'frontend.products.new', 'uses' => 'ProductsController@new']);
 Route::get('/khuyen-mai.html', ['as' => 'frontend.products.sale', 'uses' => 'ProductsController@sale']);
+Route::get('/gio-hang.html', ['as' => 'frontend.products.cart', 'uses' => 'ProductsController@cart']);
+Route::post('/them-vao-gio', ['as' => 'frontend.products.addCart', 'uses' => 'ProductsController@addCart']);
+// Route::get('/thanh-toan', ['as' => 'frontend.orders.index', 'uses' => 'OrdersController@index']);
+Route::get('/thanh-toan.html', ['as' => 'frontend.orders.payment', 'uses' => 'ProductsController@payment']);
 Route::get('/{categorySlug}.html', ['as' => 'frontend.products.category', 'uses' => 'ProductsController@category']);
 Route::get('/chi-tiet-san-pham/{productSlug}.html', ['as' => 'frontend.products.detail', 'uses' => 'ProductsController@detail']);

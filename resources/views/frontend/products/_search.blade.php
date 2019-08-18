@@ -45,7 +45,7 @@
 			<!-- Price -->
 			<div class="filter-price p-t-22 bo3">
 				<div class="s-text3 p-t-10 p-b-10">
-					{{transm('products.price')}}: <span id="value-lower">0</span> - <span id="value-upper">10000000</span>VND
+					{{transm('products.price')}}: <span id="value-lower">0</span> - <span id="value-upper">10000000</span>{{getConfig('money_unit')}}
 				</div>
 
 				<div class="wra-filter-bar p-b-10">
@@ -102,21 +102,5 @@
 		skipValues[handle].innerHTML = formatMoney(Math.round(values[handle]));
 		inputPrice[handle].val(Math.round(values[handle]));
 	});
-
-	function formatMoney(amount, decimalCount = 0, decimal = ",", thousands = ".") {
-  	try {
-	    decimalCount = Math.abs(decimalCount);
-	    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
-
-	    const negativeSign = amount < 0 ? "-" : "";
-
-	    let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
-	    let j = (i.length > 3) ? i.length % 3 : 0;
-
-	    return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
-  	} catch (e) {
-    	console.log(e)
-  	}
-};
 </script>
 @endpush
