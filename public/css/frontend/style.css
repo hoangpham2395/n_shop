@@ -102,11 +102,11 @@
     float: right;
 }
 
-.order_list_product li {
+.order-list-product li {
     border-bottom: 2px dashed #d9d9d9;
 }
 
-.order_list_product li:last-child {
+.order-list-product li:last-child {
     border-bottom: none;
 }
 

@@ -17,12 +17,22 @@ var ProductsController = {
 				_token: _token
 			}
 		}).done(function(response) {
-			console.log(response);
+			// Failed
 			if (!response.status) {
 				return swal(response.message, "", "error");
 			}
 
-			var data = response.data; console.log(data);
+			// Get data
+			var data = response.data;
+			var html = response.html;
+			var count = response.count;
+
+			// Header cart
+			$('.header-wrapicon2 span.header-icons-noti').html(count);
+			$('#header_cart').html('');
+			$('#header_cart').append(html);
+
+			// Dialog success
 			swal(data.product_name, "đã được thêm vào giỏ!", "success");
 		}).fail(function() {
 			swal("Đã xảy ra lỗi hệ thống!", "", "error");

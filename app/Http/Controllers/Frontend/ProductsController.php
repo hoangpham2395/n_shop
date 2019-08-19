@@ -85,7 +85,7 @@ class ProductsController extends BaseController
 		return view('frontend.products.cart');
 	}
 
-	public function addCart(Request $request) 
+	public function addToCart(Request $request) 
 	{
 		$data = $request->all();
 		$id = array_get($data, 'id');
@@ -98,19 +98,54 @@ class ProductsController extends BaseController
 			]);
 		}
 
-		Session::put('products_cart[]', $product->toArray());
-
+		$productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
+		$productsCart[$product->id] = $product->toArray();
+		$productsCart[$product->id]['quantity'] = 1;
+		Session::put('products_cart', $productsCart);
 
 		return response()->json([
 			'status' => true,
 			'message' => 'Success',
 			'data' => $product->toArray(),
-			'html' => view('layouts.frontend.header_cart'),
+			'html' => view('layouts.frontend.header_cart')->render(),
+			'count' => count($productsCart),
+		]);
+	}
+
+	public function removeItemCart(Request $request) {
+		$data = $request->all();
+		$id = array_get($data, 'id');
+
+		$product = $this->getRepository()->findById($id);
+		if (empty($product)) {
+			return response()->json([
+				'status' => false,
+				'message' => getMessage('product_not_exist'),
+			]);
+		}
+
+		$productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
+		if (!empty($productsCart[$product->id])) {
+			unset($productsCart[$product->id]);
+		}
+		Session::put('products_cart', $productsCart);
+
+		return response()->json([
+			'status' => true,
+			'message' => 'Success',
+			'data' => $product->toArray(),
+			'html' => view('layouts.frontend.header_cart')->render(),
+			'count' => count($productsCart),
 		]);
 	}
 
 	public function payment() 
 	{
-		return view('frontend.orders.payment');
+		$productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
+		if (empty($productsCart)) {
+			return redirect()->route('frontend.products.cart');
+		}
+
+		return view('frontend.orders.payment', compact('productsCart'));
 	}
 }

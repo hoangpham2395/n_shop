@@ -43,10 +43,10 @@
 
 				<div class="header-wrapicon2">
 					<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-					<span class="header-icons-noti">0</span>
+					<span class="header-icons-noti">{{Session::has('products_cart') ? count(Session::get('products_cart')) : 0}}</span>
 
 					<!-- Header cart noti -->
-					<div class="header-cart header-dropdown">
+					<div id="header_cart" class="header-cart header-dropdown">
 						@include('layouts.frontend.header_cart')
 					</div>
 				</div>

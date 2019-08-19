@@ -6,12 +6,18 @@
 		{{transa('home')}}
 		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 	</a>
+	
+	<a href="{{route('frontend.products.cart')}}" class="s-text16">
+		{{transa('cart')}}
+		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+	</a>
 
 	<span class="s-text17">{{transa('orders.detail')}}</span>
 </div>
 
 @php
 $moneyUnit = getConfig('money_unit');
+$totalPrice = 0;
 @endphp
 
 <!-- Cart -->
@@ -52,16 +58,18 @@ $moneyUnit = getConfig('money_unit');
 						<span class="m-text22 w-size19 w-full-sm">{{transm('order_detail.total_price_unit')}}</span>
 					</div>
 
-					<ul class="order_list_product">
-						<li class="flex-w flex-sb-m p-t-12 p-b-12">
-							<span class="s-text8 w-size20 w-full-sm">Cropptop trễ vai</span>
-							<span class="s-text18 w-size19 w-full-sm">145.000{{$moneyUnit}}</span>
-						</li>
-
-						<li class="flex-w flex-sb-m p-t-12 p-b-12">
-							<span class="s-text8 w-size20 w-full-sm">Áo Vịt Donald -Cropptop dài tay x 2</span>
-							<span class="s-text18 w-size19 w-full-sm">630.000{{$moneyUnit}}</span>
-						</li>
+					<ul id="order_list_product" class="order-list-product">
+						@foreach ($productsCart as $productCart)
+							@php 
+								$quantity = (int) array_get($productCart, 'quantity', 1); 
+								$price = (int) array_get($productCart, 'price');
+								$totalPrice += $quantity * $price;
+							@endphp
+							<li class="flex-w flex-sb-m p-t-12 p-b-12">
+								<span class="s-text8 w-size20 w-full-sm">{{array_get($productCart, 'product_name')}} {{$quantity > 1 ? 'x '.$quantity : ''}}</span>
+								<span class="s-text18 w-size19 w-full-sm">{{formatMoney($price).$moneyUnit}}</span>
+							</li>
+						@endforeach
 					</ul>
 						
 					<!-- Ship -->
@@ -75,7 +83,7 @@ $moneyUnit = getConfig('money_unit');
 					<!-- Order  -->
 					<div class="flex-w flex-sb-m p-t-26 p-b-30">
 						<span class="m-text22 w-size20 w-full-sm">Tổng giá</span>
-						<span class="m-text22 w-size19 w-full-sm red">775.000{{$moneyUnit}}</span>
+						<span class="m-text22 w-size19 w-full-sm red">{{formatMoney($totalPrice).$moneyUnit}}</span>
 						<p class="s-text8 p-t-5">(Chưa tính phí giao hàng nếu có)</p>
 					</div>
 

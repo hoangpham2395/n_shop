@@ -35,6 +35,8 @@ return [
 	'my_orders' => 'Đơn hàng của bạn',
 	'order' => 'Đặt hàng',
 	'my_cart' => 'Giỏ hàng của bạn',
+	'view_product' => 'Xem sản phẩm',
+	'cart' => 'Giỏ hàng',
 
 	'admin' => [
 		'name' => 'Admin',

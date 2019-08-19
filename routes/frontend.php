@@ -11,7 +11,8 @@ Route::get('/danh-sach-san-pham.html', ['as' => 'frontend.products.index', 'uses
 Route::get('/hang-moi.html', ['as' => 'frontend.products.new', 'uses' => 'ProductsController@new']);
 Route::get('/khuyen-mai.html', ['as' => 'frontend.products.sale', 'uses' => 'ProductsController@sale']);
 Route::get('/gio-hang.html', ['as' => 'frontend.products.cart', 'uses' => 'ProductsController@cart']);
-Route::post('/them-vao-gio', ['as' => 'frontend.products.addCart', 'uses' => 'ProductsController@addCart']);
+Route::post('/them-vao-gio', ['as' => 'frontend.products.addCart', 'uses' => 'ProductsController@addToCart']);
+Route::post('/xoa-khoi-gio', ['as' => 'frontend.products.removeItemCart', 'uses' => 'ProductsController@removeItemCart']);
 // Route::get('/thanh-toan', ['as' => 'frontend.orders.index', 'uses' => 'OrdersController@index']);
 Route::get('/thanh-toan.html', ['as' => 'frontend.orders.payment', 'uses' => 'ProductsController@payment']);
 Route::get('/{categorySlug}.html', ['as' => 'frontend.products.category', 'uses' => 'ProductsController@category']);
