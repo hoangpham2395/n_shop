@@ -37,6 +37,12 @@ return [
 	'my_cart' => 'Giỏ hàng của bạn',
 	'view_product' => 'Xem sản phẩm',
 	'cart' => 'Giỏ hàng',
+	'update_cart' => 'Cập nhật giỏ hàng',
+	'return_store' => 'Quay lại cửa hàng',
+	'total_price' => 'Tổng giá',
+	'total' => 'Tổng',
+	'link' => 'Đường dẫn',
+	'payment_info' => 'Thông tin thanh toán',
 
 	'admin' => [
 		'name' => 'Admin',

@@ -9,17 +9,17 @@
 		<!-- Header Icon mobile -->
 		<div class="header-icons-mobile">
 			<a href="#" class="header-wrapicon1 dis-block">
-				<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+				<img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
 			</a>
 
 			<span class="linedivide2"></span>
 
 			<div class="header-wrapicon2">
-				<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-				<span class="header-icons-noti">0</span>
+				<img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+				<span class="header-icons-noti">{{Session::has('products_cart') ? count(Session::get('products_cart')) : 0}}</span>
 
 				<!-- Header cart noti -->
-				<div class="header-cart header-dropdown">
+				<div id="header_cart" class="header-cart header-dropdown">
 					@include('layouts.frontend.header_cart')
 				</div>
 			</div>

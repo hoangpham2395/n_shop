@@ -27,7 +27,7 @@ $totalPrice = 0;
 			<div class="row">
 				<!-- Payment -->
 				<div class="col-md-6 p-b-30">
-					<h4 class="m-text26 p-b-36 p-t-15">Thông tin thanh toán</h4>
+					<h4 class="m-text26 p-b-36 p-t-15">{{transa('payment_info')}}</h4>
 
 					<div class="bo4 of-hidden size15 m-b-20">
 						{!! Form::text('user_name', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_name').' *', 'required']) !!}
@@ -76,7 +76,7 @@ $totalPrice = 0;
 					<div class="bo15"></div>
 					<div class="flex-w flex-sb bo15 p-t-15 p-b-15">
 						<p class="s-text8">
-							Bạn sẽ được miễn phí giao hàng khi đơn hàng của bạn trên 1 triệu VND và trong khu vực Thành phố Hồ Chí Minh.
+							{{getMessage('ship_policy')}}
 						</p>
 					</div>
 
@@ -84,7 +84,7 @@ $totalPrice = 0;
 					<div class="flex-w flex-sb-m p-t-26 p-b-30">
 						<span class="m-text22 w-size20 w-full-sm">Tổng giá</span>
 						<span class="m-text22 w-size19 w-full-sm red">{{formatMoney($totalPrice).$moneyUnit}}</span>
-						<p class="s-text8 p-t-5">(Chưa tính phí giao hàng nếu có)</p>
+						<p class="s-text8 p-t-5">({{getMessage('ship_note')}})</p>
 					</div>
 
 					<div class="size15 trans-0-4">

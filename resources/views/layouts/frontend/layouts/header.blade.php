@@ -36,13 +36,13 @@
 			<!-- Header Icon -->
 			<div class="header-icons">
 				<a href="#" class="header-wrapicon1 dis-block">
-					<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					<img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
 				</a>
 
 				<span class="linedivide1"></span>
 
 				<div class="header-wrapicon2">
-					<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+					<img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown" alt="ICON">
 					<span class="header-icons-noti">{{Session::has('products_cart') ? count(Session::get('products_cart')) : 0}}</span>
 
 					<!-- Header cart noti -->

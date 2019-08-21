@@ -13,4 +13,7 @@ return [
 	'delete_confirm' => 'Bạn có chắc chắn muốn xóa?',
 	'system_error' => 'Đã xảy ra lỗi hệ thống!',
 	'product_not_exist' => 'Sản phẩm không tồn tại!',
+	'cart_not_product' => 'Bạn chưa có sản phẩm nào trong giỏ hàng.',
+	'ship_policy' => 'Bạn sẽ được miễn phí giao hàng khi đơn hàng của bạn trên 1 triệu VND và trong khu vực Thành phố Hồ Chí Minh.',
+	'ship_note' => 'Chưa tính phí giao hàng nếu có',
 ];

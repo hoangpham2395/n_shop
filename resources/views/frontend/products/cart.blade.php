@@ -25,7 +25,7 @@ $totalPrice = 0;
 			<!-- Cart item -->
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
-					<table class="table-shopping-cart">
+					<table id="table_shopping_cart" class="table-shopping-cart">
 						<tr class="table-head">
 							<th class="column-1">{{transm('order_detail.product_id')}}</th>
 							<th class="column-2"></th>
@@ -77,33 +77,48 @@ $totalPrice = 0;
 				</div>
 			</div>
 
-			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+			<div id="cart_button1" class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
 				<div class="flex-w flex-m w-full-sm">
 					<div class="size11 m-r-10 s-text1">
 						<p class="sizefull" type="text" name="coupon-code" placeholder="Coupon Code">
-							Tổng giá: &nbsp; <strong class="red"><span id="cart_total_price">{{formatMoney($totalPrice)}}</span>{{ $moneyUnit }}</strong>
+							{{transa('total_price')}}: &nbsp; <strong class="red"><span id="cart_total_price">{{formatMoney($totalPrice)}}</span>{{ $moneyUnit }}</strong>
 						</p>
 					</div>
 				</div>
-				
-				<div class="size10 m-t-10 m-b-10 right">
-					<a href="{{route('frontend.orders.payment')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('payment')}}</a>
+
+				<div class="size12 m-t-10 m-b-10 right">
+					<a href="{{route('frontend.products.index')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('update_cart')}}</a>
+				</div>
+			</div>
+
+			<div id="cart_button2" class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm" style="justify-content: flex-end;">
+				<div class="size10 m-t-10 m-b-10 m-r-10">
+					<a href="{{route('frontend.products.index')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('continue_view')}}</a>
 				</div>
 
-				<div class="size10 m-t-10 m-b-10 right">
-					<a href="{{route('frontend.products.index')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('continue_view')}}</a>
+				<div class="size10 m-t-10 m-b-10">
+					<a href="{{route('frontend.orders.payment')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('payment')}}</a>
 				</div>
 			</div>
 			{{ csrf_field() }}
 		@else
-			Bạn chưa có sản phẩm nào trong giỏ hàng.
+			{{getMessage('cart_not_product')}}
 			<div class="m-t-30 m-b-60">
 				<!-- Button -->
 				<a href="{{route('frontend.products.index')}}" class="flex-c-m bg7 bo-rad-15 hov1 s-text14 trans-0-4 p-t-10 p-b-10 p-r-25 p-l-25" style="width: 250px;">
-					Quay lại cửa hàng
+					{{transa('return_store')}}
 				</a>
 			</div>
 		@endif
+		<div id="cart_no_product" style="display: none;">
+			{{getMessage('cart_not_product')}}
+			<div class="m-t-30 m-b-60">
+				<!-- Button -->
+				<a href="{{route('frontend.products.index')}}" class="flex-c-m bg7 bo-rad-15 hov1 s-text14 trans-0-4 p-t-10 p-b-10 p-r-25 p-l-25" style="width: 250px;">
+					{{transa('return_store')}}
+				</a>
+			</div>
+		</div>
 	</div>
 </section>
 @endsection
@@ -145,8 +160,19 @@ $totalPrice = 0;
 				$('#cart_total_price').html($('#header_cart_total_price').html());
 				swal(productName, "đã được xóa khỏi giỏ!", "success");
 				$('#product_item_cart_' + productId).html('');
+
+				$totalProduct = $('#table_shopping_cart').find('tr.table-row').length;
+				
+				// Cart doesn't have product
+				if ($totalProduct < 2) { // Because exist table-row of '#product_item_cart_' + productId
+					var urlProductIndex = "{{route('frontend.products.index')}}";
+					$('#table_shopping_cart').css('display', 'none');
+					$('#cart_button1').css('display', 'none');
+					$('#cart_button2').css('display', 'none');
+					$('#cart_no_product').css('display', 'block');
+				}
 			}).fail(function() {
-				swal("Đã xảy ra lỗi hệ thống!", "", "error");
+				swal("{{getMessage('system_error')}}", "", "error");
 			});
 		});
 	});

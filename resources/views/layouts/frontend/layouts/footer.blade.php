@@ -1,7 +1,7 @@
 <footer class="bg6 p-t-25 p-b-25 p-l-45 p-r-45">
 	<div class="flex-w p-b-45">
 		<!-- Logo -->
-		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: 40%">
+		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: {{isMobile() ? '100%' : '40%'}}">
 			<h4 class="s-text12 p-b-30 text-center">
 				<img src="{{asset('images/icons/logo.png')}}">
 			</h4>
@@ -18,6 +18,7 @@
 			</div>
 		</div>
 
+		@if (!isMobile()) 
 		<!-- Categories -->
 		<div class="p-t-30 p-l-15 p-r-15 respon4" style="width: 15%">
 			<h4 class="s-text12 p-b-30">{{transa('category')}}</h4>
@@ -31,7 +32,7 @@
 
 		<!-- Link -->
 		<div class="p-t-30 p-l-15 p-r-15 respon4" style="width: 15%">
-			<h4 class="s-text12 p-b-30">Đường dẫn</h4>
+			<h4 class="s-text12 p-b-30">{{transa('link')}}</h4>
 			<ul>
 				<li class="p-b-9"><a href="{{route('frontend.pages.introduce')}}" class="s-text7">{{transa('introduce')}}</a></li>
 				<li class="p-b-9"><a href="{{route('frontend.pages.policy')}}" class="s-text7">{{transa('policy')}}</a></li>
@@ -41,9 +42,10 @@
 				<li class="p-b-9"><a href="{{route('frontend.products.sale')}}" class="s-text7">{{transa('products.sale')}}</a></li>
 			</ul>
 		</div>
+		@endif
 
 		<!-- Info -->
-		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: 25%">
+		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: {{isMobile() ? '100%' : '25%'}}">
 			@include('layouts.frontend.facebook')
 		</div>
 	</div>
