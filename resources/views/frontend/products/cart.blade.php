@@ -70,7 +70,7 @@ $totalPrice = 0;
 								<td class="column-5 red">
 									{{ formatMoney($price * $quantity).$moneyUnit }}
 								</td>
-								<td class="p-r-5"><a href="/remove-item" class="cart-remove-item">x</a></td>
+								<td class="p-r-5 td-cart-remove-item"><a href="/remove-item" class="cart-remove-item">x</a></td>
 							</tr>
 						@endforeach
 					</table>
@@ -105,7 +105,7 @@ $totalPrice = 0;
 			{{getMessage('cart_not_product')}}
 			<div class="m-t-30 m-b-60">
 				<!-- Button -->
-				<a href="{{route('frontend.products.index')}}" class="flex-c-m bg7 bo-rad-15 hov1 s-text14 trans-0-4 p-t-10 p-b-10 p-r-25 p-l-25" style="width: 250px;">
+				<a href="{{route('frontend.products.index')}}" class="flex-c-m bg7 bo-rad-15 hov1 s-text14 trans-0-4 p-t-10 p-b-10 p-r-25 p-l-25" style="width: 250px;"> 
 					{{transa('return_store')}}
 				</a>
 			</div>
@@ -129,6 +129,9 @@ $totalPrice = 0;
 		$(this).find('a.cart-remove-item').on('click', function(e) {
 			e.preventDefault();
 			var product = $(this).closest('tr.table-row');
+			// Hidden button remove item
+			$(product).find('.td-cart-remove-item').html('');
+
 			var productId = $(product).attr('data-item');
 			var _token = $('section.cart').find('input[name="_token"]').val();
 			var productName = $(product).find('.column-2 a').html();
