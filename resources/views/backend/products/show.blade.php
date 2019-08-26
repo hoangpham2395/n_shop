@@ -84,15 +84,16 @@
 										<td>{{transm('products.sale')}}</td>
 										<td>{!! ebr($entity->sale) !!}</td>
 									</tr>
-									@php $sizes = array_get($entity->getOptions(), 'size'); $noOption = 1; @endphp
-									@foreach ($sizes as $size => $options)
-										@foreach ($options as $option)
-											<tr>
-												<td>{{transa('option') .' '. $noOption}}</td>
-												<td>{{transm('product_option.size') .': '. $size .', '. transm('product_option.color') .': '. array_get($option, 'color') .', '. transm('product_option.count') .': '. array_get($option, 'count')}}</td>
-											</tr>
-											@php $noOption ++; @endphp
-										@endforeach
+									@php $options = $entity->getProductOptions(); @endphp
+									@foreach ($options as $key => $option)
+										<tr>
+											<td>{{transa('option') .' '. ($key + 1)}}</td>
+											<td>
+												{{transm('product_option.size') .': '. array_get($option, 'size') .', '. 
+												transm('product_option.color') .': '. array_get($option, 'color') .', '. 
+												transm('product_option.count') .': '. array_get($option, 'count')}}
+											</td>
+										</tr>
 									@endforeach
 								</tbody>
 							</table>

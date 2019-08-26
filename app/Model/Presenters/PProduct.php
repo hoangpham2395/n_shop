@@ -52,6 +52,26 @@ trait PProduct
 		return ($this->created_at->gt($date) || $this->updated_at->gt($date)) ? 'block2-labelnew' : '';
 	}
 
+	public function getProductOptions() 
+	{
+		$options = $this->productOptions;
+		if (empty($options)) {
+			return [];
+		}
+
+		$r = [];
+		foreach ($options as $option) {
+			$r[] = [
+				'id' => $option->id,
+				'size' => $option->size,
+				'color' => $option->color,
+				'count' => $option->count,
+			];
+		}
+
+		return $r;
+	}
+
 	public function getOptions() 
 	{
 		$options = $this->productOptions;
