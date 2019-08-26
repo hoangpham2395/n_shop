@@ -33,6 +33,13 @@ return [
 		'color' => 'Màu',
 		'count' => 'Số lượng',
 	],
+	'product_option' => [
+		'id' => 'ID',
+		'product_id' => 'Sản phẩm',
+		'size' => 'Size',
+		'color' => 'Màu',
+		'count' => 'Số lượng',
+	],
 	'contact' => [
 		'name' => 'Họ tên của bạn',
 		'email' => 'Email',

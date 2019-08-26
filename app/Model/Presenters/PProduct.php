@@ -51,4 +51,32 @@ trait PProduct
 		$date = Carbon::now()->subDays(7); // 7 days ago
 		return ($this->created_at->gt($date) || $this->updated_at->gt($date)) ? 'block2-labelnew' : '';
 	}
+
+	public function getOptions() 
+	{
+		$options = $this->productOptions;
+		if (empty($options)) {
+			return null;
+		}
+
+		$sizes = []; $colors = [];
+
+		foreach($options as $option) {
+			$sizes[$option->size][$option->id] = [
+				'id' => $option->id,
+				'color' => $option->color,
+				'count' => $option->count,
+			];
+			$colors[$option->color][$option->id] = [
+				'id' => $option->id,
+				'size' => $option->size,
+				'count' => $option->count,
+			];
+		}
+
+		return [
+			'size' => $sizes,
+			'color' => $colors,
+		];
+	}
 }
