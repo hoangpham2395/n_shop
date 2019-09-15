@@ -1,6 +1,7 @@
-<div class="col-sm-6 col-md-4 col-lg-3 p-b-50 p-t-10">
+<div class="col-sm-6 col-md-4 col-lg-3 p-t-10 {{isMobile() ? 'p-t-20' : 'p-b-50'}}">
 	<div class="leftbar p-r-20 p-r-0-sm">
 		<!-- Category -->
+		@if (!isMobile())
 		<h4 class="m-text14 p-b-7">
 			{{transa('category')}}
 		</h4>
@@ -19,6 +20,7 @@
 			</li>
 			@endforeach
 		</ul>
+		@endif
 
 		<!-- Search -->
 		<h4 class="m-text14 p-b-32">

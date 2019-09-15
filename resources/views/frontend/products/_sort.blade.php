@@ -1,4 +1,4 @@
-<div class="flex-w p-b-15 flex-end">
+<div class="flex-w p-b-15 {{isMobile() ? '' : 'flex-end'}}">
 	<div class="flex-w">
 		<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5">
 			{!! Form::select('sorting', getConfig('product_sort'), Request::get('sort'), ['class' => 'selection-sort', 'placeholder' => transa('sort_by'), 'onchange' => 'changeSort(this)']) !!}

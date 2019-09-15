@@ -18,7 +18,25 @@
 			</div>
 		</div>
 
-		@if (!isMobile()) 
+		@if (isMobile())
+		<div class="p-t-20 p-l-15 p-r-15 respon4" style="width: 100%">
+			<h4 class="s-text12 p-b-15">Về chúng tôi</h4>
+			<div class="row">
+				<div class="col-6">
+					<ul style="width: 50%;">
+						<li class="p-b-9"><a href="{{route('frontend.pages.introduce')}}" class="s-text7">{{transa('introduce')}}</a></li>
+						<li class="p-b-9"><a href="{{route('frontend.pages.policy')}}" class="s-text7">{{transa('policy')}}</a></li>
+					</ul>
+				</div>
+				<div class="col-6">
+					<ul style="width: 50%;">
+						<li class="p-b-9"><a href="{{route('frontend.pages.share')}}" class="s-text7">{{transa('blog')}}</a></li>
+						<li class="p-b-9"><a href="{{route('frontend.pages.contact')}}" class="s-text7">{{transa('contact')}}</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		@else 
 		<!-- Categories -->
 		<div class="p-t-30 p-l-15 p-r-15 respon4" style="width: 15%">
 			<h4 class="s-text12 p-b-30">{{transa('category')}}</h4>

@@ -1,6 +1,6 @@
 <!-- Block2 -->
 <div class="block2" data-item="{{$product->id}}" data-route="{{route('frontend.products.addCart')}}">
-	<div class="block2-img wrap-pic-w of-hidden pos-relative {{$product->getClassNew()}}" style="width: 270px; height: 360px; justify-content: center; align-items: center; display: flex;">
+	<div class="block2-img wrap-pic-w of-hidden pos-relative {{$product->getClassNew()}}" style="width: {{isMobile() ? '100%' : '270px'}}; height: 360px; justify-content: center; align-items: center; display: flex;">
 		<img src="{{ $product->getUrlImage() }}" alt="IMG-PRODUCT">
 
 		<div class="block2-overlay trans-0-4">
