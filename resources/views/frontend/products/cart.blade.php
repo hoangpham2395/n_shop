@@ -39,7 +39,7 @@ $totalPrice = 0;
 							@php
 								$id = array_get($productCart, 'id');
 								$price = (int) array_get($productCart, 'price');
-								$quantity = (int) array_get($productCart, 'quantity');
+								$quantity = (int) array_get($productCart, 'quantity', 1);
 								$totalPrice +=  $price * $quantity;
 							@endphp
 							<tr class="table-row" id="product_item_cart_{{$id}}" data-item="{{$id}}">
@@ -60,7 +60,7 @@ $totalPrice = 0;
 											<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 										</button>
 
-										<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="{{(int) array_get($productCart, 'quantity', 1)}}">
+										<input id="quantity_{{$id}}" class="size8 m-text18 t-center num-product" type="number" name="quantity" value="{{$quantity}}" data-price-unit="{{$price}}">
 
 										<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 											<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
@@ -68,7 +68,7 @@ $totalPrice = 0;
 									</div>
 								</td>
 								<td class="column-5 red">
-									{{ formatMoney($price * $quantity).$moneyUnit }}
+									<span class="product-price">{{ formatMoney($price * $quantity) }}</span>{{$moneyUnit}}
 								</td>
 								<td class="p-r-5 td-cart-remove-item"><a href="/remove-item" class="cart-remove-item">x</a></td>
 							</tr>
@@ -87,7 +87,7 @@ $totalPrice = 0;
 				</div>
 
 				<div class="size12 m-t-10 m-b-10 right">
-					<a href="{{route('frontend.products.index')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('update_cart')}}</a>
+					<button type="button" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" onclick="updateCart(this);">{{transa('update_cart')}}</button>
 				</div>
 			</div>
 
@@ -179,5 +179,56 @@ $totalPrice = 0;
 			});
 		});
 	});
+</script>
+<script type="text/javascript">
+	function updateCart(e) {
+		var products = [];
+		$('table.table-shopping-cart').find('tr.table-row').each(function() {
+			var id = $(this).attr('data-item');
+			var quantity = $(this).find('#quantity_' + id).val();
+			products.push({
+				id: id,
+				quantity: quantity,
+			});
+		});
+		var _token = $('section.cart').find('input[name="_token"]').val();
+		$.ajax({
+			url: "{{route('frontend.products.updateCart')}}",
+				method: "POST",
+				data: {
+					products: products,
+					_token: _token
+				}
+		}).done(function(response) {
+			// Failed
+			if (!response.status) {
+				return swal(response.message, "", "error");
+			}
+
+			// Get data
+			var data = response.data; console.log(data);
+			var html = response.html;
+			var count = response.count;
+
+			// Header cart
+			$('.header-wrapicon2 span.header-icons-noti').html(count);
+			$('#header_cart').html('');
+			$('#header_cart').append(html);
+
+			// Reload prices
+			$('table.table-shopping-cart').find('tr.table-row').each(function() {
+				var id = $(this).attr('data-item');
+				var quantity = parseInt($(this).find('#quantity_' + id).val());
+				var priceUnit = parseInt($(this).find('#quantity_' + id).attr('data-price-unit'));
+				$(this).find('span.product-price').html(formatMoney(quantity * priceUnit));
+			});
+
+			// Dialog success
+			$('#cart_total_price').html($('#header_cart_total_price').html());
+			swal("{{getMessage('update_cart_success')}}", "", "success");
+		}).fail(function() {
+			swal("{{getMessage('system_error')}}", "", "error");
+		});
+	}
 </script>
 @endpush

@@ -24,7 +24,7 @@
 
 <!-- Product Detail -->
 <div class="container bgwhite p-t-35">
-	<div class="flex-w flex-sb">
+	<div class="flex-w flex-sb" id="product_detail" data-id="{{$product->id}}">
 		<div class="w-size13 p-t-30 respon5">
 			<div class="wrap-slick3 flex-sb flex-w">
 				<div class="wrap-slick3-dots"></div>
@@ -47,14 +47,11 @@
 			</h4>
 
 			<span class="m-text17">
-				{{ $product->getPrice() }} VND
+				{{ $product->getPrice() . getConfig('money_unit') }}
 			</span>
 
 			<div class="p-t-25 border-top m-t-30">
 				<span class="s-text8 m-r-35">{{transm('products.product_code') .": ". $product->product_code}}</span>
-			</div>
-
-			<div class="p-t-25">
 				<span class="s-text8">{{transm('products.category_id') .': '. $product->getCategoryName()}}</span>
 			</div>
 
@@ -98,7 +95,7 @@
 								<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 							</button>
 
-							<input class="size8 m-text18 t-center num-product" type="number" name="num-product" value="1">
+							<input class="size8 m-text18 t-center num-product" type="number" name="quantity" value="1">
 
 							<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 								<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
@@ -106,7 +103,7 @@
 						</div>
 
 						<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('add_to_cart')}}</button>
+							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" data-route="{{route('frontend.products.addCart')}}" onclick="addToCart(this)">{{transa('add_to_cart')}}</button>
 						</div>
 					</div>
 				</div>
@@ -142,6 +139,7 @@
 			</div> -->
 		</div>
 	</div>
+	<input type="hidden" id="product_detail_token" value="{{ csrf_token() }}">
 </div>
 
 
@@ -184,5 +182,44 @@
 		minimumResultsForSearch: 20,
 		dropdownParent: $('#dropDownSelectColor')
 	});
+</script>
+<script type="text/javascript">
+	function addToCart(e) {
+		var id = $('#product_detail').attr('data-id');
+		var _token = $('#product_detail_token').val();
+		var url = $(e).attr('data-route');
+
+		$.ajax({
+			url: url,
+			method: 'POST',
+			data: {
+				id: id,
+				size: $('#product_detail select.selection-size').val(),
+				color: $('#product_detail select.selection-color').val(),
+				quantity: $('#product_detail input[name=quantity]').val(),
+				_token: _token
+			}
+		}).done(function(response) {
+			// Failed
+			if (!response.status) {
+				return swal(response.message, "", "error");
+			}
+
+			// Get data
+			var data = response.data;
+			var html = response.html;
+			var count = response.count;
+
+			// Header cart
+			$('.header-wrapicon2 span.header-icons-noti').html(count);
+			$('#header_cart').html('');
+			$('#header_cart').append(html);
+
+			// Dialog success
+			swal(data.product_name, "đã được thêm vào giỏ!", "success");
+		}).fail(function() {
+			swal("Đã xảy ra lỗi hệ thống!", "", "error");
+		});
+	}
 </script>
 @endpush

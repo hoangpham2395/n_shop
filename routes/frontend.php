@@ -12,6 +12,7 @@ Route::get('/hang-moi.html', ['as' => 'frontend.products.new', 'uses' => 'Produc
 Route::get('/khuyen-mai.html', ['as' => 'frontend.products.sale', 'uses' => 'ProductsController@sale']);
 Route::get('/gio-hang.html', ['as' => 'frontend.products.cart', 'uses' => 'ProductsController@cart']);
 Route::post('/them-vao-gio', ['as' => 'frontend.products.addCart', 'uses' => 'ProductsController@addToCart']);
+Route::post('/cap-nhat-gio', ['as' => 'frontend.products.updateCart', 'uses' => 'ProductsController@updateCart']);
 Route::post('/xoa-khoi-gio', ['as' => 'frontend.products.removeItemCart', 'uses' => 'ProductsController@removeItemCart']);
 // Route::get('/thanh-toan', ['as' => 'frontend.orders.index', 'uses' => 'OrdersController@index']);
 Route::get('/thanh-toan.html', ['as' => 'frontend.orders.payment', 'uses' => 'ProductsController@payment']);

@@ -89,6 +89,7 @@ class ProductsController extends BaseController
 	{
 		$data = $request->all();
 		$id = array_get($data, 'id');
+		$quantity = (int) array_get($data, 'quantity', 1);
 
 		$product = $this->getRepository()->findById($id);
 		if (empty($product)) {
@@ -100,13 +101,50 @@ class ProductsController extends BaseController
 
 		$productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
 		$productsCart[$product->id] = $product->toArray();
-		$productsCart[$product->id]['quantity'] = 1;
+		$productsCart[$product->id]['quantity'] = $quantity;
 		Session::put('products_cart', $productsCart);
 
 		return response()->json([
 			'status' => true,
 			'message' => 'Success',
 			'data' => $product->toArray(),
+			'html' => view('layouts.frontend.header_cart')->render(),
+			'count' => count($productsCart),
+		]);
+	}
+
+	public function updateCart(Request $request) 
+	{
+		$data = $request->all();
+		$products = array_get($data, 'products', []);
+		if (empty($products)) {
+			return response()->status([
+				'status' => false,
+				'message' => getMessage('update_cart_failed'),
+			]);
+		}
+
+		foreach ($products as $item) {
+			$id = array_get($item, 'id');
+			$quantity = (int) array_get($item, 'quantity');
+			$product = $this->getRepository()->findById($id);
+			if (empty($product)) {
+				return response()->json([
+					'status' => false,
+					'message' => getMessage('product_not_exist'),
+				]);
+			}
+
+			$productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
+			$productsCart[$product->id] = $product->toArray();
+			$productsCart[$product->id]['quantity'] = $quantity;
+			Session::put('products_cart', $productsCart);
+		}
+
+		return response()->json([
+			'status' => true,
+			'message' => 'Success',
+			'data' => $products,
 			'html' => view('layouts.frontend.header_cart')->render(),
 			'count' => count($productsCart),
 		]);

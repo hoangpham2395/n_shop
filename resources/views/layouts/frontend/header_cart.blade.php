@@ -8,7 +8,8 @@
 		@foreach($products as $product)
 			@php
 				$price = (int) array_get($product, 'price', 0);
-				$totalPrice += $price;
+				$quantity = (int) array_get($product, 'quantity', 1);
+				$totalPrice += $price * $quantity;
 			@endphp 
 			<li class="header-cart-item">
 				<a href="{{route('frontend.products.detail', array_get($product, 'product_slug'))}}">
@@ -20,7 +21,7 @@
 				<div class="header-cart-item-txt">
 					<a href="{{route('frontend.products.detail', array_get($product, 'product_slug'))}}" class="header-cart-item-name">{{array_get($product, 'product_name')}}</a>
 
-					<span class="header-cart-item-info">{{(int) array_get($product, 'quantity', 1). ' x ' .formatMoney($price).getConfig('money_unit')}}</span>
+					<span class="header-cart-item-info">{{$quantity. ' x ' .formatMoney($price).getConfig('money_unit')}}</span>
 				</div>
 			</li>
 		@endforeach
