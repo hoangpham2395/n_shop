@@ -92,7 +92,7 @@ $totalPrice = 0;
 			</div>
 
 			<div id="cart_button2" class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm" style="justify-content: flex-end;">
-				<div class="size10 m-t-10 m-b-10 m-r-10">
+				<div class="size10 m-t-10 m-b-10 {{isMobile() ? '' : 'm-r-10'}}">
 					<a href="{{route('frontend.products.index')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">{{transa('continue_view')}}</a>
 				</div>
 

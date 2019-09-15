@@ -11,16 +11,16 @@
 					Chúng tôi nhận đặt hàng US & UK & Euro, bao gồm buôn và lẻ. Chúng tôi cam kết mang lại chất lượng tốt và giá cả hợp lý cho người tiêu dùng. Thông tin liên hệ:
 				</p>
 				<ul class="p-t-5">
-					<li class="p-b-9"><p class="s-text7 red"><i class="fa fa-phone"></i> &nbsp; {{getConfig('owner.phone')}}</p></li>
-					<li class="p-b-9"><p class="s-text7"><i class="fa fa-envelope"></i> &nbsp; {{getConfig('owner.email')}}</p></li>
-					<li class="p-b-9"><a href="{{getConfig('owner.map')}}" target="blank" class="s-text7"><i class="fa fa-map-marker"></i> &nbsp; {{getConfig('owner.address')}}</a></li>
+					<li class="p-b-9"><p class="s-text7 red"><i class="fa fa-phone"></i> &nbsp; <b>HOTLINE: {{getConfig('owner.phone')}}</b></p></li>
+					<li class="p-b-9"><p class="s-text7"><i class="fa fa-envelope"></i> &nbsp; Email: {{getConfig('owner.email')}}</p></li>
+					<li class="p-b-9"><a href="{{getConfig('owner.map')}}" target="blank" class="s-text7"><i class="fa fa-map-marker"></i> &nbsp; {{transa('address') . ': ' . getConfig('owner.address')}}</a></li>
 				</ul>
 			</div>
 		</div>
 
 		@if (isMobile())
 		<div class="p-t-20 p-l-15 p-r-15 respon4" style="width: 100%">
-			<h4 class="s-text12 p-b-15">Về chúng tôi</h4>
+			<h4 class="s-text12 p-b-15">{{transa('about_us')}}</h4>
 			<div class="row">
 				<div class="col-6">
 					<ul style="width: 50%;">

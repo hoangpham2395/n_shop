@@ -43,6 +43,8 @@ return [
 	'total' => 'Tổng',
 	'link' => 'Đường dẫn',
 	'payment_info' => 'Thông tin thanh toán',
+	'about_us' => 'Về chúng tôi',
+	'address' => 'Địa chỉ',
 
 	'admin' => [
 		'name' => 'Admin',
