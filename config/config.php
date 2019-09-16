@@ -25,6 +25,7 @@ return [
 		'address' => env('OWNER_ADDRESS'),
 		'facebook_name' => env('OWNER_FACEBOOK_NAME'),
 		'facebook_url' => env('OWNER_FACEBOOK_URL'),
+		'facebook_messenger' => env('OWNER_FACEBOOK_MESSENGER'),
 		'map' => env('OWNER_MAP_URL'),
 	],
 

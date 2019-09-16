@@ -18,6 +18,13 @@
 	<!-- Footer -->
 	@include('layouts.frontend.layouts.footer')
 
+	<!-- Messenger -->
+	<div class="btn-messenger">
+		<a href="{{getConfig('owner.facebook_messenger')}}" target="blank">
+			<img src="{{asset('images/icons/messenger.png')}}" />
+		</a>
+	</div>
+
 	<!-- Back to top -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">

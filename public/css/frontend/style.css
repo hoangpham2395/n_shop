@@ -127,3 +127,32 @@
     color: #000;
     cursor: pointer;
 }
+
+/* Messenger */
+.btn-messenger {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    bottom: 100px;
+    right: 43px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-radius: 4px;
+    transition: all .4s;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+}
+
+.btn-messenger img {
+    width: 45px; 
+    height: 45px;
+}
+
+@media (max-width: 576px) {
+    .btn-messenger {
+        bottom: 70px;
+        right: 19px;
+    }
+}
