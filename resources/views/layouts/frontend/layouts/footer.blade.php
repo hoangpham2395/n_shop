@@ -64,7 +64,7 @@
 
 		<!-- Info -->
 		<div class="p-t-30 p-l-15 p-r-15 respon3" style="width: {{isMobile() ? '100%' : '25%'}}">
-			@include('layouts.frontend.facebook')
+			@include('layouts.frontend.facebook.fb_group')
 		</div>
 	</div>
 

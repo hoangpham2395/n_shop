@@ -46,9 +46,9 @@
 				<strong>{{ $product->product_name }}</strong>
 			</h4>
 
-			<span class="m-text17">
-				{{ $product->getPrice() . getConfig('money_unit') }}
-			</span>
+			<p class="m-text17">{{ $product->getPrice() . getConfig('money_unit') }}</p>
+
+			@include('layouts.frontend.facebook.fb_like_share')
 
 			<div class="p-t-25 border-top m-t-30">
 				<span class="s-text8 m-r-35">{{transm('products.product_code') .": ". $product->product_code}}</span>
@@ -140,7 +140,13 @@
 		</div>
 	</div>
 	<input type="hidden" id="product_detail_token" value="{{ csrf_token() }}">
+
+	<!-- Comments -->
+	<div class="text-center">
+		@include('layouts.frontend.facebook.fb_comment')
+	</div>
 </div>
+
 
 
 <!-- Relate Product -->

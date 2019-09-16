@@ -8,6 +8,7 @@
 	@include('layouts.frontend.layouts.header_css_js')
 </head>
 <body class="animsition">
+	@include('layouts.frontend.facebook.fb_js')
 	<!-- Header -->
 	@include('layouts.frontend.layouts.header')
 

@@ -26,7 +26,7 @@
 			</div>
 			<!-- Facebook -->
 			<div class="col-md-6 p-b-30 p-t-15 text-center">
-				@include('layouts.frontend.facebook')
+				@include('layouts.frontend.facebook.fb_group')
 			</div>
 		</div>
 
