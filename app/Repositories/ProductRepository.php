@@ -46,6 +46,20 @@ class ProductRepository extends BaseRepository
 		return $this->getModel()->orderBy('id', 'DESC')->limit(8)->get();
 	}
 
+	public function getListNewForHome() 
+	{
+		return $this->getModel()
+			->where('is_new', '=', getConstant('PRODUCT_IS_NEW', 1))
+			->orderBy('id', 'DESC')->limit(8)->get();
+	}
+
+	public function getListSaleForHome() 
+	{
+		return $this->getModel()
+		->where('price_sale', '!=', null)
+		->orderBy('id', 'DESC')->limit(8)->get();
+	}
+
 	public function findBySlug($productSlug) 
 	{
 		return $this->getModel()->where('product_slug', '=', $productSlug)->first();

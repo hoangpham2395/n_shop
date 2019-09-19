@@ -67,9 +67,9 @@
 				<!-- New -->
 				<div class="tab-pane fade" id="new" role="tabpanel">
 					<div class="row">
-						@foreach ($products as $product)
+						@foreach ($newProducts as $newProduct)
 							<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-								@include('frontend.products._product', ['product' => $product])
+								@include('frontend.products._product', ['product' => $newProduct])
 							</div>
 						@endforeach
 					</div>
@@ -78,9 +78,9 @@
 				<!-- Sale -->
 				<div class="tab-pane fade" id="sale" role="tabpanel">
 					<div class="row">
-						@foreach ($products as $product)
+						@foreach ($saleProducts as $saleProduct)
 							<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-								@include('frontend.products._product', ['product' => $product])
+								@include('frontend.products._product', ['product' => $saleProduct])
 							</div>
 						@endforeach
 					</div>

@@ -15,6 +15,8 @@ class HomeController extends BaseController
 	public function index() 
 	{
 		$products = $this->getRepository()->getListForHome();
-		return view('frontend.home.index', compact('products'));
+		$newProducts = $this->getRepository()->getListNewForHome();
+		$saleProducts = $this->getRepository()->getListSaleForHome();
+		return view('frontend.home.index', compact('products', 'newProducts', 'saleProducts'));
 	}
 }
