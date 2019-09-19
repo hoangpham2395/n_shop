@@ -95,7 +95,7 @@ class ProductRepository extends BaseRepository
 			}
 
 			if (!empty($params['product_name'])) {
-				$q = $q->where('product_name', 'LIKE', '%'. $params['product_code'] .'%');
+				$q = $q->where('product_name', 'LIKE', '%'. $params['product_name'] .'%');
 			}
 
 			if (!empty($params['min_price'])) {
@@ -105,6 +105,7 @@ class ProductRepository extends BaseRepository
 			if (!empty($params['max_price'])) {
 				$q = $q->where('price', '<=', $params['max_price']);
 			}
+			return $q;
 		})
 		->orderBy($sortField, $sortType);
 	}
@@ -123,5 +124,19 @@ class ProductRepository extends BaseRepository
 			}
 		})
 		->paginate(getConfig('paginate.frontend.default', 12));
+	}
+
+	public function getListNewForFrontend($params = []) 
+	{
+		return $this->queryGetList($params)
+			->where('is_new', '=', getConstant('PRODUCT_IS_NEW', 1))
+			->paginate(getConfig('paginate.frontend.default', 12));
+	}
+
+	public function getListSaleForFrontend($params = []) 
+	{
+		return $this->queryGetList($params)
+			->where('price_sale', '!=', null)
+			->paginate(getConfig('paginate.frontend.default', 12));
 	}
 }

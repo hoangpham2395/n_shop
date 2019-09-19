@@ -70,13 +70,13 @@ class ProductsController extends BaseController
 
 	public function new() 
 	{
-		$products = $this->getRepository()->getListForFrontend(Input::all());
+		$products = $this->getRepository()->getListNewForFrontend(Input::all());
 		return view('frontend.products.index', compact('products'));
 	}
 
 	public function sale() 
 	{
-		$products = $this->getRepository()->getListForFrontend(Input::all());
+		$products = $this->getRepository()->getListSaleForFrontend(Input::all());
 		return view('frontend.products.index', compact('products'));
 	}
 

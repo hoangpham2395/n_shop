@@ -1,6 +1,6 @@
 <!-- Block2 -->
 <div class="block2" data-item="{{$product->id}}" data-route="{{route('frontend.products.addCart')}}">
-	<div class="block2-img wrap-pic-w of-hidden pos-relative {{$product->getClassNew()}}" style="width: {{isMobile() ? '100%' : '270px'}}; height: 360px; justify-content: center; align-items: center; display: flex;">
+	<div class="block2-img wrap-pic-w of-hidden pos-relative flex-center {{$product->getClassNewOrSaleForFrontend()}}" style="width: {{isMobile() ? '100%' : '270px'}}; height: 360px;">
 		<img src="{{ $product->getUrlImage() }}" alt="IMG-PRODUCT">
 
 		<div class="block2-overlay trans-0-4">
@@ -31,7 +31,12 @@
 			<span class="block2-product-code">{{ $product->product_code}}</span> - <span class="block2-product-name">{{$product->product_name }}</span>
 		</a>
 
-		<span class="block2-price m-text6">{{ $product->getPrice() }}</span>{{getConfig('money_unit')}}
+		@if ($product->isSale())
+			<span class="block2-oldprice m-text7 p-r-5">{{ $product->getPrice() . getConfig('money_unit') }}</span>
+			<span class="block2-newprice m-text8">{{ $product->getPriceSale() . getConfig('money_unit') }}</span>
+		@else
+			<span class="block2-price m-text6">{{ $product->getPrice() . getConfig('money_unit') }}</span>
+		@endif
 	</div>
 
 	{{ csrf_field() }}

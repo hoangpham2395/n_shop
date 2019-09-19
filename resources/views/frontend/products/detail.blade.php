@@ -42,11 +42,19 @@
 		</div>
 
 		<div class="w-size14 p-t-30 respon5">
-			<h4 class="product-detail-name m-text16 p-b-13">
-				<strong>{{ $product->product_name }}</strong>
+			<h4 class="product-detail-name m-text16 p-b-13 flex-center-vertical">
+				<strong class="padding-right">{{ $product->product_name }}</strong>
+				<span class="{{ $product->getClassIsNewOrSale() }}"></span>
 			</h4>
 
-			<p class="m-text17">{{ $product->getPrice() . getConfig('money_unit') }}</p>
+			@if ($product->isSale())
+				<p class="m-text17">
+					<span class="pd-newprice p-r-15">{{ $product->getPriceSale() . getConfig('money_unit') }}</span>
+					<span class="pd-oldprice m-text15">{{ $product->getPrice() . getConfig('money_unit') }}</span>
+				</p>
+			@else
+				<p class="m-text17">{{ $product->getPrice() . getConfig('money_unit') }}</p>
+			@endif
 
 			@include('layouts.frontend.facebook.fb_like_share')
 
@@ -111,10 +119,10 @@
 
 			<div class="p-b-25"></div>
 
-			<!--  -->
+			<!-- Description -->
 			<div class="wrap-dropdown-content border-top p-t-15 p-b-14 active-dropdown-content">
 				<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-					Mô tả
+					{{transa('description')}}
 					<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
 					<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
 				</h5>
@@ -122,34 +130,34 @@
 				<div class="dropdown-content dis-none p-t-15 p-b-23">
 					<p class="s-text8">{!! ebr($product->content) !!}</p>
 				</div>
-			</div> 
+			</div>
 
-			<!-- <div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
+			<!-- Sale -->
+			@if ($product->isSale())
+				<div class="wrap-dropdown-content border-top p-t-15 p-b-14">
 				<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-					Một số chú ý
+					{{transa('sale')}}
 					<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
 					<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
 				</h5>
 
 				<div class="dropdown-content dis-none p-t-15 p-b-23">
-					<p class="s-text8">
-						Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
-					</p>
+					<p class="s-text8">{!! ebr($product->sale) !!}</p>
 				</div>
-			</div> -->
+			</div>
+			@endif
 		</div>
 	</div>
 	<input type="hidden" id="product_detail_token" value="{{ csrf_token() }}">
 
 	<!-- Comments -->
-	<div class="text-center">
+	<div class="text-center p-t-15 p-b-15">
 		@include('layouts.frontend.facebook.fb_comment')
 	</div>
 </div>
 
-
-
 <!-- Relate Product -->
+@if (count($otherProducts) > 0)
 <section class="relateproduct bgwhite p-t-45 p-b-138">
 	<div class="container">
 		<div class="sec-title p-b-60">
@@ -171,6 +179,7 @@
 
 	</div>
 </section>
+@endif
 
 <!-- Container Selection -->
 <div id="dropDownSelectSize"></div>
