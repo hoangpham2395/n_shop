@@ -65,8 +65,12 @@ class ProductsController extends BaseController
 		$data = $this->_getFormData();
 		$nextId = $this->getNextInsertId();
 
+		// Get data product option
 		$productOptions = array_get($data, 'product_option', []);
 		unset($data['product_opion']);
+
+		// Set is new
+		$data['is_new'] = (int) array_get($data, 'is_new');
 
 		DB::beginTransaction();
 
@@ -116,6 +120,9 @@ class ProductsController extends BaseController
 		// Get data product option
 		$newProductOptions = array_get($data, 'product_option', []);
 		unset($data['product_option']);
+
+		// Set is new
+		$data['is_new'] = (int) array_get($data, 'is_new');
 
 		$oldProductOptions = $entity->productOptions;
 

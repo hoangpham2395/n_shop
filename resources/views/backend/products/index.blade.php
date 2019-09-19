@@ -105,6 +105,8 @@
 										<th>{{transm('products.product_name')}}</th>
 										<th>{{transm('products.category_id')}}</th>
 										<th>{{transm('products.price')}}</th>
+										<th class="text-center">New</th>
+										<th class="text-center">Sale</th>
 										<th class="text-center">{{transa('detail')}}</th>
 										<th class="text-center">{{transa('edit')}}</th>
 										<th class="text-center">{{transa('delete')}}</th>
@@ -118,6 +120,16 @@
 											<td>{{ $entity->product_name }}</td>
 											<td>{!! $entity->getCategory() !!}</td>
 											<td>{!! $entity->getPrice() !!}</td>
+											<td>
+												@if ($entity->isNew())
+													<span class="is-new"></span>
+												@endif
+											</td>
+											<td>
+												@if ($entity->isSale())
+													<span class="is-sale"></span>
+												@endif
+											</td>
 											<td class="text-center">
 												<a href="{{route('backend.products.show', $entity->id)}}" class="btn btn-sm btn-default"><i class="fa fa-info"></i></a>
 											</td>

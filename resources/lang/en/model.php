@@ -27,6 +27,7 @@ return [
 		'price' => 'Giá', 
 		'image' => 'Ảnh',
 		'content' => 'Nội dung', 
+		'is_new' => 'Là sản phẩm mới',
 		'sale' => 'Khuyến mại', 
 		'price_sale' => 'Giá khuyến mại',
 		'size' => 'Size',

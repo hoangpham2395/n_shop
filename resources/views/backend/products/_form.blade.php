@@ -71,6 +71,14 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="form-group">
+			{!! Form::checkbox('is_new', getConstant('PRODUCT_IS_NEW', 1), null, ['id' => 'product_is_new']) !!}
+			<label for="product_is_new" class="margin-left pointer">{{transm('products.is_new')}}</label>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="form-group">
 			<label>{{transm('products.image')}}</label>
 			{!! Form::file('image', ['class' => 'form-control', 'placeholoder' => transm('products.image'), 'onchange' => 'ProductsController.uploadImage(this, "#product_image")']) !!}
 		</div>

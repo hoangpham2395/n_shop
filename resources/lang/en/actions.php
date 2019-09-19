@@ -45,6 +45,8 @@ return [
 	'payment_info' => 'Thông tin thanh toán',
 	'about_us' => 'Về chúng tôi',
 	'address' => 'Địa chỉ',
+	'description' => 'Mô tả',
+	'sale' => 'Khuyến mại',
 
 	'admin' => [
 		'name' => 'Admin',

@@ -12,7 +12,7 @@ class Product extends Base
 
 	protected $table = 'products';
 	protected $primaryKey = 'id';
-	protected $fillable = ['category_id', 'product_code', 'product_name', 'product_slug', 'made_in', 'material', 'price', 'image','content', 'sale', 'price_sale', 'ins_id', 'upd_id'];
+	protected $fillable = ['category_id', 'product_code', 'product_name', 'product_slug', 'made_in', 'material', 'price', 'image','content', 'is_new', 'sale', 'price_sale', 'ins_id', 'upd_id'];
 
 	public function category() 
 	{

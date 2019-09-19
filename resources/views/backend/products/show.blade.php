@@ -69,6 +69,10 @@
 										<td>{{$entity->material}}</td>
 									</tr>
 									<tr>
+										<td>{{transm('products.is_new')}}</td>
+										<td>{{$entity->getTextIsNew()}}</td>
+									</tr>
+									<tr>
 										<td>{{transm('products.made_in')}}</td>
 										<td>{{$entity->made_in}}</td>
 									</tr>

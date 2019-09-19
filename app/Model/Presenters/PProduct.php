@@ -5,11 +5,6 @@ use Carbon\Carbon;
 
 trait PProduct 
 {
-	public function getPrice() 
-	{
-		return formatMoney($this->price);
-	}
-
 	public function getCategory() 
 	{
 		return $this->category->category_name;
@@ -25,9 +20,64 @@ trait PProduct
 		return !empty($this->category) ? $this->category->category_slug : '';
 	}
 
+	public function isNew() 
+	{
+		return $this->is_new == getConstant('PRODUCT_IS_NEW', 1);
+	}
+
+	public function getTextIsNew() 
+	{
+		$config = $this->isNew() ? 'yes' : 'no';
+		return getConfig($config);
+	}
+
+	public function isSale()
+	{
+		return !empty($this->price_sale);
+	}
+
+	public function getPrice()
+	{
+		return formatMoney($this->price);
+	}
+
+	public function getFinalPrice() 
+	{
+		$price = $this->isSale() ? $this->price_sale : $this->price;
+		return formatMoney($price);
+	}
+
 	public function getPriceSale() 
 	{
 		return formatMoney($this->price_sale);
+	}
+
+	public function getClassIsNewOrSale()
+	{
+		$class = '';
+		if ($this->isNew()) {
+			$class .= ' is-new';
+		}
+
+		if ($this->isSale()) {
+			$class .= ' is-sale';
+		}
+
+		return $class;
+	}
+
+	public function getClassNewOrSaleForFrontend() 
+	{
+		$class = '';
+		if ($this->isNew()) {
+			$class .= ' block2-labelnew';
+		}
+
+		if ($this->isSale()) {
+			$class .= ' block2-labelsale';
+		}
+
+		return $class;
 	}
 
 	public function getUrlImage() 
@@ -46,6 +96,7 @@ trait PProduct
 		return $r;
 	}
 
+	// Old code
 	public function getClassNew() 
 	{
 		$date = Carbon::now()->subDays(7); // 7 days ago

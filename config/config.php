@@ -5,6 +5,8 @@ return [
 		1 => 'Super admin',
 		2 => 'Admin',
 	],
+	'yes' => 'Có',
+	'no' => 'Không',
 	'select_default' => '--- Chọn giá trị thích hợp ---',
 	'paginate' => [
 		'backend' => [
