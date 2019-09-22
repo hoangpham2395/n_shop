@@ -8,34 +8,34 @@ use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use Session;
 
-class ProductsController extends BaseController 
+class ProductsController extends BaseController
 {
 	protected $_categoryRepository;
 
-	public function getCategoryRepository() 
+	public function getCategoryRepository()
 	{
 		return $this->_categoryRepository;
 	}
 
-	public function setCategoryRepository($categoryRepository) 
+	public function setCategoryRepository($categoryRepository)
 	{
 		$this->_categoryRepository = $categoryRepository;
 	}
 
-	public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository) 
+	public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
 	{
 		$this->setRepository($productRepository);
 		$this->setCategoryRepository($categoryRepository);
 		parent::__construct();
 	}
 
-	public function index() 
+	public function index()
 	{
 		$products = $this->getRepository()->getListForFrontend(Input::all());
 		return view('frontend.products.index', compact('products'));
 	}
 
-	public function category($categorySlug) 
+	public function category($categorySlug)
 	{
 		$category = $this->getCategoryRepository()->findBySlug($categorySlug);
 		if (empty($category)) {
@@ -56,7 +56,7 @@ class ProductsController extends BaseController
 		return view('frontend.products.category', compact('products', 'categoryName'));
 	}
 
-	public function detail($productSlug) 
+	public function detail($productSlug)
 	{
 		$product = $this->getRepository()->findBySlug($productSlug);
 		if (empty($product)) {
@@ -68,24 +68,24 @@ class ProductsController extends BaseController
 		return view('frontend.products.detail', compact('product', 'otherProducts'));
 	}
 
-	public function new() 
+	public function new()
 	{
 		$products = $this->getRepository()->getListNewForFrontend(Input::all());
 		return view('frontend.products.index', compact('products'));
 	}
 
-	public function sale() 
+	public function sale()
 	{
 		$products = $this->getRepository()->getListSaleForFrontend(Input::all());
 		return view('frontend.products.index', compact('products'));
 	}
 
-	public function cart() 
+	public function cart()
 	{
 		return view('frontend.products.cart');
 	}
 
-	public function addToCart(Request $request) 
+	public function addToCart(Request $request)
 	{
 		$data = $request->all();
 		$id = array_get($data, 'id');
@@ -113,7 +113,7 @@ class ProductsController extends BaseController
 		]);
 	}
 
-	public function updateCart(Request $request) 
+	public function updateCart(Request $request)
 	{
 		$data = $request->all();
 		$products = array_get($data, 'products', []);
@@ -175,15 +175,5 @@ class ProductsController extends BaseController
 			'html' => view('layouts.frontend.header_cart')->render(),
 			'count' => count($productsCart),
 		]);
-	}
-
-	public function payment() 
-	{
-		$productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
-		if (empty($productsCart)) {
-			return redirect()->route('frontend.products.cart');
-		}
-
-		return view('frontend.orders.payment', compact('productsCart'));
 	}
 }

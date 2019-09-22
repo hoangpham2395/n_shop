@@ -14,7 +14,8 @@ Route::get('/gio-hang.html', ['as' => 'frontend.products.cart', 'uses' => 'Produ
 Route::post('/them-vao-gio', ['as' => 'frontend.products.addCart', 'uses' => 'ProductsController@addToCart']);
 Route::post('/cap-nhat-gio', ['as' => 'frontend.products.updateCart', 'uses' => 'ProductsController@updateCart']);
 Route::post('/xoa-khoi-gio', ['as' => 'frontend.products.removeItemCart', 'uses' => 'ProductsController@removeItemCart']);
-// Route::get('/thanh-toan', ['as' => 'frontend.orders.index', 'uses' => 'OrdersController@index']);
-Route::get('/thanh-toan.html', ['as' => 'frontend.orders.payment', 'uses' => 'ProductsController@payment']);
+Route::get('/thanh-toan.html', ['as' => 'frontend.orders.payment', 'uses' => 'OrdersController@payment']);
+Route::post('/thanh-toan', ['as' => 'frontend.orders.postPayment', 'uses' => 'OrdersController@postPayment']);
+Route::get('/dat-hang-thanh-cong.html', ['as' => 'frontend.orders.success', 'uses' => 'OrdersController@success']);
 Route::get('/{categorySlug}.html', ['as' => 'frontend.products.category', 'uses' => 'ProductsController@category']);
 Route::get('/chi-tiet-san-pham/{productSlug}.html', ['as' => 'frontend.products.detail', 'uses' => 'ProductsController@detail']);

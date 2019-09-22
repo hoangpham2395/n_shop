@@ -2,7 +2,7 @@
 
 return [
 	'create_success' => 'Thêm mới thành công.',
-	'create_failed' => 'Thêm mới thất bại.', 
+	'create_failed' => 'Thêm mới thất bại.',
 	'update_success' => 'Cập nhật thành công.',
 	'update_failed' => 'Cập nhật thất bại.',
 	'delete_success' => 'Xóa thành công.',
@@ -18,4 +18,5 @@ return [
 	'ship_note' => 'Chưa tính phí giao hàng nếu có',
 	'update_cart_success' => 'Cập nhật giỏ hàng thành công!',
 	'update_cart_failed' => 'Cập nhật giỏ hàng thất bại!',
+    'order_thank' => 'Cảm ơn bạn đã đặt hàng của chúng tôi!',
 ];

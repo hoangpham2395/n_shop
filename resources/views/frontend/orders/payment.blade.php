@@ -6,7 +6,7 @@
 		{{transa('home')}}
 		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 	</a>
-	
+
 	<a href="{{route('frontend.products.cart')}}" class="s-text16">
 		{{transa('cart')}}
 		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
@@ -23,7 +23,7 @@ $totalPrice = 0;
 <!-- Cart -->
 <section class="cart bgwhite p-t-70 p-b-100">
 	<div class="container">
-		<form class="leave-comment">
+		{!! Form::open(['route' => 'frontend.orders.postPayment', 'method' => 'POST']) !!}
 			<div class="row">
 				<!-- Payment -->
 				<div class="col-md-6 p-b-30">
@@ -45,7 +45,7 @@ $totalPrice = 0;
 						{!! Form::text('user_address', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_address').' *', 'required']) !!}
 					</div>
 
-					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="content" placeholder="{{transm('contact.content') .' *'}}" required></textarea>
+					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="user_note" placeholder="{{transm('orders.user_note')}}"></textarea>
 				</div>
 
 				<!-- Info -->
@@ -60,8 +60,8 @@ $totalPrice = 0;
 
 					<ul id="order_list_product" class="order-list-product">
 						@foreach ($productsCart as $productCart)
-							@php 
-								$quantity = (int) array_get($productCart, 'quantity', 1); 
+							@php
+								$quantity = (int) array_get($productCart, 'quantity', 1);
 								$price = (int) array_get($productCart, 'price');
 								$totalPrice += $quantity * $price;
 							@endphp
@@ -71,7 +71,7 @@ $totalPrice = 0;
 							</li>
 						@endforeach
 					</ul>
-						
+
 					<!-- Ship -->
 					<div class="bo15"></div>
 					<div class="flex-w flex-sb bo15 p-t-15 p-b-15">
@@ -93,7 +93,7 @@ $totalPrice = 0;
 					</div>
 				</div>
 			</div>
-		</form>		
+		{!! Form::close() !!}
 	</div>
 </section>
 @endsection

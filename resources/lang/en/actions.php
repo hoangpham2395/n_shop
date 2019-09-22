@@ -47,6 +47,7 @@ return [
 	'address' => 'Địa chỉ',
 	'description' => 'Mô tả',
 	'sale' => 'Khuyến mại',
+    'order_success' => 'Đặt hàng thành công',
 
 	'admin' => [
 		'name' => 'Admin',
@@ -86,5 +87,6 @@ return [
 	'orders' => [
 		'index' => 'Danh sách hóa đơn',
 		'detail' => 'Thanh toán',
+        'success' => 'Thành công',
 	],
 ];
