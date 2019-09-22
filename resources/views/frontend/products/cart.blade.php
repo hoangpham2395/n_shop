@@ -105,7 +105,7 @@ $totalPrice = 0;
 			{{getMessage('cart_not_product')}}
 			<div class="m-t-30 m-b-60">
 				<!-- Button -->
-				<a href="{{route('frontend.products.index')}}" class="flex-c-m bg7 bo-rad-15 hov1 s-text14 trans-0-4 p-t-10 p-b-10 p-r-25 p-l-25" style="width: 250px;"> 
+				<a href="{{route('frontend.products.index')}}" class="flex-c-m bg7 bo-rad-15 hov1 s-text14 trans-0-4 p-t-10 p-b-10 p-r-25 p-l-25" style="width: 250px;">
 					{{transa('return_store')}}
 				</a>
 			</div>
@@ -135,7 +135,7 @@ $totalPrice = 0;
 			var productId = $(product).attr('data-item');
 			var _token = $('section.cart').find('input[name="_token"]').val();
 			var productName = $(product).find('.column-2 a').html();
-			
+
 			$.ajax({
 				url: "{{route('frontend.products.removeItemCart')}}",
 				method: "POST",
@@ -164,10 +164,8 @@ $totalPrice = 0;
 				swal(productName, "đã được xóa khỏi giỏ!", "success");
 				$('#product_item_cart_' + productId).html('');
 
-				$totalProduct = $('#table_shopping_cart').find('tr.table-row').length;
-				
 				// Cart doesn't have product
-				if ($totalProduct < 2) { // Because exist table-row of '#product_item_cart_' + productId
+				if (count < 1) {
 					var urlProductIndex = "{{route('frontend.products.index')}}";
 					$('#table_shopping_cart').css('display', 'none');
 					$('#cart_button1').css('display', 'none');
