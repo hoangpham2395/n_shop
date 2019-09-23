@@ -102,6 +102,8 @@ class ProductsController extends BaseController
 		$productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
 		$productsCart[$product->id] = $product->toArray();
 		$productsCart[$product->id]['quantity'] = $quantity;
+		$productsCart[$product->id]['size'] = array_get($data, 'size');
+		$productsCart[$product->id]['color'] = array_get($data, 'color');
 		Session::put('products_cart', $productsCart);
 
 		return response()->json([

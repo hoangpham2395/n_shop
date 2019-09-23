@@ -38,7 +38,7 @@ $totalPrice = 0;
 					</div>
 
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('user_email', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_email').' *', 'required']) !!}
+						{!! Form::text('user_email', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_email')]) !!}
 					</div>
 
 					<div class="bo4 of-hidden size15 m-b-20">

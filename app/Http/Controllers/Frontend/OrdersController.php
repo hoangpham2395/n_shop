@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Base\BaseController;
 use App\Repositories\OrderDetailRepository;
 use App\Repositories\OrderRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\MessageBag;
 use Session;
 
 /**
@@ -57,8 +59,40 @@ class OrdersController extends BaseController
             return abort('404');
         }
 
-        // @todo continue
-        
+        DB::beginTransaction();
+        try {
+            $orderId = $this->getNextInsertId();
+            $totalPrice = 0;
+
+            // Create orders detail
+            foreach ($productsCart as $productCart) {
+                $quantity = (int) array_get($productCart, 'quantity');
+                $unitPrice = !empty($productCart['price_sale']) ? $productCart['price_sale'] : (int) array_get($productCart, 'price');
+                $totalUnitPrice = $quantity * $unitPrice;
+                $data = [
+                    'order_id' => $orderId,
+                    'quantity' => $quantity,
+                    'total_unit_price' => $totalUnitPrice,
+                    'size' => array_get($productCart, 'size'),
+                    'color' => array_get($productCart, 'color'),
+                ];
+
+                $this->getOrderDetailRepository()->create($data);
+                $totalPrice += $totalUnitPrice;
+            }
+
+            // Create order
+            $order['status'] = getConfig('order_status.guest_booked', 1);
+            $order['total_price'] = $totalPrice;
+            $this->getRepository()->create($order);
+
+            DB::commit();
+            return redirect()->route('frontend.orders.success');
+        } catch (\Exception $e) {
+            logError($e);
+            DB::rollBack();
+        }
+        return redirect()->back()->withErrors(new MessageBag(['order_failed' => getMessage('order_failed')]));
     }
 
     public function success()

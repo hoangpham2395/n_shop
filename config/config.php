@@ -33,7 +33,7 @@ return [
 
 	// Category
 	'categories_default' => [
-		'ao' => 'Áo', 
+		'ao' => 'Áo',
 		'quan' => 'Quần',
 		'dam-vay' => 'Đầm váy',
 		'giay-dep' => 'Giày dép',
@@ -62,5 +62,13 @@ return [
 		2 => 'Từ Z - A',
 		3 => 'Giá tăng dần',
 		4 => 'Giá giảm dần',
-	], 
+	],
+    'order_status' => [
+        'guest_booked' => 1,
+        'confirmed' => 2,
+        'shipping' => 3,
+        'success' => 4,
+        'return' => 5,
+        'cancel' => 6,
+    ],
 ];
