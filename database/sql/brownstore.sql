@@ -87,6 +87,7 @@ DROP TABLE IF EXISTS `order_detail`;
 CREATE TABLE `order_detail`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `total_unit_price` int(11) NOT NULL,
   `size` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
