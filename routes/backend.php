@@ -14,4 +14,7 @@ Route::group(['middleware' => ['auth.backend']], function() {
 	Route::get('products/{id}/upload-image', ['as' => 'backend.products.upload_image', 'uses' => 'ProductImageController@uploadImage']);
 	Route::post('products/{id}/post-upload-image', ['as' => 'backend.products.post_upload_image', 'uses' => 'ProductImageController@postUploadImage']);
 	Route::resource('products', 'ProductsController')->names('backend.products');
+
+	// Orders
+    Route::resource('orders', 'OrdersController')->names('backend.orders');
 });

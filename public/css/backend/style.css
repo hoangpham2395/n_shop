@@ -1,3 +1,6 @@
+.red {
+    color: red;
+}
 .margin {
 	margin: 15px;
 }
@@ -41,18 +44,18 @@
 }
 
 .flex-center {
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     display: flex;
 }
 
 .flex-center-vertical {
-    align-items: center; 
+    align-items: center;
     display: flex;
 }
 
 .flex-center-horizontal {
-    justify-content: center; 
+    justify-content: center;
     display: flex;
 }
 

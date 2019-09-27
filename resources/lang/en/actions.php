@@ -85,6 +85,7 @@ return [
 		'delete' => 'Xóa ảnh',
 	],
 	'orders' => [
+	    'name' => 'Đơn hàng',
 		'index' => 'Danh sách hóa đơn',
 		'detail' => 'Thanh toán',
         'success' => 'Thành công',

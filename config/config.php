@@ -71,4 +71,20 @@ return [
         'return' => 5,
         'cancel' => 6,
     ],
+    'order_status_text' => [
+        1 => 'Khách mới đặt',
+        2 => 'Đã xác nhận',
+        3 => 'Đang giao hàng',
+        4 => 'Thành công',
+        5 => 'Bị trả về',
+        6 => 'Hủy',
+    ],
+    'order_status_color' => [
+        1 => '#dc3545',
+        2 => '#0062cc',
+        3 => '#d39e00',
+        4 => '#1e7e34',
+        5 => '#545b62',
+        6 => '#1d2124',
+    ],
 ];

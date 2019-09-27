@@ -57,6 +57,7 @@ return [
 		'user_address' => 'Địa chỉ',
 		'user_note' => 'Ghi chú',
 		'total_price' => 'Tiền hóa đơn',
+        'created_at' => 'Ngày đặt',
 	],
 	'order_detail' => [
 		'id' => 'ID',
