@@ -71,6 +71,7 @@ class OrdersController extends BaseController
                 $totalUnitPrice = $quantity * $unitPrice;
                 $data = [
                     'order_id' => $orderId,
+                    'product_id' => array_get($productCart, 'id'),
                     'quantity' => $quantity,
                     'total_unit_price' => $totalUnitPrice,
                     'size' => array_get($productCart, 'size'),

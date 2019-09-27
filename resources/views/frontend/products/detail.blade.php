@@ -75,10 +75,10 @@
 				</div>
 			@endif
 
-			@php 
+			@php
 				$options = $product->getOptions();
-				$sizes = array_keys(array_get($options, 'size', []));
-				$colors = array_keys(array_get($options, 'color', []));
+				$sizes = getArrayKeys(array_get($options, 'size', []));
+				$colors = getArrayKeys(array_get($options, 'color', []));
 			@endphp
 			<!-- Order -->
 			<div class="p-t-33 p-b-60">

@@ -192,3 +192,21 @@ if (!function_exists('getActiveSidebarClass')) {
         return ($routeName == 'backend.' . $alias . '.' . $action) ? 'active' : '';
     }
 }
+
+if (!function_exists('getArrayKeys')) {
+    /**
+     * @param array $array
+     * @return array
+     */
+    function getArrayKeys($array = [])
+    {
+        if (empty($array)) {
+            return [];
+        }
+        $r = [];
+        foreach ($array as $key => $value) {
+            $r[$key] = $key;
+        }
+        return $r;
+    }
+}
