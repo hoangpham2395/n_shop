@@ -6,7 +6,7 @@ if (!function_exists('getConfig')) {
      * @param null $default
      * @return \Illuminate\Config\Repository|mixed
      */
-	function getConfig($key, $default = null) 
+	function getConfig($key, $default = null)
 	{
 		return config('config.' . $key, $default);
 	}
@@ -42,7 +42,7 @@ if (!function_exists('transa')) {
      * @param array $params
      * @return array|\Illuminate\Contracts\Translation\Translator|null|string
      */
-	function transa($key, $params = []) 
+	function transa($key, $params = [])
 	{
 		return trans('actions.' . $key, $params);
 	}
@@ -54,14 +54,14 @@ if (!function_exists('transm')) {
      * @param array $params
      * @return array|\Illuminate\Contracts\Translation\Translator|null|string
      */
-	function transm($key, $params = []) 
+	function transm($key, $params = [])
 	{
 		return trans('model.' . $key, $params);
 	}
 }
 
 if (!function_exists('logError')) {
-    function logError($msg) 
+    function logError($msg)
     {
         dd($msg);
     }
@@ -112,5 +112,42 @@ if (!function_exists('toSql')) {
     function toSql($query)
     {
         return str_replace_array('?', $query->getBindings(), $query->toSql());
+    }
+}
+
+if (!function_exists('getCurrentActionName')) {
+    function getCurrentActionName()
+    {
+        $action = Request::route()->getAction();
+        return array_get($action, 'as');
+    }
+}
+
+if (!function_exists('getCurrentControllerName')) {
+    function getCurrentControllerName()
+    {
+        $action = Request::route()->getAction();
+        $controller = class_basename($action['controller']);
+        list($controllerName, $action) = explode('@', $controller);
+        return $controllerName;
+    }
+}
+
+if (!function_exists('getActiveSidebarClass')) {
+    function getActiveSidebarClass($alias = null, $action = null)
+    {
+        if (empty($alias)) {
+            return '';
+        }
+
+        // For parent
+        if (empty($action)) {
+            $controllerName = getCurrentControllerName();
+            return ($controllerName == ucfirst($alias) . 'Controller') ? 'active' : '';
+        }
+
+        // For child
+        $actionName = getCurrentActionName();
+        return ($actionName == 'backend.' . $alias . '.' . $action) ? 'active' : '';
     }
 }
