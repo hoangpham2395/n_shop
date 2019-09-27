@@ -61,6 +61,9 @@ if (!function_exists('transm')) {
 }
 
 if (!function_exists('logError')) {
+    /**
+     * @param $msg
+     */
     function logError($msg)
     {
         dd($msg);
@@ -78,6 +81,9 @@ if (! function_exists('backendGuard')) {
 }
 
 if (!function_exists('isMobile')) {
+    /**
+     * @return bool
+     */
     function isMobile()
     {
         if(array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
@@ -90,6 +96,11 @@ if (!function_exists('isMobile')) {
 
 if (!function_exists('ebr')) {
 
+    /**
+     * @param $html
+     * @param bool $showWhiteSpace
+     * @return mixed|string
+     */
     function ebr($html, $showWhiteSpace = false)
     {
         $string = nl2br(e($html));
@@ -102,6 +113,10 @@ if (!function_exists('ebr')) {
 }
 
 if (!function_exists('formatMoney')) {
+    /**
+     * @param $money
+     * @return string
+     */
     function formatMoney($money) {
         $format = number_format($money, 0, "," , ".");
         return $format;
@@ -109,14 +124,21 @@ if (!function_exists('formatMoney')) {
 }
 
 if (!function_exists('toSql')) {
+    /**
+     * @param $query
+     * @return string
+     */
     function toSql($query)
     {
         return str_replace_array('?', $query->getBindings(), $query->toSql());
     }
 }
 
-if (!function_exists('getCurrentActionName')) {
-    function getCurrentActionName()
+if (!function_exists('getCurrentRouteName')) {
+    /**
+     * @return mixed
+     */
+    function getCurrentRouteName()
     {
         $action = Request::route()->getAction();
         return array_get($action, 'as');
@@ -124,6 +146,9 @@ if (!function_exists('getCurrentActionName')) {
 }
 
 if (!function_exists('getCurrentControllerName')) {
+    /**
+     * @return mixed
+     */
     function getCurrentControllerName()
     {
         $action = Request::route()->getAction();
@@ -133,7 +158,23 @@ if (!function_exists('getCurrentControllerName')) {
     }
 }
 
+if (!function_exists('getCurrentActionName')) {
+    /**
+     * @return mixed
+     */
+    function getCurrentActionName()
+    {
+        $routeName = getCurrentRouteName();
+        return end(explode('.', $routeName));
+    }
+}
+
 if (!function_exists('getActiveSidebarClass')) {
+    /**
+     * @param null $alias
+     * @param null $action
+     * @return string
+     */
     function getActiveSidebarClass($alias = null, $action = null)
     {
         if (empty($alias)) {
@@ -147,7 +188,7 @@ if (!function_exists('getActiveSidebarClass')) {
         }
 
         // For child
-        $actionName = getCurrentActionName();
-        return ($actionName == 'backend.' . $alias . '.' . $action) ? 'active' : '';
+        $routeName = getCurrentRouteName();
+        return ($routeName == 'backend.' . $alias . '.' . $action) ? 'active' : '';
     }
 }
