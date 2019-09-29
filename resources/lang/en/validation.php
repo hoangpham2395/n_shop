@@ -90,7 +90,7 @@ return [
         'string' => ':attribute phải ít nhất :min ký tự.',
         'array' => 'The :attribute must have at least :min items.',
     ],
-    'not_in' => 'The selected :attribute is invalid.',
+    'not_in' => ':attribute không hợp lệ.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
     'present' => 'The :attribute field must be present.',

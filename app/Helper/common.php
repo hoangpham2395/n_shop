@@ -60,6 +60,18 @@ if (!function_exists('transm')) {
 	}
 }
 
+if (!function_exists('transv')) {
+    /**
+     * @param $key
+     * @param array $params
+     * @return array|\Illuminate\Contracts\Translation\Translator|string|null
+     */
+    function transv($key, $params = [])
+    {
+        return trans('validation.' . $key, $params);
+    }
+}
+
 if (!function_exists('logError')) {
     /**
      * @param $msg

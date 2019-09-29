@@ -16,5 +16,6 @@ Route::group(['middleware' => ['auth.backend']], function() {
 	Route::resource('products', 'ProductsController')->names('backend.products');
 
 	// Orders
+    Route::post('orders/change-status', ['as' => 'backend.orders.change_status', 'uses' => 'OrdersController@changeStatus']);
     Route::resource('orders', 'OrdersController')->names('backend.orders');
 });

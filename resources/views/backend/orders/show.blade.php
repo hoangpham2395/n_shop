@@ -38,7 +38,7 @@
                                     </tr>
                                     <tr>
                                         <td>{{transm('orders.status')}}</td>
-                                        <td>{!! $entity->getTextStatus() !!}</td>
+                                        <td><p id="order_status" data-id="{{$entity->id}}" data-status="{{$entity->status}}">{!! $entity->getTextStatus() !!}</p></td>
                                     </tr>
                                     <tr>
                                         <td>{{transm('orders.user_name')}}</td>
@@ -127,4 +127,7 @@
             </div>
         </div>
     </section>
+
+    {{--  Modal change status  --}}
+    @include('backend.orders.modal_change_status')
 @endsection

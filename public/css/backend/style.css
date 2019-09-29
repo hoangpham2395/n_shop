@@ -86,3 +86,7 @@
     background-color: #66a8a6;
     content: 'New';
 }
+
+#order_status:hover {
+    cursor: pointer;
+}

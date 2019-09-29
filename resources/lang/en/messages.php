@@ -19,5 +19,6 @@ return [
 	'update_cart_success' => 'Cập nhật giỏ hàng thành công!',
 	'update_cart_failed' => 'Cập nhật giỏ hàng thất bại!',
     'order_thank' => 'Cảm ơn bạn đã đặt hàng của chúng tôi!',
-    'order_failed' => 'Đặt hàng đã thất bại. Mong quý khách hãy đăng ký lại, xin chân thành cảm ơn!'
+    'order_failed' => 'Đặt hàng đã thất bại. Mong quý khách hãy đăng ký lại, xin chân thành cảm ơn!',
+    'order_not_exist' => 'Đơn hàng không tồn tại.',
 ];

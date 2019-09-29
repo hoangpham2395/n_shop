@@ -113,7 +113,7 @@
                                     @foreach ($entities as $entity)
                                         <tr>
                                             <td>{{ $entity->id }}</td>
-                                            <td>{!! $entity->getTextStatus() !!}</td>
+                                            <td><p id="order_status" data-id="{{$entity->id}}" data-status="{{$entity->status}}">{!! $entity->getTextStatus() !!}</p></td>
                                             <td>{{ $entity->user_name }}</td>
                                             <td>{!! $entity->user_email !!}</td>
                                             <td>{!! $entity->user_tel !!}</td>
@@ -143,4 +143,6 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
+    {{-- Modal change status --}}
+    @include('backend.orders.modal_change_status')
 @endsection
