@@ -2,6 +2,7 @@
 namespace App\Model\Entities;
 
 use App\Model\Base\Base;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class OrderDetail
@@ -9,6 +10,7 @@ use App\Model\Base\Base;
  */
 class OrderDetail extends Base
 {
+    use SoftDeletes;
     protected $table = 'order_detail';
     protected $primaryKey = 'id';
     protected $fillable = ['order_id', 'product_id', 'quantity', 'total_unit_price', 'size',  'color'];

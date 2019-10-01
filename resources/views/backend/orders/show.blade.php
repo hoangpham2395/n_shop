@@ -62,7 +62,7 @@
                                     </tr>
                                     <tr>
                                         <td>{{transm('orders.user_note')}}</td>
-                                        <td>{!! ebr($entity->content) !!}</td>
+                                        <td>{!! ebr($entity->user_note) !!}</td>
                                     </tr>
                                     </tbody>
                                 </table>
