@@ -6,6 +6,13 @@ Route::get('/lien-he.html', ['as' => 'frontend.pages.contact', 'uses' => 'PagesC
 Route::get('/gioi-thieu.html', ['as' => 'frontend.pages.introduce', 'uses' => 'PagesController@introduce']);
 Route::get('/chinh-sach.html', ['as' => 'frontend.pages.policy', 'uses' => 'PagesController@policy']);
 
+// Login
+Route::get('/dang-nhap.html', ['as' => 'frontend.login.get', 'uses' => 'Auth\LoginController@getLogin']);
+Route::post('/dang-nhap', ['as' => 'frontend.login.post', 'uses' => 'Auth\LoginController@postLogin']);
+Route::get('/dang-xuat.html', ['as' => 'frontend.logout', 'uses' => 'Auth\LoginController@logout']);
+Route::post('/dang-ky', ['as' => 'frontend.register', 'uses' => 'Auth\LoginController@register']);
+Route::get('/tai-khoan-cua-ban.html', ['as' => 'frontend.users.profile', 'uses' => 'UsersController@profile']);
+
 // Products
 Route::get('/danh-sach-san-pham.html', ['as' => 'frontend.products.index', 'uses' => 'ProductsController@index']);
 Route::get('/hang-moi.html', ['as' => 'frontend.products.new', 'uses' => 'ProductsController@new']);

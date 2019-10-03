@@ -87,4 +87,9 @@ return [
         5 => '#545b62',
         6 => '#1d2124',
     ],
+    'frontend_type_login' => [
+        1 => 'Số điện thoại',
+        2 => 'Email'
+    ],
+    'frontend_login_type_phone' => 1,
 ];

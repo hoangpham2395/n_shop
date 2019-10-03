@@ -92,6 +92,16 @@ if (! function_exists('backendGuard')) {
     }
 }
 
+if (! function_exists('frontendGuard')) {
+    /**
+     * @return mixed
+     */
+    function frontendGuard()
+    {
+        return Auth::guard('frontend');
+    }
+}
+
 if (!function_exists('isMobile')) {
     /**
      * @return bool
@@ -220,5 +230,12 @@ if (!function_exists('getArrayKeys')) {
             $r[$key] = $key;
         }
         return $r;
+    }
+}
+
+if (!function_exists('redirectHome')) {
+    function redirectHome()
+    {
+        return redirect()->route('frontend.home.index');
     }
 }

@@ -66,4 +66,16 @@ return [
 		'quantity' => 'Số lượng',
 		'total_price_unit' => 'Tổng',
 	],
+    'users' => [
+        'id' => 'ID',
+        'username' => 'Họ tên',
+        'email' => 'Email',
+        'password' => 'Mật khẩu',
+        'status' => 'Trạng thái',
+        'fb_id' => 'Facebook ID',
+        'tel' => 'Số điện thoại',
+        'address' => 'Địa chỉ',
+        'login_id' => 'Số điện thoại hoặc email',
+        'confirm_password' => 'Xác nhận mật khẩu',
+    ],
 ];

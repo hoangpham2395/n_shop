@@ -3,6 +3,7 @@
 return [
 	'login' => 'Đăng nhập',
 	'logout' => 'Đăng xuất',
+    'register' => 'Đăng ký',
 	'profile' => 'Thông tin cá nhân',
 	'list' => 'Danh sách',
 	'add' => 'Thêm mới',

@@ -105,6 +105,7 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NULL,
   `user_name` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_tel` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_email` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -276,5 +277,29 @@ INSERT INTO `products` VALUES (43, 7, 'M01', 'Mũ bershka', 'mu-bershka', 'Bồ 
 INSERT INTO `products` VALUES (44, 4, 'GD01', 'Giầy trainers bershka', 'giay-trainers-bershka', 'Bồ đào nha', NULL, 580000, '/media/products/2019/08/11/44_giay_trainers_1.jpg', 'Giầy trainers 1xxx giảm 50% chất như nước cất', '0', NULL, NULL, 1, NULL, '2019-08-11 16:27:06', '2019-08-11 16:27:06', NULL);
 INSERT INTO `products` VALUES (45, 4, 'GD02', 'Giầy bershka', 'giay-bershka', 'Bồ đào nha', NULL, 309000, '/media/products/2019/08/11/45_giay_bershka_1.jpg', NULL, '0', NULL, NULL, 1, NULL, '2019-08-11 16:30:11', '2019-08-11 16:30:11', NULL);
 INSERT INTO `products` VALUES (46, 4, 'GD04', 'Dép bershka', 'dep-bershka', 'Bồ đào nha', NULL, 195000, '/media/products/2019/08/11/46_dep_bershka_1.jpg', 'DÉP Bershka ĐI BAO NỔI TRỘI', '1', NULL, NULL, 1, 1, '2019-08-11 16:31:19', '2019-08-26 22:30:01', NULL);
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `fb_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tel` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp(0) DEFAULT NULL,
+  `updated_at` timestamp(0) DEFAULT NULL,
+  `deleted_at` timestamp(0) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES (1, 'Hoang Pham', 'hoangpham2395@gmail.com', '$2y$10$t1BtqrSIjwrj0OZq0uVJjOLy80JR74ElXPFw8CdfhbsYOtsYlq3WK', 1, NULL, '0123456789', 'Việt Nam', '2019-10-01 22:35:10', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
