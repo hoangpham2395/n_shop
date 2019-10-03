@@ -2,6 +2,8 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Base\BaseController;
+use App\Http\Requests\Frontend\RegisterRequest;
+use App\Repositories\UserRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\Frontend\LoginRequest;
 use Illuminate\Support\Facades\Auth;
@@ -24,12 +26,12 @@ class LoginController extends BaseController
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
+     * @param UserRepository $userRepository
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
-        //$this->middleware('guest')->except('logout');
+        $this->setRepository($userRepository);
+        parent::__construct();
     }
 
     public function getLogin()
@@ -67,8 +69,23 @@ class LoginController extends BaseController
         return redirectHome();
     }
 
-    public function register()
+    public function register(RegisterRequest $registerRequest)
     {
+        $data['password'] = $registerRequest->get('password');
 
+        $typeLogin = $registerRequest->get('type_login');
+        if ($typeLogin == getConstant('FRONTEND_LOGIN_TYPE_EMAIL')) {
+            $data['email'] = $registerRequest->get('login_id');
+        } else {
+            $data['tel'] = $registerRequest->get('login_id');
+        }
+
+        try {
+            $this->getRepository()->create($data);
+            return redirect()->back()->with(['success' => getMessage('register_success')]);
+        } catch (\Exception $e) {
+            logError($e);
+        }
+        return redirect()->back()->withErrors(['register_failed' => getMessage('register_failed')])->withInput();
     }
 }

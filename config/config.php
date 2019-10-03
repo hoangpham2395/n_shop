@@ -91,5 +91,4 @@ return [
         1 => 'Số điện thoại',
         2 => 'Email'
     ],
-    'frontend_login_type_phone' => 1,
 ];

@@ -8,7 +8,7 @@
         <div class="row">
             @foreach (getConfig('frontend_type_login') as $type => $textType)
                 <div class="col-6" style="display: flex; align-items: center;">
-                    {!! Form::radio('type_login', (string) $type, (string) getConfig('frontend_login_type_phone'), ['id' => 'type_login_' . $type, 'class' => 'm-l-10']) !!}
+                    {!! Form::radio('type_login', (string) $type, (string) getConstant('FRONTEND_LOGIN_TYPE_EMAIL'), ['id' => 'type_login_' . $type, 'class' => 'm-l-10']) !!}
                     <label class="s-text7 m-l-10 m-b-0" for="type_login_{{$type}}">{{$textType}}</label>
                 </div>
             @endforeach
