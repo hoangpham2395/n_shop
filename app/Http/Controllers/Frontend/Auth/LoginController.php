@@ -36,7 +36,7 @@ class LoginController extends BaseController
 
     public function getLogin()
     {
-        if (Auth::guard('frontend')->check()) {
+        if (frontendGuard()->check()) {
             return redirectHome();
         }
 
@@ -55,7 +55,7 @@ class LoginController extends BaseController
             'password' => $request->get('password'),
         ];
 
-        if (Auth::guard('frontend')->attempt($dataEmail) || Auth::guard('frontend')->attempt($dataTel)) {
+        if (frontendGuard()->attempt($dataEmail) || frontendGuard()->attempt($dataTel)) {
             return redirect()->route('frontend.users.profile');
         }
 
@@ -65,7 +65,7 @@ class LoginController extends BaseController
 
     public function logout()
     {
-        Auth::guard('frontend')->logout();
+        frontendGuard()->logout();
         return redirectHome();
     }
 
