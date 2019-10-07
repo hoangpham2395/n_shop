@@ -4,54 +4,57 @@ namespace App\Http\Controllers\Base;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Storage;
 
-class BaseController extends Controller 
+/**
+ * Class BaseController
+ * @package App\Http\Controllers\Base
+ */
+class BaseController extends Controller
 {
 	protected $_repository;
 	protected $_alias;
 	protected $_request;
 
-	public function __construct() 
+	public function __construct()
 	{
 		$this->setAlias($this->getRepository()->getModel()->getTable());
 	}
 
-	public function getRepository() 
+	public function getRepository()
 	{
 		return $this->_repository;
 	}
 
-	public function setRepository($repository) 
+	public function setRepository($repository)
 	{
 		$this->_repository = $repository;
 	}
 
-	public function setAlias($alias) 
+	public function setAlias($alias)
 	{
 		$this->_alias = $alias;
 	}
 
-	public function getAlias() 
+	public function getAlias()
 	{
 		return $this->_alias;
 	}
 
-	public function index() 
+	public function index()
 	{
 		$dataSearch = Input::all();
 		$entities = $this->getRepository()->getListForBackend($dataSearch);
 		return view('backend.'. $this->getAlias() .'.index', compact('entities'));
 	}
 
-	public function create() 
+	public function create()
 	{
 		return view('backend.'. $this->getAlias() .'.create');
 	}
 
-	public function storeBase() 
+	public function storeBase()
 	{
 		$data = $this->_getFormData();
 
@@ -68,7 +71,7 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['create_failed' => getMessage('create_failed')]));
 	}
 
-	public function show($id) 
+	public function show($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -79,7 +82,7 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.show', compact('entity'));
 	}
 
-	public function edit($id) 
+	public function edit($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -90,7 +93,7 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.edit', compact('entity'));
 	}
 
-	public function updateBase($id) 
+	public function updateBase($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -113,7 +116,7 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
 	}
 
-	public function destroy($id) 
+	public function destroy($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -130,7 +133,7 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['delete_failed' => getMessage('delete_failed')]));
 	}
 
-	protected function _getFormData($isStore = true) 
+	protected function _getFormData($isStore = true)
 	{
 		$data = Input::all();
 
@@ -173,7 +176,7 @@ class BaseController extends Controller
             return;
         }
 
-        $id = !empty($request->get('id')) ? $request->get('id') : $this->getNextInsertId(); 
+        $id = !empty($request->get('id')) ? $request->get('id') : $this->getNextInsertId();
 
         // Upload file to tmp folder
         try {
