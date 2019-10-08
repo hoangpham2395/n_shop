@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'frontend',
+        'guard' => 'backend',
         'passwords' => 'users',
     ],
 
