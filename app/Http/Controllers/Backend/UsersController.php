@@ -3,8 +3,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
 use App\Repositories\UserRepository;
-use http\Env\Response;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 /**
