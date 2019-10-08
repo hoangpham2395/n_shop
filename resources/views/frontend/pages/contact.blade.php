@@ -40,32 +40,33 @@
 
 			<!-- Form -->
 			<div class="col-md-6 p-b-30">
-				<form class="leave-comment">
+                @include('layouts.frontend.notify')
+                {!! Form::open(['route' => 'frontend.contacts.store', 'method' => 'POST', 'class' => 'leave-comment']) !!}
 					<h4 class="m-text26 p-b-36 p-t-15">{{transa('content_contact')}}</h4>
 
-                    <label class="s-text7 bold">{{transm('contact.name')}}</label>
+                    <label class="s-text7 bold">{{transm('contacts.username')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('name', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contact.name')]) !!}
+						{!! Form::text('username', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contacts.username')]) !!}
 					</div>
 
-                    <label class="s-text7 bold required">{{transm('contact.tel')}}</label>
+                    <label class="s-text7 bold required">{{transm('contacts.tel')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('tel', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contact.tel'), 'required']) !!}
+						{!! Form::text('tel', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contacts.tel'), 'required']) !!}
 					</div>
 
-                    <label class="s-text7 bold">{{transm('contact.email')}}</label>
+                    <label class="s-text7 bold">{{transm('contacts.email')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('email', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contact.email')]) !!}
+						{!! Form::text('email', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contacts.email')]) !!}
 					</div>
 
-                    <label class="s-text7 bold required">{{transm('contact.content')}}</label>
-					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="content" placeholder="{{transm('contact.content')}}" required></textarea>
+                    <label class="s-text7 bold required">{{transm('contacts.content')}}</label>
+					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="content" placeholder="{{transm('contacts.content')}}" required></textarea>
 
 					<div class="w-size25">
 						<!-- Button -->
-						<button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">{{transa('send')}}</button>
+						<button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" type="submit">{{transa('send')}}</button>
 					</div>
-				</form>
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>

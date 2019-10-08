@@ -2,7 +2,8 @@
 // Home
 Route::get('/', ['as' => 'frontend.home.index', 'uses' => 'HomeController@index']);
 Route::get('/goc-chia-se.html', ['as' => 'frontend.pages.share', 'uses' => 'PagesController@share']);
-Route::get('/lien-he.html', ['as' => 'frontend.pages.contact', 'uses' => 'PagesController@contact']);
+Route::get('/lien-he.html', ['as' => 'frontend.contacts.index', 'uses' => 'ContactsController@index']);
+Route::post('/lien-he', ['as' => 'frontend.contacts.store', 'uses' => 'ContactsController@store']);
 Route::get('/gioi-thieu.html', ['as' => 'frontend.pages.introduce', 'uses' => 'PagesController@introduce']);
 Route::get('/chinh-sach.html', ['as' => 'frontend.pages.policy', 'uses' => 'PagesController@policy']);
 

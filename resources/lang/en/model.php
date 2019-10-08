@@ -41,8 +41,9 @@ return [
 		'color' => 'Màu',
 		'count' => 'Số lượng',
 	],
-	'contact' => [
-		'name' => 'Họ tên của bạn',
+	'contacts' => [
+	    'user_id' => 'Người liên hệ',
+		'username' => 'Họ tên của bạn',
 		'email' => 'Email',
 		'tel' => 'Số điện thoại',
 		'content' => 'Nội dung',

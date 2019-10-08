@@ -5,4 +5,4 @@
 @endforeach
 
 <li><a href="{{route('frontend.products.sale')}}">{{transa('products.sale')}}</a></li>
-<li><a href="{{route('frontend.pages.contact')}}">{{transa('contact')}}</a></li>
+<li><a href="{{route('frontend.contacts.index')}}">{{transa('contact')}}</a></li>

@@ -9,6 +9,8 @@ return [
 	'delete_failed' => 'Xóa thất bại.',
     'register_success' => 'Đăng ký thành công.',
     'register_failed' => 'Đăng ký thất bại.',
+    'contact_success' => 'Nội dung liên hệ đã gửi thành công.',
+    'contact_failed' => 'Nội dung liên hệ đã không được gửi.',
 
 	'login_box_message' => 'Đăng nhập vào hệ thống',
 	'backend_login_failed' => 'Email hoặc mật khẩu không đúng.',
