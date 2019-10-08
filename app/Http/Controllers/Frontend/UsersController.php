@@ -69,6 +69,8 @@ class UsersController extends BaseController
         try {
             $id = frontendGuard()->user()->id;
             $data['id'] = $id;
+            // @todo: chua hieu vi sao khong vao setPasswordAttribute()
+            $data['password'] = bcrypt($data['password']);
             $this->getRepository()->update($id, $data);
             DB::commit();
             return redirect()->route('frontend.users.profile')->with(['success' => getMessage('update_success')]);
