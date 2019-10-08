@@ -35,7 +35,7 @@
 
 			<!-- Header Icon -->
 			<div class="header-icons">
-				<a href="#" class="header-wrapicon1 dis-block">
+				<a href="{{frontendGuard()->check() ? route('frontend.users.profile') : route('frontend.login.get')}}" class="header-wrapicon1 dis-block">
 					<img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
 				</a>
 

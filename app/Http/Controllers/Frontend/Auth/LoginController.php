@@ -60,7 +60,7 @@ class LoginController extends BaseController
         }
 
         // Login failed
-        return redirect()->back()->withErrors(new MessageBag(['errorLogin' => getMessage('backend_login_failed')]))->withInput();
+        return redirect()->back()->withErrors(new MessageBag(['errorLogin' => getMessage('frontend_login_failed')]))->withInput();
     }
 
     public function logout()

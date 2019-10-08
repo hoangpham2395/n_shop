@@ -1,11 +1,14 @@
 {!! Form::open(['route' => 'frontend.login.post', 'method' => 'POST', 'class' => 'leave-comment', 'id' => 'form_login']) !!}
     <h4 class="m-text26 p-b-36 p-t-15">{{transa('login')}}</h4>
 
+    <label class="s-text7 bold required">{{transm('users.login_id')}}</label>
     <div class="bo4 of-hidden size15 m-b-20">
-        {!! Form::text('login_id', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('users.login_id').' *']) !!}
+        {!! Form::text('login_id', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('users.login_id')]) !!}
     </div>
+
+    <label class="s-text7 bold required">{{transm('users.password')}}</label>
     <div class="bo4 of-hidden size15 m-b-20">
-        {!! Form::password('password', ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('users.password').' *']) !!}
+        {!! Form::password('password', ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('users.password')]) !!}
     </div>
     <div class="w-size25">
         <!-- Button -->

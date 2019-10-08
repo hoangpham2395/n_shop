@@ -12,6 +12,8 @@ Route::post('/dang-nhap', ['as' => 'frontend.login.post', 'uses' => 'Auth\LoginC
 Route::get('/dang-xuat.html', ['as' => 'frontend.logout', 'uses' => 'Auth\LoginController@logout']);
 Route::post('/dang-ky', ['as' => 'frontend.register', 'uses' => 'Auth\LoginController@register']);
 Route::get('/tai-khoan-cua-ban.html', ['as' => 'frontend.users.profile', 'uses' => 'UsersController@profile']);
+Route::get('/thay-doi-thong-tin-ca-nhan.html', ['as' => 'frontend.users.edit_profile', 'uses' => 'UsersController@editProfile']);
+Route::post('/thay-doi-thong-tin-ca-nhan', ['as' => 'frontend.users.update_profile', 'uses' => 'UsersController@updateProfile']);
 
 // Products
 Route::get('/danh-sach-san-pham.html', ['as' => 'frontend.products.index', 'uses' => 'ProductsController@index']);

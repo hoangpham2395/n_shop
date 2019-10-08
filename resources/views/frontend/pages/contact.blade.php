@@ -32,7 +32,7 @@
 
 		<div class="row">
 			<!-- Map -->
-			<div class="col-md-6 p-b-30">
+			<div class="col-md-6 p-b-30 @if (!isMobile()) p-t-35 @endif">
 				<div class="p-r-20 p-r-0-lg">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5542.595815192275!2d106.669177699623!3d10.795445422283764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529e91126ec49%3A0x3e6cf0a86fedd590!2zNzIvNiBUcsawxqFuZyBRdeG7kWMgRHVuZywgUGjGsOG7nW5nIDEwLCBQaMO6IE5odeG6rW4sIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1565881933625!5m2!1svi!2s" frameborder="0" style="border:0; width: 100%; min-height: 503px;" allowfullscreen></iframe>
 				</div>
@@ -41,21 +41,25 @@
 			<!-- Form -->
 			<div class="col-md-6 p-b-30">
 				<form class="leave-comment">
-					<h4 class="m-text26 p-b-36 p-t-15">Nội dung liên hệ</h4>
+					<h4 class="m-text26 p-b-36 p-t-15">{{transa('content_contact')}}</h4>
 
+                    <label class="s-text7 bold">{{transm('contact.name')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
 						{!! Form::text('name', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contact.name')]) !!}
 					</div>
 
+                    <label class="s-text7 bold required">{{transm('contact.tel')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('tel', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contact.tel').' *', 'required']) !!}
+						{!! Form::text('tel', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contact.tel'), 'required']) !!}
 					</div>
 
+                    <label class="s-text7 bold">{{transm('contact.email')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
 						{!! Form::text('email', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('contact.email')]) !!}
 					</div>
 
-					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="content" placeholder="{{transm('contact.content') .' *'}}" required></textarea>
+                    <label class="s-text7 bold required">{{transm('contact.content')}}</label>
+					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="content" placeholder="{{transm('contact.content')}}" required></textarea>
 
 					<div class="w-size25">
 						<!-- Button -->

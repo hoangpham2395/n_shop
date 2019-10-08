@@ -78,5 +78,6 @@ return [
         'login_id' => 'Số điện thoại hoặc email',
         'confirm_password' => 'Xác nhận mật khẩu',
         'type_login' => 'Kiểu đăng nhập',
+        'orders' => 'Số đơn hàng',
     ],
 ];

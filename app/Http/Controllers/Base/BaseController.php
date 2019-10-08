@@ -42,19 +42,28 @@ class BaseController extends Controller
 		return $this->_alias;
 	}
 
-	public function index()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
 	{
 		$dataSearch = Input::all();
 		$entities = $this->getRepository()->getListForBackend($dataSearch);
 		return view('backend.'. $this->getAlias() .'.index', compact('entities'));
 	}
 
-	public function create()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
 	{
 		return view('backend.'. $this->getAlias() .'.create');
 	}
 
-	public function storeBase()
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeBase()
 	{
 		$data = $this->_getFormData();
 
@@ -71,7 +80,11 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['create_failed' => getMessage('create_failed')]));
 	}
 
-	public function show($id)
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     */
+    public function show($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -82,7 +95,11 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.show', compact('entity'));
 	}
 
-	public function edit($id)
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     */
+    public function edit($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -93,7 +110,11 @@ class BaseController extends Controller
 		return view('backend.'. $this->getAlias() .'.edit', compact('entity'));
 	}
 
-	public function updateBase($id)
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
+    public function updateBase($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -116,7 +137,11 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
 	}
 
-	public function destroy($id)
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
+    public function destroy($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -133,7 +158,12 @@ class BaseController extends Controller
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['delete_failed' => getMessage('delete_failed')]));
 	}
 
-	protected function _getFormData($isStore = true)
+    /**
+     * @param bool $isStore
+     * @param bool $forAdmin
+     * @return array
+     */
+    protected function _getFormData($isStore = true, $forAdmin = true)
 	{
 		$data = Input::all();
 
@@ -148,6 +178,10 @@ class BaseController extends Controller
 
 		$adminId = backendGuard()->check() ? backendGuard()->user()->id : getConstant('ADMIN_ID_DEFAULT');
 
+		if (!$forAdmin) {
+		    return $data;
+        }
+
 		if ($isStore) {
 			$data['ins_id'] = $adminId;
 		} else {
@@ -157,7 +191,10 @@ class BaseController extends Controller
 		return $data;
 	}
 
-	public function getNextInsertId()
+    /**
+     * @return int
+     */
+    public function getNextInsertId()
     {
     	try {
     		$statement = DB::select("SHOW TABLE STATUS LIKE '". $this->getRepository()->getModel()->getTable() ."'");
@@ -169,6 +206,11 @@ class BaseController extends Controller
     	}
     }
 
+    /**
+     * @param $request
+     * @param $fileField
+     * @return string|void
+     */
     protected function _uploadFile($request, $fileField)
     {
         // Check exist
@@ -192,6 +234,9 @@ class BaseController extends Controller
         }
     }
 
+    /**
+     * @param $urlFile
+     */
     protected function _deleteFile($urlFile)
     {
     	try {

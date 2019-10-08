@@ -95,18 +95,18 @@
 }
 
 .flex-center {
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     display: flex;
 }
 
 .flex-center-vertical {
-    align-items: center; 
+    align-items: center;
     display: flex;
 }
 
 .flex-center-horizontal {
-    justify-content: center; 
+    justify-content: center;
     display: flex;
 }
 
@@ -202,7 +202,7 @@
 }
 
 .btn-messenger img {
-    width: 45px; 
+    width: 45px;
     height: 45px;
 }
 
@@ -247,4 +247,13 @@
 
 .pd-newprice {
     color: #e65540;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.required::after {
+    content: ' *';
+    color: #ff0000;
 }

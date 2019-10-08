@@ -14,7 +14,7 @@
         </button>
 		<ul>
 			@foreach($errors->all() as $error)
-				<li>{{$error}}</li>
+				<li><i class="fa fa-exclamation-triangle"></i> {{$error}}</li>
 			@endforeach
 		</ul>
 	</div>
