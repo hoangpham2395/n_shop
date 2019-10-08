@@ -93,4 +93,8 @@ return [
 		'detail' => 'Thanh toán',
         'success' => 'Thành công',
 	],
+    'users' => [
+        'name' => 'Người dùng',
+        'index' => 'Danh sách người dùng',
+    ],
 ];

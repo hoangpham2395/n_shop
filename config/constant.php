@@ -7,4 +7,6 @@ return [
 	'PRODUCT_IS_NEW' => 1,
 	'PRODUCT_IS_OLD' => 0,
     'FRONTEND_LOGIN_TYPE_EMAIL' => 2,
+    'USERS_STATUS_ACTIVE' => 1,
+    'USERS_STATUS_BLOCK' => 2,
 ];

@@ -73,6 +73,12 @@
                 </ul>
             </li>
             <li class="header"></li>
+            <li class="{{getActiveSidebarClass('users')}}">
+                <a href="{{route('backend.users.index')}}">
+                    <i class="fa fa-users"></i> <span>{{transa('users.name')}}</span>
+                </a>
+            </li>
+            <li class="header"></li>
 		</ul>
 	</section>
 	<!-- /.sidebar -->

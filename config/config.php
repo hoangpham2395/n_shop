@@ -91,4 +91,8 @@ return [
         1 => 'Số điện thoại',
         2 => 'Email'
     ],
+    'users_status' => [
+        1 => 'Active',
+        2 => 'Block',
+    ],
 ];

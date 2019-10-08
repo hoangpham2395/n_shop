@@ -2,11 +2,17 @@
 namespace App\Model\Entities;
 
 use App\Model\Base\BaseAuth;
+use App\Model\Presenters\PUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class User
+ * @package App\Model\Entities
+ */
 class User extends BaseAuth
 {
     use SoftDeletes;
+    use PUser;
 
     protected $table = 'users';
     protected $primaryKey = 'id';

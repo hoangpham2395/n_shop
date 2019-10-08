@@ -5,7 +5,7 @@ var SystemController = {
 	changeToSlug: function(e) {
 	    var title, slug;
 	 
-	    //Lấy text từ thẻ input title 
+	    //Lấy text từ thẻ input title
 	    title = $(e).val();
 	 
 	    //Đổi chữ hoa thành chữ thường
@@ -34,7 +34,40 @@ var SystemController = {
 	    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
 	    //In slug ra textbox có id “slug”
 	    $('#slug').val(slug);
-	}
+	},
+    showErrorMessage: function (message) {
+        var html =
+            '<div class="alert alert-danger alert-dismissable">' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                '</button>' +
+                '<ul>' +
+                    '<li>' + message + '</li>' +
+                '</ul>' +
+            '</div>';
+
+        $('#notification_message').append(html);
+    },
+    showSuccessMessage: function (message) {
+        var html =
+            '<div class="alert alert-success alert-dismissable">' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                '</button>' +
+                '<i class="fa fa-check"></i> ' + message +
+            '</div>';
+
+        $('#notification_message').append(html);
+    },
+    clearMessage: function () {
+        $('#notification_message').html('');
+        SystemController.goToByScroll('notification_message');
+    },
+    goToByScroll: function(id) {
+        $('html,body').animate({
+            scrollTop: $("#" + id).offset().top - 50
+        }, 'slow');
+    },
 };
 
 var ProductsController = {
@@ -136,7 +169,7 @@ var ProductsController = {
         }
         // delete old data
         $(e).closest('.product_option_info').remove();
-        
+
         $('.product_option_list').find('.product_option_info').each(function(index) {
         	$(this).find('.panel_heading').empty().text(index + 1);
         });
@@ -251,9 +284,41 @@ var ProductImageController = {
         }
         // delete old data
         $(e).closest('.product_image_info').remove();
-        
+
         $('.product_image_list').find('.product_image_info').each(function(index) {
             $(this).find('.panel_heading').empty().text(index + 1);
+        });
+    }
+};
+
+var UsersController = {
+    changeStatus: function (e) {
+        var id = $(e).attr('data-id');
+        SystemController.clearMessage();
+
+        $.ajax({
+            url: $(e).attr('data-route'),
+            method: "POST",
+            data: {
+                id: id,
+                _token: $(e).attr('data-token')
+            }
+        }).done(function(response) {
+            if (!response.status) {
+                return SystemController.showErrorMessage(response.message);
+            }
+
+            var isActive = response.data.isActive;
+            if (isActive) {
+                $(e).removeClass('btn-warning').addClass('btn-success');
+                $(e).find('i.fa').removeClass('fa-lock').addClass('fa-unlock');
+            } else {
+                $(e).removeClass('btn-success').addClass('btn-warning');
+                $(e).find('i.fa').removeClass('fa-unlock').addClass('fa-lock');
+            }
+            SystemController.showSuccessMessage(response.message);
+        }).fail(function() {
+            SystemController.showErrorMessage('Đã xảy ra lỗi hệ thống!');
         });
     }
 };

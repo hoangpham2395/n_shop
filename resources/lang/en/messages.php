@@ -26,4 +26,5 @@ return [
     'order_thank' => 'Cảm ơn bạn đã đặt hàng của chúng tôi!',
     'order_failed' => 'Đặt hàng đã thất bại. Mong quý khách hãy đăng ký lại, xin chân thành cảm ơn!',
     'order_not_exist' => 'Đơn hàng không tồn tại.',
+    'user_not_exist' => 'Người dùng không tồn tại.',
 ];

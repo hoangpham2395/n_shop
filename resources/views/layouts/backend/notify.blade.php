@@ -19,3 +19,5 @@
 		</ul>
 	</div>
 @endif
+{{-- For js --}}
+<div id="notification_message"></div>
