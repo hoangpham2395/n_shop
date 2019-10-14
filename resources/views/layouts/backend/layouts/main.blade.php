@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{{env('APP_NAME')}}</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
 	<!-- Bootstrap 3.3.7 -->
 	<link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
 	<!-- Font Awesome -->
@@ -32,7 +33,7 @@
 			@yield('content')
 		</div>
 		@include('layouts.backend.layouts.footer')
-   </div>	
+   </div>
 
 	<!-- jQuery 3 -->
 	<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
