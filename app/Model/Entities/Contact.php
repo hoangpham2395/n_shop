@@ -2,6 +2,7 @@
 namespace App\Model\Entities;
 
 use App\Model\Base\Base;
+use App\Model\Presenters\PContact;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contact extends Base
 {
     use SoftDeletes;
+    use PContact;
 
     protected $table = 'contacts';
     protected $primaryKey = 'id';

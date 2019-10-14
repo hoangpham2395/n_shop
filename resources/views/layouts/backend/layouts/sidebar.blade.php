@@ -79,6 +79,12 @@
                 </a>
             </li>
             <li class="header"></li>
+            <li class="{{getActiveSidebarClass('contacts')}}">
+                <a href="{{route('backend.contacts.index')}}">
+                    <i class="fa fa-comments"></i> <span>{{transa('contacts.name')}}</span>
+                </a>
+            </li>
+            <li class="header"></li>
 		</ul>
 	</section>
 	<!-- /.sidebar -->

@@ -42,8 +42,9 @@ return [
 		'count' => 'Số lượng',
 	],
 	'contacts' => [
-	    'user_id' => 'Người liên hệ',
-		'username' => 'Họ tên của bạn',
+	    'id' => 'ID',
+	    'user_id' => 'Tài khoản',
+		'username' => 'Họ tên',
 		'email' => 'Email',
 		'tel' => 'Số điện thoại',
 		'content' => 'Nội dung',

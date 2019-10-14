@@ -97,4 +97,8 @@ return [
         'name' => 'Người dùng',
         'index' => 'Danh sách người dùng',
     ],
+    'contacts' => [
+        'name' => 'Phản hồi',
+        'index' => 'Danh sách phản hồi',
+    ],
 ];

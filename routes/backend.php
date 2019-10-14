@@ -21,4 +21,6 @@ Route::group(['middleware' => ['auth.backend']], function() {
 
     Route::resource('users', 'UsersController')->names('backend.users');
     Route::post('users/change-status', ['as' => 'backend.users.change_status', 'uses' => 'UsersController@changeStatus']);
+
+    Route::resource('contacts', 'ContactsController')->names('backend.contacts');
 });
