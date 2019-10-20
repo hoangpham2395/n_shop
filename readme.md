@@ -1,28 +1,41 @@
 #Setting project
 
+- Required
+    - Laravel 5.8
+    - PHP 7.2
+    - MySQL 5.6
+    - Composer 1.9
+
 - Clone project
 ```bash
-git clone https://github.com/hoangpham2395/n_shop.git
-cd n_shop
+git clone https://github.com/hoangpham2395/n_shop.git brownstore
+cd brownstore
 ```
 - Install
 ```bash
 composer install
 cp .env.example .env
+```
+- Set key
+```
 php artisan key:generate
+OR
+sudo vim .env
+Paste key: base64:Zkfvi9SM8Sz4O1nvgXq5Nk1c+CQ6N+HQhlbyYyLDVo8=
 ```
 - Permission
 ```bash
-chmod -R 777 public/images
-chmod -R 777 public/media
-chmod -R 777 public/tmp
+sudo chmod -R 777 bootstrap/cache
+sudo chmod -R 777 public/images
+sudo chmod -R 777 public/media
+sudo chmod -R 777 public/tmp
 ```
 
 * Open file .env and config database
 ```bash
-DB_DATABASE=homestead
-DB_USERNAME=homestead
-DB_PASSWORD=secret
+DB_DATABASE=brownstore
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 * Delete cache
@@ -42,12 +55,5 @@ composer require "laravelcollective/html":"^5.4.0"
 composer require doctrine/dbal
 ```
 
-* Run migration
-```bash
-php artisan migrate
-```
-
-* Run seeder
-```bash
-php artisan db:seed
-```
+* Database
+    - Run file database/sql/brownstore.sql
