@@ -95,12 +95,16 @@
 											<td>{{ $entity->category_slug }}</td>
 											<td>{!! $entity->getCategoryParent() !!}</td>
 											<td class="text-center">
+                                                @if ($entity->allowChange())
 												<a href="{{route('backend.categories.edit', $entity->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
-											</td>
+											    @endif
+                                            </td>
 											<td class="text-center">
+                                                @if ($entity->allowChange())
 												<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#del_confirm" data-route="{{route('backend.categories.destroy', $entity->id)}}" onclick="SystemController.delete(this);">
 													<i class="fa fa-trash"></i>
 												</button>
+                                                @endif
 											</td>
 										</tr>
 									@endforeach
