@@ -20,6 +20,7 @@
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
 			</li>
+            @if (backendGuard()->user()->isSuperAdmin())
 			<li class="header"></li>
 			<li class="treeview {{getActiveSidebarClass('admin')}}">
 				<a href="#">
@@ -33,6 +34,7 @@
 					<li class="{{getActiveSidebarClass('admin', 'create')}}"><a href="{{route('backend.admin.create')}}"><i class="fa fa-circle-o"></i> {{transa('add')}}</a></li>
 				</ul>
 			</li>
+            @endif
 			<li class="header"></li>
 			<li class="treeview {{getActiveSidebarClass('categories')}}">
 				<a href="#">
