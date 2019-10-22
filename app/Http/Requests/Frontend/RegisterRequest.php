@@ -31,7 +31,7 @@ class RegisterRequest extends FormRequest
             'confirm_password' => 'required|same:password|min:6|max:25',
         ];
 
-        $ruleLoginId = $typeLogin == getConstant('FRONTEND_LOGIN_TYPE_EMAIL') ? '|email|max:255' : '|max:12';
+        $ruleLoginId = $typeLogin == getConstant('FRONTEND_LOGIN_TYPE_EMAIL') ? '|email|max:255|unique:users,email,NULL,id,deleted_at,NULL' : '|max:12|unique:users,tel,NULL,id,deleted_at,NULL';
         $rules['login_id'] .= $ruleLoginId;
 
         return $rules;

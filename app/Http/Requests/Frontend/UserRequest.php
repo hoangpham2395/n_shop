@@ -29,16 +29,16 @@ class UserRequest extends FormRequest
     {
         $rules = [
             'username' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'tel' => 'required|max:12',
+            'email' => 'required|email|max:255|unique:users,email,NULL,id,deleted_at,NULL',
+            'tel' => 'required|max:12|unique:users,tel,NULL,id,deleted_at,NULL',
             'address' => 'nullable|max:255',
             'password' => 'required|min:6|max:25',
             'confirm_password' => 'required|same:password|min:6|max:25',
         ];
 
         if (!empty($this->request->get('id'))) {
-            $rules['email'] = 'required|email|unique:users,email,'. $this->request->get('id') .',id,deleted_at,NULL';
-            $rules['tel'] = 'required|unique:users,tel,'. $this->request->get('id') .',id,deleted_at,NULL';
+            $rules['email'] = 'required|email|max:255|unique:users,email,'. $this->request->get('id') .',id,deleted_at,NULL';
+            $rules['tel'] = 'required|max:12|unique:users,tel,'. $this->request->get('id') .',id,deleted_at,NULL';
             $rules['password'] = 'nullable|min:6|max:25';
             $rules['confirm_password'] = 'nullable|same:password|min:6|max:25';
         }

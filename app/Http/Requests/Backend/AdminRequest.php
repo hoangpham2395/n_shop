@@ -24,15 +24,15 @@ class AdminRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'email' => 'required|email|unique:admin,email,NULL,id,deleted_at,NULL',
-            'name' => 'required',
+            'email' => 'required|email|max:255|unique:admin,email,NULL,id,deleted_at,NULL',
+            'name' => 'required|max:64',
             'role_type' => 'required|in:'. getConstant('ROLE_TYPE_SUPER_ADMIN') .','. getConstant('ROLE_TYPE_ADMIN'),
             'password' => 'required|min:6|max:25',
             'confirm_password' => 'required|same:password|min:6|max:25',
         ];
 
         if (!empty($this->request->get('id'))) {
-            $rules['email'] = 'required|email|unique:admin,email,'. $this->request->get('id') .',id,deleted_at,NULL';
+            $rules['email'] = 'required|email|max:255|unique:admin,email,'. $this->request->get('id') .',id,deleted_at,NULL';
             $rules['password'] = 'nullable|min:6|max:25';
             $rules['confirm_password'] = 'nullable|same:password|min:6|max:25';
         }
@@ -40,7 +40,7 @@ class AdminRequest extends FormRequest
         return $rules;
     }
 
-    public function attributes() 
+    public function attributes()
     {
         return [
             'email' => transm('admin.email'),

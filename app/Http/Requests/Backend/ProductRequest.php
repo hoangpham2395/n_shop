@@ -24,23 +24,23 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'product_code' => 'required|unique:products,product_code,NULL,id,deleted_at,NULL',
+            'product_code' => 'required|max:10|unique:products,product_code,NULL,id,deleted_at,NULL',
             'category_id' => 'required',
-            'product_name' => 'required',
-            'product_slug' => 'required|unique:products,product_slug,NULL,id,deleted_at,NULL',
+            'product_name' => 'required|max:255',
+            'product_slug' => 'required|max:255|unique:products,product_slug,NULL,id,deleted_at,NULL',
             'price' => 'required|numeric',
             'image' => 'nullable|max:5000|mimes:jpeg,png,gif,jpg',
         ];
 
         if (!empty($this->request->get('id'))) {
-            $rules['product_code'] = 'required|unique:products,product_code,'. $this->request->get('id') .',id,deleted_at,NULL';
-            $rules['product_slug'] = 'required|unique:products,product_slug,'. $this->request->get('id') .',id,deleted_at,NULL';
+            $rules['product_code'] = 'required|max:10|unique:products,product_code,'. $this->request->get('id') .',id,deleted_at,NULL';
+            $rules['product_slug'] = 'required|max:255|unique:products,product_slug,'. $this->request->get('id') .',id,deleted_at,NULL';
         }
 
         return $rules;
     }
 
-    public function attributes() 
+    public function attributes()
     {
         return [
             'product_code' => transm('products.product_code'),
