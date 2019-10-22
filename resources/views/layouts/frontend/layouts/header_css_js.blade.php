@@ -1,4 +1,4 @@
-<link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
+<link rel="icon" type="image/png" href="{{asset('images/common/new_logo.jpg')}}"/>
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/frontend/bootstrap/css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/frontend/themify/themify-icons.css')}}">

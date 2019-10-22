@@ -9,15 +9,6 @@
 <script type="text/javascript" src="{{asset('vendor/frontend/countdowntime/countdowntime.js')}}"></script>
 <script type="text/javascript" src="{{asset('vendor/frontend/lightbox2/js/lightbox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('vendor/frontend/sweetalert/sweetalert.min.js')}}"></script>
-<script type="text/javascript">
-
-	$('.block2-btn-addwishlist').each(function(){
-		var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-		$(this).on('click', function(){
-			swal(nameProduct, "is added to wishlist !", "success");
-		});
-	});
-</script>
 
 <!--===============================================================================================-->
 <script type="text/javascript" src="{{asset('vendor/frontend/parallax100/parallax100.js')}}"></script>

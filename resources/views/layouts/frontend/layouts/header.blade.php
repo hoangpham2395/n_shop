@@ -18,10 +18,10 @@
 			</div>
 		</div>
 
-		<div class="wrap_header">
+		<div class="wrap_header bg-nuong">
 			<!-- Logo -->
 			<a href="{{route('frontend.home.index')}}" class="logo">
-				<img src="{{asset('images/common/logo_small.png')}}" alt="IMG-LOGO">
+				<span class="text-app-name">{{env('FRONTEND_APP_NAME')}}</span>
 			</a>
 
 			<!-- Menu -->

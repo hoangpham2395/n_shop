@@ -1,3 +1,19 @@
+.bg-nuong {
+    background-color: #ecad0a;
+}
+
+.text-app-name {
+    font-size: 25px;
+    color: #333;
+    font-weight: bold;
+}
+
+.text-app-name-mobile {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
 .border-top {
     border-top: 1px solid #e6e6e6;
 }
@@ -51,6 +67,25 @@
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
     bottom: -45px;
+}
+
+.block2-btn-addwishlist {
+    display: block;
+    position: absolute;
+    top: 40%;
+    right: 36%;
+    font-size: 71px;
+    color: #fff;
+    line-height: 0;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+}
+
+.block2-btn-addwishlist i:hover {
+    color: #ecad0a;
 }
 
 /* Pagination */
@@ -256,4 +291,13 @@
 .required::after {
     content: ' *';
     color: #ff0000;
+}
+
+.price-sale {
+    color: #e65540;
+}
+
+/* Custom footer */
+footer a:hover {
+    color: #fff;
 }
