@@ -3,29 +3,29 @@ namespace App\Model\Presenters;
 
 use Carbon\Carbon;
 
-trait PProduct 
+trait PProduct
 {
-	public function getCategory() 
+	public function getCategory()
 	{
 		return $this->category->category_name;
 	}
 
-	public function getCategoryName() 
+	public function getCategoryName()
 	{
 		return !empty($this->category) ? $this->category->category_name : '';
 	}
 
-	public function getCategorySlug() 
+	public function getCategorySlug()
 	{
 		return !empty($this->category) ? $this->category->category_slug : '';
 	}
 
-	public function isNew() 
+	public function isNew()
 	{
 		return $this->is_new == getConstant('PRODUCT_IS_NEW', 1);
 	}
 
-	public function getTextIsNew() 
+	public function getTextIsNew()
 	{
 		$config = $this->isNew() ? 'yes' : 'no';
 		return getConfig($config);
@@ -41,13 +41,13 @@ trait PProduct
 		return formatMoney($this->price);
 	}
 
-	public function getFinalPrice() 
+	public function getFinalPrice()
 	{
 		$price = $this->isSale() ? $this->price_sale : $this->price;
 		return formatMoney($price);
 	}
 
-	public function getPriceSale() 
+	public function getPriceSale()
 	{
 		return formatMoney($this->price_sale);
 	}
@@ -66,7 +66,7 @@ trait PProduct
 		return $class;
 	}
 
-	public function getClassNewOrSaleForFrontend() 
+	public function getClassNewOrSaleForFrontend()
 	{
 		$class = '';
 		if ($this->isNew()) {
@@ -80,12 +80,12 @@ trait PProduct
 		return $class;
 	}
 
-	public function getUrlImage() 
+	public function getUrlImage()
 	{
 		return (!$this->image || !file_exists(public_path($this->image))) ? getConfig('url_no_image') : asset($this->image);
 	}
 
-	public function getListImages() 
+	public function getListImages()
 	{
 		$r = [$this->getUrlImage()];
 
@@ -97,13 +97,13 @@ trait PProduct
 	}
 
 	// Old code
-	public function getClassNew() 
+	public function getClassNew()
 	{
 		$date = Carbon::now()->subDays(7); // 7 days ago
 		return ($this->created_at->gt($date) || $this->updated_at->gt($date)) ? 'block2-labelnew' : '';
 	}
 
-	public function getProductOptions() 
+	public function getProductOptions()
 	{
 		$options = $this->productOptions;
 		if (empty($options)) {
@@ -123,7 +123,7 @@ trait PProduct
 		return $r;
 	}
 
-	public function getOptions() 
+	public function getOptions()
 	{
 		$options = $this->productOptions;
 		if (empty($options)) {
@@ -133,16 +133,21 @@ trait PProduct
 		$sizes = []; $colors = [];
 
 		foreach($options as $option) {
-			$sizes[$option->size][$option->id] = [
-				'id' => $option->id,
-				'color' => $option->color,
-				'count' => $option->count,
-			];
-			$colors[$option->color][$option->id] = [
-				'id' => $option->id,
-				'size' => $option->size,
-				'count' => $option->count,
-			];
+		    if (!empty($option->size)) {
+                $sizes[$option->size][$option->id] = [
+                    'id' => $option->id,
+                    'color' => $option->color,
+                    'count' => $option->count,
+                ];
+            }
+
+		    if ($option->color) {
+                $colors[$option->color][$option->id] = [
+                    'id' => $option->id,
+                    'size' => $option->size,
+                    'count' => $option->count,
+                ];
+            }
 		}
 
 		return [

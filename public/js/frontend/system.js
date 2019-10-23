@@ -55,3 +55,19 @@ function formatMoney(amount, decimalCount = 0, decimal = ",", thousands = ".") {
 	console.log(e)
 	}
 }
+
+function validateCount(e) {
+    var count = $(e).val();
+    if (!isNormalInteger(count)) {
+        $(e).val(1);
+    } else if (parseInt(count) < 1) {
+        $(e).val(1);
+    } else if (count > 100) {
+        $(e).val(100);
+    }
+}
+
+function isNormalInteger(str) {
+    var n = Math.floor(Number(str));
+    return n !== Infinity && String(n) === str && n >= 0;
+}

@@ -27,8 +27,9 @@
 	<div class="flex-w flex-sb" id="product_detail" data-id="{{$product->id}}">
 		<div class="w-size13 p-t-30 respon5">
 			<div class="wrap-slick3 flex-sb flex-w">
-				<div class="wrap-slick3-dots"></div>
-
+                @if (!isMobile())
+				    <div class="wrap-slick3-dots"></div>
+                @endif
 				<div class="slick3">
 					@foreach ($product->getListImages() as $productImage)
 						<div class="item-slick3" data-thumb="{{$productImage}}">
@@ -38,6 +39,9 @@
 						</div>
 					@endforeach
 				</div>
+                @if (isMobile())
+                    <div class="wrap-slick3-dots"></div>
+                @endif
 			</div>
 		</div>
 
@@ -197,6 +201,9 @@
 		minimumResultsForSearch: 20,
 		dropdownParent: $('#dropDownSelectColor')
 	});
+	$('input.num-product').on('change', function (e) {
+        return validateCount(this);
+    });
 </script>
 <script type="text/javascript">
 	function addToCart(e) {

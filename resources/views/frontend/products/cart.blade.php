@@ -126,6 +126,7 @@ $totalPrice = 0;
 @push('scripts')
 <script>
 	$('table.table-shopping-cart').find('tr.table-row').each(function() {
+	    // Remove item
 		$(this).find('a.cart-remove-item').on('click', function(e) {
 			e.preventDefault();
 			var product = $(this).closest('tr.table-row');
@@ -176,6 +177,11 @@ $totalPrice = 0;
 				swal("{{getMessage('system_error')}}", "", "error");
 			});
 		});
+
+		// Validate count
+		$(this).find('input.num-product').on('change', function (e) {
+            return validateCount(this);
+        });
 	});
 </script>
 <script type="text/javascript">

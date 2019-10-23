@@ -29,22 +29,27 @@ $totalPrice = 0;
 				<div class="col-md-6 p-b-30">
 					<h4 class="m-text26 p-b-36 p-t-15">{{transa('payment_info')}}</h4>
 
+                    <label class="s-text7 bold required">{{transm('orders.user_name')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('user_name', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_name').' *', 'required']) !!}
+						{!! Form::text('user_name', frontendGuard()->check() ? frontendGuard()->user()->username : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_name').' *', 'required']) !!}
 					</div>
 
+                    <label class="s-text7 bold required">{{transm('orders.user_tel')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('user_tel', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_tel').' *', 'required']) !!}
+						{!! Form::text('user_tel', frontendGuard()->check() ? frontendGuard()->user()->tel : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_tel'), 'required']) !!}
 					</div>
 
+                    <label class="s-text7 bold">{{transm('orders.user_email')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('user_email', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_email')]) !!}
+						{!! Form::text('user_email', frontendGuard()->check() ? frontendGuard()->user()->email : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_email')]) !!}
 					</div>
 
+                    <label class="s-text7 bold required">{{transm('orders.user_address')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('user_address', null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_address').' *', 'required']) !!}
+						{!! Form::text('user_address', frontendGuard()->check() ? frontendGuard()->user()->address : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_address'), 'required']) !!}
 					</div>
 
+                    <label class="s-text7 bold required">{{transm('orders.user_note')}}</label>
 					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="user_note" placeholder="{{transm('orders.user_note')}}"></textarea>
 				</div>
 
@@ -82,8 +87,8 @@ $totalPrice = 0;
 
 					<!-- Order  -->
 					<div class="flex-w flex-sb-m p-t-26 p-b-30">
-						<span class="m-text22 w-size20 w-full-sm">Tổng giá</span>
-						<span class="m-text22 w-size19 w-full-sm red">{{formatMoney($totalPrice).$moneyUnit}}</span>
+						<span class="m-text22 w-size20 w-full-sm" style="width: 45%;">Tổng giá</span>
+						<span class="m-text22 w-size19 w-full-sm red" style="width: 55%; text-align: right;">{{formatMoney($totalPrice).$moneyUnit}}</span>
 						<p class="s-text8 p-t-5">({{getMessage('ship_note')}})</p>
 					</div>
 
