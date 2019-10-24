@@ -82,7 +82,7 @@ class ProductRepository extends BaseRepository
 	public function getListIsSelling()
     {
         return $this->getModel()
-            ->where('is_selling', '=', getConstant('PRODUCT_IS_SELLING', 1))
+            ->orderBy('is_selling', 'DESC')
             ->orderBy('id', 'DESC')->limit(8)->get();
     }
 
