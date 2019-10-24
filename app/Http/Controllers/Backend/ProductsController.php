@@ -10,27 +10,31 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Input;
 
-class ProductsController extends BaseController 
+/**
+ * Class ProductsController
+ * @package App\Http\Controllers\Backend
+ */
+class ProductsController extends BaseController
 {
 	protected $_categoryRepository;
 	protected $_productOptionRepository;
 
-	public function setCategoryRepository($categoryRepository) 
+	public function setCategoryRepository($categoryRepository)
 	{
 		$this->_categoryRepository = $categoryRepository;
 	}
 
-	public function getCategoryRepository() 
+	public function getCategoryRepository()
 	{
 		return $this->_categoryRepository;
 	}
 
-	public function setProductOptionRepository($productOptionRepository) 
+	public function setProductOptionRepository($productOptionRepository)
 	{
 		$this->_productOptionRepository = $productOptionRepository;
 	}
 
-	public function getProductOptionRepository() 
+	public function getProductOptionRepository()
 	{
 		return $this->_productOptionRepository;
 	}
@@ -46,7 +50,7 @@ class ProductsController extends BaseController
 		parent::__construct();
 	}
 
-	public function index() 
+	public function index()
 	{
 		$dataSearch = Input::all();
 		$entities = $this->getRepository()->getListForBackend($dataSearch);
@@ -54,13 +58,13 @@ class ProductsController extends BaseController
 		return view('backend.'. $this->getAlias() .'.index', compact('entities', 'categories'));
 	}
 
-	public function create() 
+	public function create()
 	{
 		$categories = $this->getCategoryRepository()->getListForDropDown('category_name');
 		return view('backend.'. $this->getAlias() .'.create', compact('categories'));
 	}
 
-	public function store(ProductRequest $request) 
+	public function store(ProductRequest $request)
 	{
 		$data = $this->_getFormData();
 		$nextId = $this->getNextInsertId();
@@ -88,14 +92,13 @@ class ProductsController extends BaseController
 			DB::commit();
 			return redirect()->route('backend.'. $this->getAlias() .'.show', $nextId)->with(['success' => getMessage('create_success')]);
 		} catch (\Exception $e) {
-			dd($e);
 			logError($e);
 			DB::rollBack();
 		}
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['create_failed' => getMessage('create_failed')]));
 	}
 
-	public function edit($id) 
+	public function edit($id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -107,7 +110,7 @@ class ProductsController extends BaseController
 		return view('backend.'. $this->getAlias() .'.edit', compact('entity', 'categories'));
 	}
 
-	public function update(ProductRequest $request, $id) 
+	public function update(ProductRequest $request, $id)
 	{
 		$entity = $this->getRepository()->findById($id);
 
@@ -154,7 +157,6 @@ class ProductsController extends BaseController
 			DB::commit();
 			return redirect()->route('backend.'. $this->getAlias() .'.show', $id)->with(['success' => getMessage('update_success')]);
 		} catch (\Exception $e) {
-			dd($e);
 			logError($e);
 			DB::rollBack();
 		}
