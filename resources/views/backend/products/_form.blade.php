@@ -69,12 +69,18 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-6">
 		<div class="form-group">
 			{!! Form::checkbox('is_new', getConstant('PRODUCT_IS_NEW', 1), null, ['id' => 'product_is_new']) !!}
 			<label for="product_is_new" class="margin-left pointer">{{transm('products.is_new')}}</label>
 		</div>
 	</div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            {!! Form::checkbox('is_selling', getConstant('PRODUCT_IS_SELLING', 1), null, ['id' => 'product_is_selling']) !!}
+            <label for="product_is_selling" class="margin-left pointer">{{transm('products.is_selling')}}</label>
+        </div>
+    </div>
 </div>
 <div class="row">
 	<div class="col-sm-12">

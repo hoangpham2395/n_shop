@@ -67,6 +67,20 @@
 								</div>
 							</div>
 						</div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!! Form::checkbox('is_selling', getConstant('PRODUCT_IS_SELLING', 1), Request::get('is_selling'), ['id' => 'product_is_selling']) !!}
+                                    <label for="product_is_selling" class="margin-left pointer">{{transm('products.is_selling')}}</label>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    {!! Form::checkbox('is_new', getConstant('PRODUCT_IS_NEW', 1), Request::get('is_new'), ['id' => 'product_is_new']) !!}
+                                    <label for="product_is_new" class="margin-left pointer">{{transm('products.is_new')}}</label>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    {!! Form::checkbox('is_sale', getConstant('PRODUCT_IS_SALE', 1), Request::get('is_sale'), ['id' => 'product_is_sale']) !!}
+                                    <label for="product_is_sale" class="margin-left pointer">{{transm('products.is_sale')}}</label>
+                                </div>
+                            </div>
+                        </div>
 						<div class="row">
 							<div class="col-sm-12 text-center">
 								<button type="submit" class="btn btn-danger margin-right"><i class="fa fa-search"></i> {{transa('search')}}</button>

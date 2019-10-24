@@ -4,14 +4,18 @@ namespace App\Repositories;
 use App\Repositories\Base\BaseRepository;
 use App\Model\Entities\Product;
 
-class ProductRepository extends BaseRepository 
+/**
+ * Class ProductRepository
+ * @package App\Repositories
+ */
+class ProductRepository extends BaseRepository
 {
-	public function model() 
+	public function model()
 	{
 		return Product::class;
 	}
 
-	public function getListForBackend($params = []) 
+	public function getListForBackend($params = [])
 	{
 		if (!empty($params['page'])) {
 			unset($params['page']);
@@ -33,6 +37,21 @@ class ProductRepository extends BaseRepository
 			}
 			unset($params['max_price']);
 
+			if (!empty($params['is_selling'])) {
+                $q = $q->where('is_selling', $params['is_selling']);
+            }
+            unset($params['is_selling']);
+
+            if (!empty($params['is_new'])) {
+                $q = $q->where('is_new', $params['is_new']);
+            }
+            unset($params['is_new']);
+
+            if (!empty($params['is_sale'])) {
+                $q = $q->where('price_sale', '!=', null);
+            }
+            unset($params['is_sale']);
+
 			foreach ($params as $field => $value) {
 				$q = $q->where($field, 'LIKE', '%'.$value.'%');
 			}
@@ -41,26 +60,33 @@ class ProductRepository extends BaseRepository
 		->paginate(getConfig('paginate.backend.default', 20));
 	}
 
-	public function getListForHome() 
+	public function getListForHome()
 	{
 		return $this->getModel()->orderBy('id', 'DESC')->limit(8)->get();
 	}
 
-	public function getListNewForHome() 
+	public function getListNewForHome()
 	{
 		return $this->getModel()
 			->where('is_new', '=', getConstant('PRODUCT_IS_NEW', 1))
 			->orderBy('id', 'DESC')->limit(8)->get();
 	}
 
-	public function getListSaleForHome() 
+	public function getListSaleForHome()
 	{
 		return $this->getModel()
 		->where('price_sale', '!=', null)
 		->orderBy('id', 'DESC')->limit(8)->get();
 	}
 
-	public function findBySlug($productSlug) 
+	public function getListIsSelling()
+    {
+        return $this->getModel()
+            ->where('is_selling', '=', getConstant('PRODUCT_IS_SELLING', 1))
+            ->orderBy('id', 'DESC')->limit(8)->get();
+    }
+
+	public function findBySlug($productSlug)
 	{
 		return $this->getModel()->where('product_slug', '=', $productSlug)->first();
 	}
@@ -96,12 +122,12 @@ class ProductRepository extends BaseRepository
 			case 4:
 				$sortField = 'price'; $sortType = 'DESC';
 				break;
-			
+
 			default:
 				$sortField = 'id'; $sortType = 'DESC';
 				break;
 		}
-		
+
 		return $this->getModel()
 		->where(function($q) use($params) {
 			if (!empty($params['product_code'])) {
@@ -124,12 +150,12 @@ class ProductRepository extends BaseRepository
 		->orderBy($sortField, $sortType);
 	}
 
-	public function getListForFrontend($params = []) 
+	public function getListForFrontend($params = [])
 	{
 		return $this->queryGetList($params)->paginate(getConfig('paginate.frontend.default', 12));
 	}
 
-	public function getListByCategory($categoryIds = [], $params = []) 
+	public function getListByCategory($categoryIds = [], $params = [])
 	{
 		return $this->queryGetList($params)
 		->where(function ($q) use ($categoryIds) {
@@ -140,14 +166,14 @@ class ProductRepository extends BaseRepository
 		->paginate(getConfig('paginate.frontend.default', 12));
 	}
 
-	public function getListNewForFrontend($params = []) 
+	public function getListNewForFrontend($params = [])
 	{
 		return $this->queryGetList($params)
 			->where('is_new', '=', getConstant('PRODUCT_IS_NEW', 1))
 			->paginate(getConfig('paginate.frontend.default', 12));
 	}
 
-	public function getListSaleForFrontend($params = []) 
+	public function getListSaleForFrontend($params = [])
 	{
 		return $this->queryGetList($params)
 			->where('price_sale', '!=', null)

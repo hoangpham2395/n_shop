@@ -3,6 +3,10 @@ namespace App\Model\Presenters;
 
 use Carbon\Carbon;
 
+/**
+ * Trait PProduct
+ * @package App\Model\Presenters
+ */
 trait PProduct
 {
 	public function getCategory()
@@ -28,8 +32,21 @@ trait PProduct
 	public function getTextIsNew()
 	{
 		$config = $this->isNew() ? 'yes' : 'no';
-		return getConfig($config);
+		$color = $this->isNew() ? '#00a65a' : '#333';
+		return '<span style="color: ' . $color . ';">' . getConfig($config) . '</span>';
 	}
+
+    public function isSelling()
+    {
+        return $this->is_selling == getConstant('PRODUCT_IS_SELLING', 1);
+    }
+
+    public function getTextIsSelling()
+    {
+        $config = $this->isSelling() ? 'yes' : 'no';
+        $color = $this->isSelling() ? '#00a65a' : '#333';
+        return '<span style="color: ' . $color . ';">' . getConfig($config) . '</span>';
+    }
 
 	public function isSale()
 	{
@@ -49,7 +66,12 @@ trait PProduct
 
 	public function getPriceSale()
 	{
-		return formatMoney($this->price_sale);
+		return !empty($this->price_sale) ? formatMoney($this->price_sale) : '';
+	}
+
+	public function getTextPriceSale()
+	{
+		return '<span class="red">' . $this->getPriceSale() . '</span>';
 	}
 
 	public function getClassIsNewOrSale()

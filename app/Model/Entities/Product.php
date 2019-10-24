@@ -5,26 +5,30 @@ use App\Model\Base\Base;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Presenters\PProduct;
 
-class Product extends Base 
+/**
+ * Class Product
+ * @package App\Model\Entities
+ */
+class Product extends Base
 {
 	use SoftDeletes;
 	use PProduct;
 
 	protected $table = 'products';
 	protected $primaryKey = 'id';
-	protected $fillable = ['category_id', 'product_code', 'product_name', 'product_slug', 'made_in', 'material', 'price', 'image','content', 'is_new', 'sale', 'price_sale', 'ins_id', 'upd_id'];
+	protected $fillable = ['category_id', 'product_code', 'product_name', 'product_slug', 'made_in', 'material', 'price', 'image','content', 'is_new', 'is_selling', 'sale', 'price_sale', 'ins_id', 'upd_id'];
 
-	public function category() 
+	public function category()
 	{
 		return $this->belongsTo(Category::class, 'category_id', 'id');
 	}
 
-	public function productOptions() 
+	public function productOptions()
 	{
 		return $this->hasMany(ProductOption::class, 'product_id', 'id');
 	}
 
-	public function productImages() 
+	public function productImages()
 	{
 		return $this->hasMany(ProductImage::class, 'product_id', 'id');
 	}

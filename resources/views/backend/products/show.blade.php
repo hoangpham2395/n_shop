@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			@include('layouts.backend.notify')
-			
+
 			<div class="box box-danger">
 				<div class="box-header">
 					<h3 class="box-title">{{transa('products.show')}}</h3>
@@ -30,7 +30,7 @@
 							<div class="clearfix">
 				                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
 				                	@foreach ($entity->getListImages() as $urlImage)
-					                	<li data-thumb="{{asset($urlImage)}}"> 
+					                	<li data-thumb="{{asset($urlImage)}}">
 					                		<img src="{{asset($urlImage)}}" width="100%" />
 					                	</li>
 				                	@endforeach
@@ -70,8 +70,12 @@
 									</tr>
 									<tr>
 										<td>{{transm('products.is_new')}}</td>
-										<td>{{$entity->getTextIsNew()}}</td>
+										<td>{!! $entity->getTextIsNew() !!}</td>
 									</tr>
+                                    <tr>
+                                        <td>{{transm('products.is_selling')}}</td>
+                                        <td>{!! $entity->getTextIsSelling() !!}</td>
+                                    </tr>
 									<tr>
 										<td>{{transm('products.made_in')}}</td>
 										<td>{{$entity->made_in}}</td>
@@ -82,7 +86,7 @@
 									</tr>
 									<tr>
 										<td>{{transm('products.price_sale')}}</td>
-										<td>{{$entity->price_sale}}</td>
+										<td>{!! $entity->getTextPriceSale() !!}</td>
 									</tr>
 									<tr>
 										<td>{{transm('products.sale')}}</td>
@@ -93,8 +97,8 @@
 										<tr>
 											<td>{{transa('option') .' '. ($key + 1)}}</td>
 											<td>
-												{{transm('product_option.size') .': '. array_get($option, 'size') .', '. 
-												transm('product_option.color') .': '. array_get($option, 'color') .', '. 
+												{{transm('product_option.size') .': '. array_get($option, 'size') .', '.
+												transm('product_option.color') .': '. array_get($option, 'color') .', '.
 												transm('product_option.count') .': '. array_get($option, 'count')}}
 											</td>
 										</tr>
@@ -109,10 +113,10 @@
 							<button class="btn btn-danger" data-toggle="modal" data-target="#del_confirm" data-route="{{route('backend.products.destroy', $entity->id)}}" onclick="SystemController.delete(this);">
 								<i class="fa fa-trash"></i> {{transa('delete')}}
 							</button> &nbsp;
-							<a href="{{route('backend.products.index')}}" class="btn btn-default"><i class="fa fa-share"></i> {{transa('back')}}</a>						
+							<a href="{{route('backend.products.index')}}" class="btn btn-default"><i class="fa fa-share"></i> {{transa('back')}}</a>
 						</div>
 					</div>
-					
+
 				</div>
 				<!-- /.box-body -->
 			</div>
@@ -147,7 +151,7 @@
 			loop:true,
 			onSliderLoad: function() {
 				$('#image-gallery').removeClass('cS-hidden');
-			}  
+			}
 		});
 	});
 </script>
