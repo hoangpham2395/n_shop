@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
+
 if (!function_exists('getConfig')) {
 	 /**
      * @param $key
@@ -78,7 +80,14 @@ if (!function_exists('logError')) {
      */
     function logError($msg)
     {
-        dd($msg);
+        try {
+            Log::error($msg);
+            if (env('APP_DEBUG')) {
+                dd($msg);
+            }
+        } catch (Exception $e) {
+
+        }
     }
 }
 
