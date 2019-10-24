@@ -28,10 +28,11 @@ $totalPrice = 0;
 				<!-- Payment -->
 				<div class="col-md-6 p-b-30">
 					<h4 class="m-text26 p-b-36 p-t-15">{{transa('payment_info')}}</h4>
+                    @include('layouts.frontend.notify')
 
                     <label class="s-text7 bold required">{{transm('orders.user_name')}}</label>
 					<div class="bo4 of-hidden size15 m-b-20">
-						{!! Form::text('user_name', frontendGuard()->check() ? frontendGuard()->user()->username : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_name').' *', 'required']) !!}
+						{!! Form::text('user_name', frontendGuard()->check() ? frontendGuard()->user()->username : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_name'), 'required']) !!}
 					</div>
 
                     <label class="s-text7 bold required">{{transm('orders.user_tel')}}</label>
@@ -49,7 +50,7 @@ $totalPrice = 0;
 						{!! Form::text('user_address', frontendGuard()->check() ? frontendGuard()->user()->address : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_address'), 'required']) !!}
 					</div>
 
-                    <label class="s-text7 bold required">{{transm('orders.user_note')}}</label>
+                    <label class="s-text7 bold">{{transm('orders.user_note')}}</label>
 					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="user_note" placeholder="{{transm('orders.user_note')}}"></textarea>
 				</div>
 

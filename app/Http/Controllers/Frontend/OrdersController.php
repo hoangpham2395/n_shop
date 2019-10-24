@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Base\BaseController;
+use App\Http\Requests\Frontend\OrderRequest;
 use App\Repositories\OrderDetailRepository;
 use App\Repositories\OrderRepository;
 use Illuminate\Support\Facades\DB;
@@ -47,7 +48,7 @@ class OrdersController extends BaseController
         return view('frontend.orders.payment', compact('productsCart'));
     }
 
-    public function postPayment()
+    public function postPayment(OrderRequest $orderRequest)
     {
         $productsCart = Session::has('products_cart') ? Session::get('products_cart') : [];
         if (empty($productsCart)) {
