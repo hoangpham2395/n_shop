@@ -2,8 +2,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
+use App\Http\Requests\Backend\OrderRequest;
 use App\Repositories\OrderRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\MessageBag;
 
 /**
  * Class OrdersController
@@ -86,5 +89,30 @@ class OrdersController extends BaseController
                 'message' => getMessage('system_error'),
             ]);
         }
+    }
+
+    /**
+     * @param OrderRequest $orderRequest
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
+    public function update(OrderRequest $orderRequest, $id)
+    {
+        $entity = $this->getRepository()->findById($id);
+        if (empty($entity)) {
+            return abort('404');
+        }
+
+        DB::beginTransaction();
+        try {
+            $data = $this->_getFormData(false, false);
+            $this->getRepository()->update($id, $data);
+            DB::commit();
+            return redirect()->route('backend.'. $this->getAlias() .'.index')->with(['success' => getMessage('update_success')]);
+        } catch (\Exception $e) {
+            logError($e);
+            DB::rollBack();
+        }
+        return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['update_failed' => getMessage('update_failed')]));
     }
 }

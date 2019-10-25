@@ -59,6 +59,7 @@ return [
 		'user_tel' => 'Số điện thoại',
 		'user_email' => 'Email',
 		'user_address' => 'Địa chỉ',
+        'payment_method' => 'Hình thức',
 		'user_note' => 'Ghi chú',
 		'total_price' => 'Tiền hóa đơn',
         'created_at' => 'Ngày đặt',

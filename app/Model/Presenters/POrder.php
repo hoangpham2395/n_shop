@@ -14,4 +14,9 @@ trait POrder
         $text = getConfig('order_status_text.' . $status);
         return '<span style="color: ' . $color . '">' . $text . '</span>';
     }
+
+    public function getPaymentMethod()
+    {
+        return getConfig('payment_method.' . $this->payment_method);
+    }
 }

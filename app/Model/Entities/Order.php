@@ -13,7 +13,7 @@ class Order extends Base
     use POrder;
     protected $table = 'orders';
     protected $primaryKey = 'id';
-    protected $fillable = ['status', 'user_id', 'user_name', 'user_tel', 'user_email', 'user_address', 'user_note', 'total_price'];
+    protected $fillable = ['status', 'user_id', 'user_name', 'user_tel', 'user_email', 'user_address', 'user_note', 'total_price', 'payment_method'];
 
     public function orderDetail()
     {

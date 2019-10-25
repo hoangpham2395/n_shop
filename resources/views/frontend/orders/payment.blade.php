@@ -50,6 +50,14 @@ $totalPrice = 0;
 						{!! Form::text('user_address', frontendGuard()->check() ? frontendGuard()->user()->address : null, ['class' => 'sizefull s-text7 p-l-22 p-r-22', 'placeholder' => transm('orders.user_address'), 'required']) !!}
 					</div>
 
+                    <label class="s-text7 bold required">{{transm('orders.payment_method')}}</label>
+                    <div class="of-hidden size15 m-b-20">
+                        @foreach (getConfig('payment_method') as $paymentMethod => $textPaymentMethod)
+                            {!! Form::radio('payment_method', (string) $paymentMethod, (string) getConstant('PAYMENT_METHOD_DEFAULT'), ['id' => 'payment_method_' . $paymentMethod]) !!} &nbsp;
+                            <label class="pointer" for="payment_method_{{$paymentMethod}}">{{$textPaymentMethod}}</label> &nbsp; &nbsp; &nbsp;
+                        @endforeach
+                    </div>
+
                     <label class="s-text7 bold">{{transm('orders.user_note')}}</label>
 					<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="user_note" placeholder="{{transm('orders.user_note')}}"></textarea>
 				</div>

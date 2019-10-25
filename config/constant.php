@@ -11,4 +11,5 @@ return [
     'FRONTEND_LOGIN_TYPE_EMAIL' => 2,
     'USERS_STATUS_ACTIVE' => 1,
     'USERS_STATUS_BLOCK' => 2,
+    'PAYMENT_METHOD_DEFAULT' => 1,
 ];

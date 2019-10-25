@@ -57,6 +57,10 @@
                                         <td>{{$entity->user_address}}</td>
                                     </tr>
                                     <tr>
+                                        <td>{{transm('orders.payment_method')}}</td>
+                                        <td>{!! $entity->getPaymentMethod() !!}</td>
+                                    </tr>
+                                    <tr>
                                         <td>{{transm('orders.created_at')}}</td>
                                         <td>{{date('Y/m/d H:i', strtotime($entity->created_at))}}</td>
                                     </tr>

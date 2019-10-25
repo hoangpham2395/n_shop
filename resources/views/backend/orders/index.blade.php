@@ -104,6 +104,7 @@
                                         <th>{{transm('orders.user_name')}}</th>
                                         <th>{{transm('orders.user_email')}}</th>
                                         <th>{{transm('orders.user_tel')}}</th>
+                                        <th>{{transm('orders.payment_method')}}</th>
                                         <th>{{transm('orders.user_address')}}</th>
                                         <th class="text-center">{{transa('detail')}}</th>
                                         <th class="text-center">{{transa('edit')}}</th>
@@ -117,6 +118,7 @@
                                             <td>{{ $entity->user_name }}</td>
                                             <td>{!! $entity->user_email !!}</td>
                                             <td>{!! $entity->user_tel !!}</td>
+                                            <td>{!! $entity->getPaymentMethod() !!}</td>
                                             <td>{!! $entity->user_address !!}</td>
                                             <td class="text-center">
                                                 <a href="{{route('backend.orders.show', $entity->id)}}" class="btn btn-sm btn-default"><i class="fa fa-info"></i></a>

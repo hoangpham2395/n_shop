@@ -95,4 +95,8 @@ return [
         1 => 'Active',
         2 => 'Block',
     ],
+    'payment_method' => [
+        1 => 'Thanh toán khi nhận hàng',
+        2 => 'Chuyển khoản',
+    ],
 ];

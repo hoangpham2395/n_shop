@@ -24,11 +24,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        {!! Form::model($entity, ['route' => ['backend.admin.update', $entity->id], 'method' => 'PATCH']) !!}
+                        {!! Form::model($entity, ['route' => ['backend.orders.update', $entity->id], 'method' => 'PATCH']) !!}
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>{{transm('orders.user_name')}}</label>
+                                        <label class="required">{{transm('orders.user_name')}}</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                             {!! Form::text('user_name', null, ['class' => 'form-control', 'placeholder' => transm('orders.user_name')]) !!}
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>{{transm('orders.status')}}</label>
+                                        <label class="required">{{transm('orders.status')}}</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                                             {!! Form::select('status', getConfig('order_status_text'), null, ['class' => 'form-control', 'placeholder' => getConfig('')]) !!}
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>{{transm('orders.user_tel')}}</label>
+                                        <label class="required">{{transm('orders.user_tel')}}</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                                             {!! Form::text('user_tel', null, ['class' => 'form-control', 'placeholder' => transm('orders.user_tel')]) !!}
@@ -66,12 +66,23 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>{{transm('orders.user_address')}}</label>
+                                        <label class="required">{{transm('orders.user_address')}}</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                                            {!! Form::text('user_tel', null, ['class' => 'form-control', 'placeholder' => transm('orders.user_address')]) !!}
+                                            {!! Form::text('user_address', null, ['class' => 'form-control', 'placeholder' => transm('orders.user_address')]) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="required">{{transm('orders.payment_method')}}</label>
+                                        <div class="input-group">
+                                            @foreach (getConfig('payment_method') as $paymentMethod => $textPaymentMethod)
+                                                {!! Form::radio('payment_method', (string) $paymentMethod, null, ['id' => 'payment_method_' . $paymentMethod]) !!} &nbsp;
+                                                <label class="pointer" for="payment_method_{{$paymentMethod}}">{{$textPaymentMethod}}</label> &nbsp; &nbsp; &nbsp;
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
