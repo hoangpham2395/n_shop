@@ -45,7 +45,9 @@
                 </div>
             </div>
 
-			@include('layouts.frontend.facebook.fb_group')
+            <div class="text-center @if (isMobile()) p-t-30 @endif">
+                @include('layouts.frontend.facebook.fb_group')
+            </div>
 		</div>
 	</div>
 
