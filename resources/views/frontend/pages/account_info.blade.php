@@ -14,7 +14,18 @@
 
 <section class="bgwhite p-t-30 p-b-60">
     <div class="container">
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="p-b-30">
+                    <h2 class="p-b-15">Thông tin tài khoản ngân hàng</h2>
+                    <p class="text-justify color-nuong">
+                        Khi quý khách chọn phương thức thanh toán chuyển khoản thì sử dụng cú pháp sau: <br>
+                        <strong>&lt;Họ tên&gt;, &lt;Số điện thoại&gt;, &lt;Các code sản phẩm được ngăn cách bởi dấu phẩy&gt;</strong>
+                    </p>
+                </div>
+                {{-- Thông tin thẻ ngân hàng --}}
+            </div>
+        </div>
     </div>
 </section>
 @endsection
