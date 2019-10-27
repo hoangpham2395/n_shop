@@ -14,7 +14,16 @@
 
 <section class="bgwhite p-t-30 p-b-60">
     <div class="container">
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="p-b-30">
+                    <h2 class="p-b-15">FAQs - Các câu hỏi thường gặp</h2>
+                    <p class="text-justify">
+                        Đang cập nhật ...
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 @endsection

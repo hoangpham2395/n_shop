@@ -8,7 +8,7 @@
 	</a>
 
 	<span class="s-text17">
-		Góc chia sẻ
+		Chính sách bán buôn, bán lẻ
 	</span>
 </div>
 
@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="p-b-30">
-                    <h2 class="p-b-15">10 xu hướng phối đồ mới nhất năm 2019</h2>
+                    <h2 class="p-b-15">Chính sách bán buôn, bán lẻ</h2>
                     <p class="text-justify">
                         Đang cập nhật ...
                     </p>
