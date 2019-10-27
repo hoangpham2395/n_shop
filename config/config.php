@@ -29,6 +29,9 @@ return [
 		'facebook_url' => env('OWNER_FACEBOOK_URL'),
 		'facebook_messenger' => env('OWNER_FACEBOOK_MESSENGER'),
 		'map' => env('OWNER_MAP_URL'),
+        'bank_account' => env('BANK_ACCOUNT'),
+        'bank_name' => env('BANK_NAME'),
+        'bank_owner' => env('BANK_OWNER'),
 	],
 
 	// Category

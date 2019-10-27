@@ -1,7 +1,7 @@
 <div class="wrap_header_mobile bg-nuong">
 	<!-- Logo mobile -->
 	<a href="{{route('frontend.home.index')}}" class="logo-mobile">
-        <span class="text-app-name-mobile">{{env('FRONTEND_APP_NAME')}}</span>
+		<img src="{{asset('images/common/logo.jpg')}}" alt="IMG-LOGO">
 	</a>
 
 	<!-- Button show menu -->

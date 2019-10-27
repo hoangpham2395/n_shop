@@ -53,6 +53,7 @@ return [
     'order_success' => 'Đặt hàng thành công',
     'info' => 'Thông tin',
     'info_contact' => 'Thông tin liên hệ',
+    'account_info' => 'Thông tin tài khoản',
 
 	'admin' => [
 		'name' => 'Admin',

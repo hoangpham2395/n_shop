@@ -4,7 +4,7 @@
 	<title>{{env('FRONTEND_APP_NAME')}}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="{{env('GOOGLE_SITE_VERIFICATION')}}">
+    <link rel="icon" type="image/png" href="{{asset('images/common/favicon.png')}}"/>
 	<!-- CSS + JS-->
 	@include('layouts.frontend.layouts.header_css_js')
 </head>

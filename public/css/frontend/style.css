@@ -1,5 +1,25 @@
 .bg-nuong {
-    background-color: #ecad0a;
+    background-color: #f4ac84;
+}
+
+/* Custom logo */
+.wrap_header .logo img {
+    max-height: 60px;
+}
+
+.wrap_header_mobile .logo-mobile img {
+    max-height: 50px;
+}
+
+/* Custom menu */
+.wrap_menu .main_menu>li>a {
+    color: #111;
+    text-transform: uppercase;
+}
+
+/* Custom color by nuong */
+.s-text7, .s-text8, .topbar-email {
+    color: #111;
 }
 
 .text-app-name {
@@ -85,7 +105,7 @@
 }
 
 .block2-btn-addwishlist i:hover {
-    color: #ecad0a;
+    color: #f4ac84;
 }
 
 /* Pagination */

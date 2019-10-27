@@ -21,7 +21,7 @@
 		<div class="wrap_header bg-nuong">
 			<!-- Logo -->
 			<a href="{{route('frontend.home.index')}}" class="logo">
-				<span class="text-app-name">{{env('FRONTEND_APP_NAME')}}</span>
+				<img src="{{asset('images/common/logo.jpg')}}" alt="IMG-LOGO">
 			</a>
 
 			<!-- Menu -->
