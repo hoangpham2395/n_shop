@@ -27,7 +27,7 @@
                     <ul class="main_menu text-center">
                         <div class="search-product pos-relative bo4 of-hidden m-t-22">
                             {!! Form::open(['route' => 'frontend.products.index', 'method' => 'GET', 'id' => 'form_header_search']) !!}
-                                {!! Form::text('product_name', Request::get('product_name'), ['class' => 's-text7 size6 p-l-23 p-r-50', 'placeholder' => 'Bạn cần tìm gì hôm nay?']) !!}
+                                {!! Form::text('product_name', Request::get('product_name'), ['class' => 's-text7 size6 p-l-23 p-r-50', 'placeholder' => 'Nhập tên sản phẩm mà bạn mong muốn ...']) !!}
                                 <button type="button" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4" onclick="$('form#form_header_search').submit();">
                                     <i class="fs-12 fa fa-search" aria-hidden="true"></i>
                                 </button>

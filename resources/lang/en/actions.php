@@ -53,8 +53,9 @@ return [
     'order_success' => 'Đặt hàng thành công',
     'info' => 'Thông tin',
     'info_contact' => 'Thông tin liên hệ',
-    'account_info' => 'Thông tin tài khoản',
+    'account_info' => 'Thông tin tài khoản ngân hàng',
     'connect_us' => 'Kết nối với chúng tôi',
+    'contact_us' => 'Liên hệ với chúng tôi',
 
 	'admin' => [
 		'name' => 'Admin',

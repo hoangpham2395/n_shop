@@ -16,8 +16,8 @@
                     <a href="{{getConfig('owner.instagram_url')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-instagram" title="Theo dõi trên Instagram"></a>
                     <a href="mailto:{{getConfig('owner.email')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-envelope-o" title="Gửi chúng tôi một email"></a>
                     <a href="tel:{{getConfig('owner.phone2')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-volume-control-phone" title="Gọi cho chúng tôi"></a>
-                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-pinterest-p" title="Theo dõi trên Pinterest"></a>
-                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-youtube-play" title="Theo dõi trên Youtube"></a>
+{{--                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-pinterest-p" title="Theo dõi trên Pinterest"></a>--}}
+{{--                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-youtube-play" title="Theo dõi trên Youtube"></a>--}}
                 </div>
             </div>
 		</div>
@@ -26,7 +26,8 @@
             <h4 class="s-text12 p-b-15">{{transa('about_us')}}</h4>
             <ul class="p-t-5">
                 <li class="p-b-9"><a href="{{route('frontend.pages.introduce')}}" class="s-text7">{{transa('introduce')}}</a></li>
-                <li class="p-b-9"><a href="{{route('frontend.contacts.index')}}" class="s-text7">{{transa('contact')}}</a></li>
+                <li class="p-b-9"><a href="{{route('frontend.contacts.index')}}" class="s-text7">{{transa('contact_us')}}</a></li>
+                <li class="p-b-9"><a href="{{route('frontend.pages.account_info')}}" class="s-text7">{{transa('account_info')}}</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.share')}}" class="s-text7">{{transa('blog')}}</a></li>
                 <li class="p-b-9"><p class="s-text7 red"><i class="fa fa-phone"></i> &nbsp; <b>HOTLINE: {{getConfig('owner.phone')}}</b></p></li>
                 <li class="p-b-9"><p class="s-text7"><i class="fa fa-envelope"></i> &nbsp; Email: {{getConfig('owner.email')}}</p></li>
@@ -37,9 +38,9 @@
             <h4 class="s-text12 p-b-15">{{transa('policy')}}</h4>
             <ul class="p-t-5">
                 <li class="p-b-9"><a href="{{route('frontend.pages.policy_buy')}}" class="s-text7">Chính sách mua hàng</a></li>
+                <li class="p-b-9"><a href="{{route('frontend.pages.policy_buy')}}" class="s-text7">Chính sách bán buôn, bán lẻ</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.policy_security')}}" class="s-text7">Chính sách bảo mật</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.use_buy')}}" class="s-text7">Hướng dẫn mua hàng</a></li>
-                <li class="p-b-9"><a href="{{route('frontend.pages.account_info')}}" class="s-text7">Thông tin tài khoản ngân hàng</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.faq')}}" class="s-text7">FAQs - Các câu hỏi thường gặp</a></li>
             </ul>
         </div>
