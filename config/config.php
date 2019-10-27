@@ -41,6 +41,7 @@ return [
         'exchange' => 'Đổi trả hàng trong 7 ngày',
     ],
     'slogan' => 'Đời thay đổi khi ta thay đồ',
+    'delivery_charges' => 30000, // phí giao hàng
 
 	// Category
 	'categories_default' => [

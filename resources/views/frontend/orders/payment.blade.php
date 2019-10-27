@@ -95,10 +95,14 @@ $totalPrice = 0;
 					</div>
 
 					<!-- Order  -->
+                    @php
+                        $isFreeShip = $totalPrice > 1000000;
+                        $totalPrice = $isFreeShip ? $totalPrice : $totalPrice + (int) getConfig('delivery_charges');
+                    @endphp
 					<div class="flex-w flex-sb-m p-t-26 p-b-30">
 						<span class="m-text22 w-size20 w-full-sm" style="width: 45%;">Tổng giá</span>
 						<span class="m-text22 w-size19 w-full-sm red" style="width: 55%; text-align: right;">{{formatMoney($totalPrice).$moneyUnit}}</span>
-						<p class="s-text8 p-t-5">({{getMessage('ship_note')}})</p>
+						<p class="s-text8 p-t-5">({{$isFreeShip ? getMessage('ship_note_free') : getMessage('ship_note_not_free')}})</p>
 					</div>
 
 					<div class="size15 trans-0-4">

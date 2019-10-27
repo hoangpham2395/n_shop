@@ -84,8 +84,10 @@ class OrdersController extends BaseController
             }
 
             // Create order
+            $order['user_id'] = frontendGuard()->check() ? frontendGuard()->user()->id : null;
             $order['status'] = getConfig('order_status.guest_booked', 1);
             $order['total_price'] = $totalPrice;
+            $order['delivery_charges'] = $totalPrice > 1000000 ? 0 : (int) getConfig('delivery_charges');
             $this->getRepository()->create($order);
 
             DB::commit();
