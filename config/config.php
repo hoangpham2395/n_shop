@@ -23,6 +23,7 @@ return [
 	// Info
 	'owner' => [
 		'phone' => env('OWNER_PHONE_NUMBER'),
+		'phone2' => env('OWNER_PHONE_NUMBER2'),
 		'email' => env('OWNER_EMAIL'),
 		'address' => env('OWNER_ADDRESS'),
 		'facebook_name' => env('OWNER_FACEBOOK_NAME'),
@@ -32,6 +33,7 @@ return [
         'bank_account' => env('BANK_ACCOUNT'),
         'bank_name' => env('BANK_NAME'),
         'bank_owner' => env('BANK_OWNER'),
+        'instagram_url' => env('OWNER_INSTAGRAM_URL'),
 	],
     'topbar' => [
         'order' => 'Đặt hàng nhanh: ' . env('OWNER_PHONE_NUMBER'),
