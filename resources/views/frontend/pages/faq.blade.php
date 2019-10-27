@@ -8,7 +8,13 @@
 	</a>
 
 	<span class="s-text17">
-		Chính sách
+		FAQs - Các câu hỏi thường gặp
 	</span>
 </div>
+
+<section class="bgwhite p-t-30 p-b-60">
+    <div class="container">
+
+    </div>
+</section>
 @endsection

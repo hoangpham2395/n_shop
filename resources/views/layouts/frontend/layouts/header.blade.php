@@ -2,21 +2,17 @@
 <header class="header1">
 	<!-- Header desktop -->
 	<div class="container-menu-header">
-		<div class="topbar">
-			<div class="topbar-social">
-				<span class="topbar-email">
-					<i class="topbar-social-item fa fa-envelope"></i>
-					{{getConfig('owner.email')}}
-				</span>
+        <div class="topbar">
+            <div class="topbar-social">
+                <span class="custom-topbar">{{getConfig('topbar.order')}}</span>
+            </div>
 
-				<span class="linedivide1"></span>
+            <span class="topbar-child1 custom-topbar">{{getConfig('topbar.ship')}}</span>
 
-				<span class="topbar-email">
-					<i class="topbar-social-item fa fa-phone"></i>
-					{{getConfig('owner.phone')}}
-				</span>
-			</div>
-		</div>
+            <div class="topbar-child2">
+                <span class="topbar-email custom-topbar">{{getConfig('topbar.exchange')}}</span>
+            </div>
+        </div>
 
 		<div class="wrap_header bg-nuong">
 			<!-- Logo -->
@@ -26,12 +22,26 @@
 
 			<!-- Menu -->
 			<div class="wrap_menu">
-				<nav class="menu">
-					<ul class="main_menu">
-						@include('layouts.frontend.menu')
-					</ul>
-				</nav>
-			</div>
+                <nav class="menu">
+                    {{-- Search --}}
+                    <ul class="main_menu text-center">
+                            <div class="search-product pos-relative bo4 of-hidden m-t-22">
+                                <Form>
+                                {!! Form::text('product_name', Request::get('product_name'), ['class' => 's-text7 size6 p-l-23 p-r-50', 'placeholder' => 'Bạn cần tìm gì hôm nay?']) !!}
+                                <button type="button" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                    <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                                </button>
+                                </Form>
+                            </div>
+
+                    </ul>
+
+                    {{-- Menu --}}
+                    <ul class="main_menu">
+                        @include('layouts.frontend.menu')
+                    </ul>
+                </nav>
+            </div>
 
 			<!-- Header Icon -->
 			<div class="header-icons">

@@ -33,6 +33,12 @@ return [
         'bank_name' => env('BANK_NAME'),
         'bank_owner' => env('BANK_OWNER'),
 	],
+    'topbar' => [
+        'order' => 'Đặt hàng nhanh: ' . env('OWNER_PHONE_NUMBER'),
+        'ship' => 'Giao hàng toàn quốc, miễn phí giao hàng cho đơn hàng trên 1 triệu',
+        'exchange' => 'Đổi trả hàng trong 7 ngày',
+    ],
+    'slogan' => 'Đời thay đổi khi ta thay đồ',
 
 	// Category
 	'categories_default' => [

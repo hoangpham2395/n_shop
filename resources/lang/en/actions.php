@@ -54,6 +54,7 @@ return [
     'info' => 'Thông tin',
     'info_contact' => 'Thông tin liên hệ',
     'account_info' => 'Thông tin tài khoản',
+    'connect_us' => 'Kết nối với chúng tôi',
 
 	'admin' => [
 		'name' => 'Admin',

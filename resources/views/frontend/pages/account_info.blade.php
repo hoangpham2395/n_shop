@@ -8,7 +8,7 @@
 	</a>
 
 	<span class="s-text17">
-		Giới thiệu
+		Thông tin tài khoản ngân hàng
 	</span>
 </div>
 

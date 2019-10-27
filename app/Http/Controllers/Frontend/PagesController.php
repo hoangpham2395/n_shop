@@ -19,8 +19,28 @@ class PagesController extends Controller
 		return view('frontend.pages.introduce');
 	}
 
-	public function policy()
-	{
-		return view('frontend.pages.policy');
-	}
+	public function policyBuy()
+    {
+        return view('frontend.pages.policy_buy');
+    }
+
+    public function policySecurity()
+    {
+        return view('frontend.pages.policy_security');
+    }
+
+    public function useBuy()
+    {
+        return view('frontend.pages.use_buy');
+    }
+
+    public function accountInfo()
+    {
+        return view('frontend.pages.account_info');
+    }
+
+    public function faq()
+    {
+        return view('frontend.pages.faq');
+    }
 }

@@ -5,7 +5,11 @@ Route::get('/goc-chia-se.html', ['as' => 'frontend.pages.share', 'uses' => 'Page
 Route::get('/lien-he.html', ['as' => 'frontend.contacts.index', 'uses' => 'ContactsController@index']);
 Route::post('/lien-he', ['as' => 'frontend.contacts.store', 'uses' => 'ContactsController@store']);
 Route::get('/gioi-thieu.html', ['as' => 'frontend.pages.introduce', 'uses' => 'PagesController@introduce']);
-Route::get('/chinh-sach.html', ['as' => 'frontend.pages.policy', 'uses' => 'PagesController@policy']);
+Route::get('/chinh-sach-mua-hang.html', ['as' => 'frontend.pages.policy_buy', 'uses' => 'PagesController@policyBuy']);
+Route::get('/chinh-sach-bao-mat.html', ['as' => 'frontend.pages.policy_security', 'uses' => 'PagesController@policySecurity']);
+Route::get('/huong-dan-mua-hang.html', ['as' => 'frontend.pages.use_buy', 'uses' => 'PagesController@useBuy']);
+Route::get('/thong-tin-tai-khoan-ngan-hang.html', ['as' => 'frontend.pages.account_info', 'uses' => 'PagesController@accountInfo']);
+Route::get('/cac-cau-hoi-thuong-gap.html', ['as' => 'frontend.pages.faq', 'uses' => 'PagesController@faq']);
 
 // Login
 Route::get('/dang-nhap.html', ['as' => 'frontend.login.get', 'uses' => 'Auth\LoginController@getLogin']);

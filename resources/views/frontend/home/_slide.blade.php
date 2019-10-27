@@ -8,7 +8,7 @@
 					</h2>
 
 					<span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33" data-appear="fadeInDown">
-						Định hình phong cách cho năm {{date('Y')}}
+						{{getConfig('slogan')}}
 					</span>
 
 					<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">

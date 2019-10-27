@@ -8,7 +8,7 @@
 	</a>
 
 	<span class="s-text17">
-		Giới thiệu
+		Hướng dẫn mua hàng
 	</span>
 </div>
 

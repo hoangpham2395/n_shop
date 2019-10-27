@@ -2,6 +2,14 @@
     background-color: #f4ac84;
 }
 
+.color-nuong {
+    color: #111;
+}
+
+section.bgwhite {
+    min-height: 525px;
+}
+
 /* Custom logo */
 .wrap_header .logo img {
     max-height: 60px;
@@ -17,11 +25,40 @@
     text-transform: uppercase;
 }
 
+.custom-topbar {
+    font-family: Montserrat-Regular;
+    font-size: 13px;
+    color: #111;
+    line-height: 1.7;
+}
+
 /* Custom color by nuong */
 .s-text7, .s-text8, .topbar-email {
     color: #111;
 }
 
+/* Custom header */
+.header1 {
+    height: 165px;
+}
+
+.wrap_header {
+    height: 120px;
+}
+
+.fixed-header .wrap_header {
+    height: 120px;
+}
+
+.wrap_menu .search-product {
+    width: 66%;
+}
+
+.wrap_menu .search-product input[type=text] {
+    height: 35px;
+}
+
+/*  */
 .text-app-name {
     font-size: 25px;
     color: #333;
