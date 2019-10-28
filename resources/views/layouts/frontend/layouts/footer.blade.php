@@ -38,7 +38,7 @@
             <h4 class="s-text12 p-b-15">{{transa('policy')}}</h4>
             <ul class="p-t-5">
                 <li class="p-b-9"><a href="{{route('frontend.pages.policy_ship')}}" class="s-text7">{{transa('policy_ship')}}</a></li>
-                <li class="p-b-9"><a href="{{route('frontend.pages.policy_security')}}" class="s-text7">Chính sách bảo mật</a></li>
+                <li class="p-b-9"><a href="{{route('frontend.pages.policy_security')}}" class="s-text7">{{transa('policy_security')}}</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.use_buy')}}" class="s-text7">Hướng dẫn mua hàng</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.faq')}}" class="s-text7">FAQs - Các câu hỏi thường gặp</a></li>
             </ul>

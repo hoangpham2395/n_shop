@@ -57,6 +57,7 @@ return [
     'connect_us' => 'Kết nối với chúng tôi',
     'contact_us' => 'Liên hệ với chúng tôi',
     'policy_ship' => 'Chính sách giao hàng',
+    'policy_security' => 'Chính sách bảo mật',
 
 	'admin' => [
 		'name' => 'Admin',

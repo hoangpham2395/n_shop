@@ -7,9 +7,7 @@
 		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 	</a>
 
-	<span class="s-text17">
-		Chính sách bảo mật
-	</span>
+	<span class="s-text17">{{transa('policy_security')}}</span>
 </div>
 
 <section class="bgwhite p-t-30 p-b-60">
@@ -17,7 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="p-b-30">
-                    <h2 class="p-b-15">Chính sách bảo mật</h2>
+                    <h2 class="p-b-15">{{transa('policy_security')}}</h2>
                     <p class="text-justify">
                         Chúng tôi tôn trọng sự riêng tư của tất cả những người ghé thăm website này. Kết quả là chúng tôi muốn thông báo cho bạn về cách chúng ta sẽ sử dụng dữ liệu cá nhân của bạn. Chúng tôi khuyên bạn nên đọc chính sách bảo mật này để bạn hiểu cách tiếp cận của chúng tôi đối với việc sử dụng dữ liệu cá nhân của bạn. Bằng việc gửi dữ liệu cá nhân của bạn cho chúng tôi, bạn sẽ được coi như là đã đưa ra sự cho phép của mình – khi cần thiết và thích hợp – cho việc tiết lộ được đề cập trong chính sách này.
                     </p>
