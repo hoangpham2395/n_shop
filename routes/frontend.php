@@ -5,7 +5,7 @@ Route::get('/goc-chia-se.html', ['as' => 'frontend.pages.share', 'uses' => 'Page
 Route::get('/lien-he.html', ['as' => 'frontend.contacts.index', 'uses' => 'ContactsController@index']);
 Route::post('/lien-he', ['as' => 'frontend.contacts.store', 'uses' => 'ContactsController@store']);
 Route::get('/gioi-thieu.html', ['as' => 'frontend.pages.introduce', 'uses' => 'PagesController@introduce']);
-Route::get('/chinh-sach-mua-hang.html', ['as' => 'frontend.pages.policy_buy', 'uses' => 'PagesController@policyBuy']);
+Route::get('/chinh-sach-giao-hang.html', ['as' => 'frontend.pages.policy_ship', 'uses' => 'PagesController@policyShip']);
 Route::get('/chinh-sach-ban-buon-ban-le.html', ['as' => 'frontend.pages.policy_sell', 'uses' => 'PagesController@policySell']);
 Route::get('/chinh-sach-bao-mat.html', ['as' => 'frontend.pages.policy_security', 'uses' => 'PagesController@policySecurity']);
 Route::get('/huong-dan-mua-hang.html', ['as' => 'frontend.pages.use_buy', 'uses' => 'PagesController@useBuy']);

@@ -56,6 +56,7 @@ return [
     'account_info' => 'Thông tin tài khoản ngân hàng',
     'connect_us' => 'Kết nối với chúng tôi',
     'contact_us' => 'Liên hệ với chúng tôi',
+    'policy_ship' => 'Chính sách giao hàng',
 
 	'admin' => [
 		'name' => 'Admin',

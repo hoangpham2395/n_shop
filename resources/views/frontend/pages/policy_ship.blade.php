@@ -7,9 +7,7 @@
 		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 	</a>
 
-	<span class="s-text17">
-		Chính sách mua hàng
-	</span>
+	<span class="s-text17">{{transa('policy_ship')}}</span>
 </div>
 
 <section class="bgwhite p-t-30 p-b-60">
@@ -17,7 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="p-b-30">
-                    <h2 class="p-b-15">Chính sách mua hàng</h2>
+                    <h2 class="p-b-15">{{transa('policy_ship')}}</h2>
                     <p class="text-justify">
                         Để đảm bảo quyền lợi, quý khách vui lòng đọc kỹ chính sách mua hàng này. Trong các trường hợp lỗi do nhà sản xuất, không vừa size, quý khách vui lòng liên hệ trực tiếp với Trung tâm Chăm Sóc Khách Hàng của Brown Store để được hỗ trợ tốt nhất.
                     </p>
@@ -39,7 +37,8 @@
                     <h5 class="p-b-15">Chính sách đổi trả</h5>
                     <p class="text-justify">
                         Đổi trả hàng trong 7 ngày. <br>
-                        Chỉ chấp nhận đổi trả khi sản phẩm còn nguyên vẹn, chưa sử dụng, chưa giặt và còn nguyên tag.
+                        Chỉ chấp nhận đổi trả khi sản phẩm còn nguyên vẹn, chưa sử dụng, chưa giặt và còn nguyên tag. <br>
+                        Không áp dụng với hàng khuyến mãi.
                     </p>
                 </div>
             </div>

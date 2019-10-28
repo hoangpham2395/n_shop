@@ -19,9 +19,9 @@ class PagesController extends Controller
 		return view('frontend.pages.introduce');
 	}
 
-	public function policyBuy()
+	public function policyShip()
     {
-        return view('frontend.pages.policy_buy');
+        return view('frontend.pages.policy_ship');
     }
 
     public function policySell()

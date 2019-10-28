@@ -37,8 +37,7 @@
         <div class="p-l-15 p-t-30 p-r-15 respon4" style="width: {{isMobile() ? '100%' : '20%'}}">
             <h4 class="s-text12 p-b-15">{{transa('policy')}}</h4>
             <ul class="p-t-5">
-                <li class="p-b-9"><a href="{{route('frontend.pages.policy_buy')}}" class="s-text7">Chính sách mua hàng</a></li>
-                <li class="p-b-9"><a href="{{route('frontend.pages.policy_sell')}}" class="s-text7">Chính sách bán buôn, bán lẻ</a></li>
+                <li class="p-b-9"><a href="{{route('frontend.pages.policy_ship')}}" class="s-text7">{{transa('policy_ship')}}</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.policy_security')}}" class="s-text7">Chính sách bảo mật</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.use_buy')}}" class="s-text7">Hướng dẫn mua hàng</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.faq')}}" class="s-text7">FAQs - Các câu hỏi thường gặp</a></li>
