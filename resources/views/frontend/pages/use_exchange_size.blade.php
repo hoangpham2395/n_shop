@@ -21,7 +21,7 @@
                     </p>
                 </div>
                 <div class="p-b-20">
-                    <h5 class="p-b-15">1. Bảng quy đổi size áo, quần, váy nữ qua size Việt Name</h5>
+                    <h5 class="p-b-15">1. Bảng quy đổi size áo, quần, váy nữ qua size Việt Nam</h5>
                     <table class="table table-hover p-b-20">
                         <thead class="thead-inverse">
                         <th>Kích cỡ US</th>
