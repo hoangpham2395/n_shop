@@ -41,7 +41,7 @@
                 <li class="p-b-9"><a href="{{route('frontend.pages.policy_security')}}" class="s-text7">{{transa('policy_security')}}</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.take_order')}}" class="s-text7">{{transa('take_order')}}</a></li>
                 <li class="p-b-9"><a href="{{route('frontend.pages.use_exchange_size')}}" class="s-text7">{{transa('use_exchange_size')}}</a></li>
-                <li class="p-b-9"><a href="{{route('frontend.pages.faq')}}" class="s-text7">FAQs - Các câu hỏi thường gặp</a></li>
+                <li class="p-b-9"><a href="{{route('frontend.pages.faq')}}" class="s-text7">{{transa('faq')}}</a></li>
             </ul>
         </div>
 
