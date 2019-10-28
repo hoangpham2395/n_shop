@@ -15,11 +15,11 @@
 <section class="bgwhite p-t-30 p-b-60">
     <div class="container">
         <div class="p-b-30">
-            <h2 class="p-b-15">Giới thiệu</h2>
+            <h2 class="p-b-30">Giới thiệu</h2>
             <p class="text-justify color-nuong">
                 Cảm hứng từ cuốn sách <strong>Đời thay đổi khi ta thay đổi</strong> của tác giả <strong>George Brescia</strong>, <br>
-                <a href="{{route('frontend.home.index')}}">Brown Store</a> được ra đời với ý tưởng chia sẻ giúp đỡ các bạn gái thiếu tự tin về bề ngoài cũng như trong cách ăn mặc tạo phong cách riêng.
-                Nhiều bạn gái có làn da ngăm đen và kén màu sắc, có bạn thì mập trong, có bạn thì thấp và có những bạn thì quá gầy, ...
+                <a href="{{route('frontend.home.index')}}" style="color: #111;"><strong>Brown Store</strong></a> được ra đời với ý tưởng chia sẻ giúp đỡ các bạn gái thiếu tự tin về bề ngoài cũng như trong cách ăn mặc tạo phong cách riêng.
+                Nhiều bạn gái có làn da ngăm đen và kén màu sắc, có bạn thì mập tròn, có bạn thì thấp và có những bạn thì quá gầy, ...
                 Tất cả đều làm các bạn gái của chúng ta rất đau đầu, mất thời gian khi chọn đồ phù hợp cho chính mình.
                 Với kinh nghiệm trong ngành may mặc và thời trang trong nhiều năm, đội ngũ nhân viên của Brownstore luôn tư vấn nhiệt tình để tìm cho các bạn gái có phong cách riêng và tự tin.
                 Và khi các bạn có phong cách riêng và tự tin, đó cũng là kim chỉ nam để các bạn thành công trong lĩnh vực khác trong cuộc sống. <br>
