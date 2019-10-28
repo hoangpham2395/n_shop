@@ -39,9 +39,9 @@ class PagesController extends Controller
         return view('frontend.pages.take_order');
     }
 
-    public function useBuy()
+    public function useExchangeSize()
     {
-        return view('frontend.pages.use_buy');
+        return view('frontend.pages.use_exchange_size');
     }
 
     public function accountInfo()

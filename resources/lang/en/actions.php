@@ -59,6 +59,7 @@ return [
     'policy_ship' => 'Chính sách giao hàng',
     'policy_security' => 'Chính sách bảo mật',
     'take_order' => 'Nhận order hàng US - UA - Châu Âu - Quảng Châu',
+    'use_exchange_size' => 'Hướng dẫn quy đổi size',
 
 	'admin' => [
 		'name' => 'Admin',
