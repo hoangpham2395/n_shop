@@ -8,6 +8,7 @@ Route::get('/gioi-thieu.html', ['as' => 'frontend.pages.introduce', 'uses' => 'P
 Route::get('/chinh-sach-giao-hang.html', ['as' => 'frontend.pages.policy_ship', 'uses' => 'PagesController@policyShip']);
 Route::get('/chinh-sach-ban-buon-ban-le.html', ['as' => 'frontend.pages.policy_sell', 'uses' => 'PagesController@policySell']);
 Route::get('/chinh-sach-bao-mat.html', ['as' => 'frontend.pages.policy_security', 'uses' => 'PagesController@policySecurity']);
+Route::get('/nhan-order-hang-us-ua-chau-au-quang-chau.html', ['as' => 'frontend.pages.take_order', 'uses' => 'PagesController@takeOrder']);
 Route::get('/huong-dan-mua-hang.html', ['as' => 'frontend.pages.use_buy', 'uses' => 'PagesController@useBuy']);
 Route::get('/thong-tin-tai-khoan-ngan-hang.html', ['as' => 'frontend.pages.account_info', 'uses' => 'PagesController@accountInfo']);
 Route::get('/cac-cau-hoi-thuong-gap.html', ['as' => 'frontend.pages.faq', 'uses' => 'PagesController@faq']);

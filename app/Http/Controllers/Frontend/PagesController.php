@@ -34,6 +34,11 @@ class PagesController extends Controller
         return view('frontend.pages.policy_security');
     }
 
+    public function takeOrder()
+    {
+        return view('frontend.pages.take_order');
+    }
+
     public function useBuy()
     {
         return view('frontend.pages.use_buy');
