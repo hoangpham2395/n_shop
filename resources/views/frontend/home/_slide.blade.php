@@ -19,6 +19,8 @@
 					</div>
 				</div>
 			</div>
+            <div class="item-slick1 item2-slick1" style="background-image: url(images/home/slide_02.jpg);"></div>
+            <div class="item-slick1 item3-slick1" style="background-image: url(images/home/black_friday.jpg);"></div>
 		</div>
 	</div>
 </section>

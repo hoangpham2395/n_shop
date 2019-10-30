@@ -36,7 +36,7 @@
                         - Quần xắn gấu <br>
                         - Áo khoác dài + quần ngắn <br>
                         - Quần jean ống loe <br>
-                        - Mặc dồ đơn sắn hay cả bộ sọc kẻ giúp bạn trông cao hơn đó <br>
+                        - Mặc đồ đơn sắc hay cả bộ sọc kẻ giúp bạn trông cao hơn đó <br>
                     </p>
                 </div>
                 <div class="p-b-20">
@@ -87,7 +87,7 @@
                     <h5 class="p-b-15">Câu hỏi 5: Phối đồ tránh bị quê mùa?</h5>
                     <p class="text-justify">
                         Bạn có thể tham khảo một số lưu ý sau: <br>
-                        - Giày cao đến đùi và váy dài qua gối: giày cổ quá cao kết hợp vớii chiếc váy dài làm cho đôi chân trông ngắn hơn. Nên chọn giầy cao đến mắt cá chân hoặc sneaker. Nếu bạn muốn giầy cao đến đuuì thì phải chọn váy có eo. <br>
+                        - Giày cao đến đùi và váy dài qua gối: giày cổ quá cao kết hợp vớii chiếc váy dài làm cho đôi chân trông ngắn hơn. Nên chọn giầy cao đến mắt cá chân hoặc sneaker. Nếu bạn muốn giầy cao đến đùi thì phải chọn váy có eo. <br>
                         - Giày cao đến đùi và quần áo nhiều họa tiết: Quá nhiều chi tiết và các yếu tố trang trí làm cho hình ảnh của bạn trông diêm dúa, quê mùa <br>
                         - Váy maxi và áo khoác dài: Váy maxi và áo khoác thon dài kết hợp với nhau khiến bạn trông lùn đi và làm lệcch tỉ lệ cơ thể. Có thể chọn áo khoác ngắn hoặc chọn váy ngắn<br>
                         - Váy cocktail và boot/giày cao đến mắt cá chân: Váy cocktail phù hợp để mặc trong lễ kỷ niệm, tiệc tùng. <br>
