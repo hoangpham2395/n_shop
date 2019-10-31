@@ -3,12 +3,12 @@
 <!-- breadcrumb -->
 <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
 	<a href="{{route('frontend.home.index')}}" class="s-text16">
-		Trang chủ
+		{{transa('home')}}
 		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 	</a>
 
 	<a href="{{route('frontend.products.index')}}" class="s-text16">
-		Tất cả sản phẩm
+		{{transa('all_products')}}
 		<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 	</a>
 
@@ -25,23 +25,33 @@
 <!-- Product Detail -->
 <div class="container bgwhite p-t-35">
 	<div class="flex-w flex-sb" id="product_detail" data-id="{{$product->id}}">
+		{{-- Slide --}}
 		<div class="w-size13 p-t-30 respon5">
-			<div class="wrap-slick3 flex-sb flex-w">
-                @if (!isMobile())
-				    <div class="wrap-slick3-dots"></div>
-                @endif
-				<div class="slick3">
+{{--			<div class="wrap-slick3 flex-sb flex-w">--}}
+{{--                @if (!isMobile())--}}
+{{--				    <div class="wrap-slick3-dots"></div>--}}
+{{--                @endif--}}
+{{--				<div class="slick3">--}}
+{{--					@foreach ($product->getListImages() as $productImage)--}}
+{{--						<div class="item-slick3" data-thumb="{{$productImage}}">--}}
+{{--							<div class="wrap-pic-w">--}}
+{{--								<img src="{{$productImage}}" alt="IMG-PRODUCT">--}}
+{{--							</div>--}}
+{{--						</div>--}}
+{{--					@endforeach--}}
+{{--				</div>--}}
+{{--                @if (isMobile())--}}
+{{--                    <div class="wrap-slick3-dots"></div>--}}
+{{--                @endif--}}
+{{--			</div>--}}
+			<div class="clearfix">
+				<ul id="image-gallery" class="gallery list-unstyled cS-hidden">
 					@foreach ($product->getListImages() as $productImage)
-						<div class="item-slick3" data-thumb="{{$productImage}}">
-							<div class="wrap-pic-w">
-								<img src="{{$productImage}}" alt="IMG-PRODUCT">
-							</div>
-						</div>
+						<li data-thumb="{{asset($productImage)}}">
+							<img src="{{asset($productImage)}}" width="100%" />
+						</li>
 					@endforeach
-				</div>
-                @if (isMobile())
-                    <div class="wrap-slick3-dots"></div>
-                @endif
+				</ul>
 			</div>
 		</div>
 
@@ -190,8 +200,30 @@
 <div id="dropDownSelectColor"></div>
 @endsection
 
+@push('headers')
+<link rel="stylesheet" href="{{asset('vendor/lightSlider/css/lightslider.css')}}">
+@endpush
+
 @push('scripts')
+<script src="{{asset('vendor/lightSlider/js/lightslider.js')}}"></script>
 <script type="text/javascript">
+	// Slide
+	$(document).ready(function() {
+		$('#image-gallery').lightSlider({
+			gallery:true,
+			item:1,
+			thumbItem:9,
+			slideMargin: 0,
+			speed:500,
+			auto:true,
+			loop:true,
+			onSliderLoad: function() {
+				$('#image-gallery').removeClass('cS-hidden');
+			}
+		});
+	});
+
+	// Dropdown
 	$(".selection-size").select2({
 		minimumResultsForSearch: 20,
 		dropdownParent: $('#dropDownSelectSize')
@@ -204,8 +236,7 @@
 	$('input.num-product').on('change', function (e) {
         return validateCount(this);
     });
-</script>
-<script type="text/javascript">
+
 	function addToCart(e) {
 		var id = $('#product_detail').attr('data-id');
 		var _token = $('#product_detail_token').val();

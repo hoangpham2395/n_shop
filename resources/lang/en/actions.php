@@ -39,6 +39,7 @@ return [
 	'order' => 'Đặt hàng',
 	'my_cart' => 'Giỏ hàng của bạn',
 	'view_product' => 'Xem sản phẩm',
+	'all_products' => 'Tất cả sản phẩm',
 	'cart' => 'Giỏ hàng',
 	'update_cart' => 'Cập nhật giỏ hàng',
 	'return_store' => 'Quay lại cửa hàng',
