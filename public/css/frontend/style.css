@@ -64,6 +64,10 @@ section.bgwhite {
     height: 35px;
 }
 
+.header-cart, .fixed-header .header-cart {
+    top: 73px;
+}
+
 /*  */
 .text-app-name {
     font-size: 25px;
