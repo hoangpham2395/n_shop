@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>{{env('FRONTEND_APP_NAME')}}</title>
+	<title>{{!empty($title) ? $title : env('FRONTEND_APP_NAME')}}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{asset('images/common/favicon.png')}}"/>

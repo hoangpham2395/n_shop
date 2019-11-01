@@ -32,7 +32,8 @@ class ProductsController extends BaseController
 	public function index()
 	{
 		$products = $this->getRepository()->getListForFrontend(Input::all());
-		return view('frontend.products.index', compact('products'));
+		$this->setTitle(env('APP_NAME') . ' - ' . transa('all_products'));
+		return $this->render('frontend.products.index', compact('products'));
 	}
 
 	public function category($categorySlug)
@@ -52,8 +53,8 @@ class ProductsController extends BaseController
 		}
 
 		$products = $this->getRepository()->getListByCategory($categoryIds, Input::all());
-
-		return view('frontend.products.category', compact('products', 'categoryName'));
+		$this->setTitle(env('APP_NAME') . ' - ' . $categoryName);
+		return $this->render('frontend.products.category', compact('products', 'categoryName'));
 	}
 
 	public function detail($productSlug)
@@ -64,25 +65,28 @@ class ProductsController extends BaseController
 		}
 
 		$otherProducts = $this->getRepository()->getListForDetail($product->id, $product->category_id);
-
-		return view('frontend.products.detail', compact('product', 'otherProducts'));
+		$this->setTitle($product->product_name);
+		return $this->render('frontend.products.detail', compact('product', 'otherProducts'));
 	}
 
 	public function new()
 	{
 		$products = $this->getRepository()->getListNewForFrontend(Input::all());
-		return view('frontend.products.new', compact('products'));
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('products.new'));
+		return $this->render('frontend.products.new', compact('products'));
 	}
 
 	public function sale()
 	{
 		$products = $this->getRepository()->getListSaleForFrontend(Input::all());
-		return view('frontend.products.sale', compact('products'));
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('products.sale'));
+		return $this->render('frontend.products.sale', compact('products'));
 	}
 
 	public function cart()
 	{
-		return view('frontend.products.cart');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('cart'));
+		return $this->render('frontend.products.cart');
 	}
 
 	public function addToCart(Request $request)

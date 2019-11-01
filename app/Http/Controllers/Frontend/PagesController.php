@@ -1,27 +1,30 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Base\BaseController;
 
 /**
  * Class PagesController
  * @package App\Http\Controllers\Frontend
  */
-class PagesController extends Controller
+class PagesController extends BaseController
 {
 	public function share()
 	{
-		return view('frontend.pages.share');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('blog'));
+		return $this->render('frontend.pages.share');
 	}
 
 	public function introduce()
 	{
-		return view('frontend.pages.introduce');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('introduce'));
+		return $this->render('frontend.pages.introduce');
 	}
 
 	public function policyShip()
     {
-        return view('frontend.pages.policy_ship');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('policy_ship'));
+        return $this->render('frontend.pages.policy_ship');
     }
 
     public function policySell()
@@ -31,26 +34,31 @@ class PagesController extends Controller
 
     public function policySecurity()
     {
-        return view('frontend.pages.policy_security');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('policy_security'));
+        return $this->render('frontend.pages.policy_security');
     }
 
     public function takeOrder()
     {
-        return view('frontend.pages.take_order');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('take_order'));
+        return $this->render('frontend.pages.take_order');
     }
 
     public function useExchangeSize()
     {
-        return view('frontend.pages.use_exchange_size');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('use_exchange_size'));
+        return $this->render('frontend.pages.use_exchange_size');
     }
 
     public function accountInfo()
     {
-        return view('frontend.pages.account_info');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('account_info'));
+        return $this->render('frontend.pages.account_info');
     }
 
     public function faq()
     {
-        return view('frontend.pages.faq');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('faq'));
+        return $this->render('frontend.pages.faq');
     }
 }

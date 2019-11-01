@@ -24,7 +24,8 @@ class ContactsController extends BaseController
      */
     public function index()
     {
-        return view('frontend.pages.contact');
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('contact'));
+        return $this->render('frontend.pages.contact');
     }
 
     /**

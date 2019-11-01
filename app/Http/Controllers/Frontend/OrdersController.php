@@ -45,7 +45,8 @@ class OrdersController extends BaseController
             return redirect()->route('frontend.products.cart');
         }
 
-        return view('frontend.orders.payment', compact('productsCart'));
+        $this->setTitle(env('APP_NAME') . ' - ' . transa('payment_info'));
+        return $this->render('frontend.orders.payment', compact('productsCart'));
     }
 
     public function postPayment(OrderRequest $orderRequest)

@@ -16,10 +16,12 @@ class BaseController extends Controller
 	protected $_repository;
 	protected $_alias;
 	protected $_request;
+	protected $_title;
+	protected $_viewData = [];
 
 	public function __construct()
 	{
-		$this->setAlias($this->getRepository()->getModel()->getTable());
+		$this->setAlias(!empty($this->getRepository()) ? $this->getRepository()->getModel()->getTable() : '');
 	}
 
 	public function getRepository()
@@ -41,6 +43,26 @@ class BaseController extends Controller
 	{
 		return $this->_alias;
 	}
+
+	public function setTitle($title)
+    {
+        $this->_title = $title;
+    }
+
+    public function getTitle()
+    {
+        return !empty($this->_title) ? $this->_title : env('APP_NAME');
+    }
+
+    public function setViewData($data = [])
+    {
+        $this->_viewData = array_merge($this->_viewData, $data);
+    }
+
+    public function getViewData()
+    {
+        return $this->_viewData;
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -157,6 +179,13 @@ class BaseController extends Controller
 		}
 		return redirect()->route('backend.'. $this->getAlias() .'.index')->withErrors(new MessageBag(['delete_failed' => getMessage('delete_failed')]));
 	}
+
+	public function render($view = null, $data = [], $mergeData = [])
+    {
+        $data = array_merge($this->getViewData(), $data);
+        $data['title'] = $this->getTitle();
+        return view($view, $data, $mergeData);
+    }
 
     /**
      * @param bool $isStore
