@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{{env('APP_NAME')}}</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}"/>
+    <link rel="icon" type="image/png" href="{{asset('images/common/favicon.png')}}"/>
 	<!-- Bootstrap 3.3.7 -->
 	<link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
 	<!-- Font Awesome -->

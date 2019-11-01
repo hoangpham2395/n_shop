@@ -215,7 +215,7 @@ class BaseController extends Controller
     {
         // Check exist
         if (!$request->hasFile($fileField)) {
-            return;
+            return '';
         }
 
         $id = !empty($request->get('id')) ? $request->get('id') : $this->getNextInsertId();
@@ -231,6 +231,7 @@ class BaseController extends Controller
             return '/media'. $newFileName;
         } catch(\Exception $e) {
         	logError($e);
+        	return '';
         }
     }
 
