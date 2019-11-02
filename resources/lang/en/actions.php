@@ -62,6 +62,8 @@ return [
     'take_order' => 'Nhận order hàng UK - US - Châu Âu - Quảng Châu',
     'use_exchange_size' => 'Hướng dẫn quy đổi size',
     'faq' => 'FAQs - Các câu hỏi thường gặp',
+    'setting' => 'Cài đặt',
+    'image_slide' => 'Ảnh home slide',
 
 	'admin' => [
 		'name' => 'Admin',

@@ -23,4 +23,14 @@ Route::group(['middleware' => ['auth.backend']], function() {
     Route::post('users/change-status', ['as' => 'backend.users.change_status', 'uses' => 'UsersController@changeStatus']);
 
     Route::resource('contacts', 'ContactsController')->names('backend.contacts');
+
+    // Setting
+    Route::get('setting/image_slide', [
+        'as' => 'backend.setting.image_slide',
+        'uses' => 'SettingController@imageSlide',
+    ]);
+    Route::post('setting/post_image_slide', [
+        'as' => 'backend.setting.post_image_slide',
+        'uses' => 'SettingController@postImageSlide',
+    ]);
 });

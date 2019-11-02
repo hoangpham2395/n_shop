@@ -87,6 +87,18 @@
                 </a>
             </li>
             <li class="header"></li>
+            <li class="treeview {{getActiveSidebarClass('setting')}}">
+                <a href="#">
+                    <i class="fa fa-cogs"></i> <span>{{transa('setting')}}</span>
+                    <span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{getActiveSidebarClass('setting', 'image_slide')}}"><a href="{{route('backend.setting.image_slide')}}"><i class="fa fa-circle-o"></i> {{transa('image_slide')}}</a></li>
+                </ul>
+            </li>
+            <li class="header"></li>
 		</ul>
 	</section>
 	<!-- /.sidebar -->
