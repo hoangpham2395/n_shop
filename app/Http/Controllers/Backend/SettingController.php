@@ -18,7 +18,8 @@ class SettingController extends BaseController
 
     public function imageSlide()
     {
-        return $this->render('backend.setting.image_slide.form');
+        $entities = $this->getRepository()->getList();
+        return $this->render('backend.setting.image_slide.form', compact('entities'));
     }
 
     public function postImageSlide()

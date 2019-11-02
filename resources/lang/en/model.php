@@ -85,4 +85,8 @@ return [
         'type_login' => 'Kiểu đăng nhập',
         'orders' => 'Số đơn hàng',
     ],
+    'setting_image_slide' => [
+        'image' => 'Ảnh',
+        'sort' => 'Thứ tự',
+    ],
 ];
