@@ -10,3 +10,5 @@ CREATE TABLE `setting_image_slide`  (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+INSERT INTO `setting_image_slide` VALUES (1, 'images/home/slide_01.jpg', 1, 1, NULL, NULL, NULL, NULL);

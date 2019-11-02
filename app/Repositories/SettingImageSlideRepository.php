@@ -14,4 +14,9 @@ class SettingImageSlideRepository extends BaseRepository
     {
         return SettingImageSlide::class;
     }
+
+    public function getListImageSlide()
+    {
+        return $this->getModel()->orderBy('sort', 'asc')->orderBy('id', 'desc')->get()->pluck('image')->toArray();
+    }
 }

@@ -8,7 +8,7 @@
         <input type="hidden" name="imageSlide[{{$idx}}][id]" value="{{$item['id']}}">
         <input type="hidden" name="imageSlide[{{$idx}}][image]" value="{{$item['image']}}">
     @endif
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="box box-danger">
             <h4 class="box-title">
                 {{transa('image')}} <span class="image_slide_heading">{{(is_numeric($idx) ? $idx + 1 : $idx)}}</span>
@@ -38,12 +38,12 @@
                     </div>
                 </div>
                 <div class="row padding-top">
-                    <div class="col-sm-12">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label class="required">{{transm('setting_image_slide.sort')}}</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
-                                {!! Form::text('imageSlide[' . $idx .'][sort]', !empty($item) ? $item['sort'] : null, ['class' => 'form-control image_slide_sort', 'placeholder' => transm('setting_image_slide.sort'), 'required' => true]) !!}
+                                {!! Form::number('imageSlide[' . $idx .'][sort]', !empty($item) ? $item['sort'] : null, ['class' => 'form-control image_slide_sort', 'placeholder' => transm('setting_image_slide.sort'), 'required' => true]) !!}
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@ var ImageSlideController = {
         if (ImageSlideController.getTotalRow() > ImageSlideController.getTotalRowHasImage()) {
             return SystemController.showErrorMessage('Phải upload hết ảnh!');
         }
-        $('form#form_product_image').submit();
+        $('form#form_image_slide').submit();
     },
 
     getTotalRow: function () {

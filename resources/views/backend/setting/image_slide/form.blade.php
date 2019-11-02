@@ -29,7 +29,7 @@
                                     @include('backend.setting.image_slide._image', ['idx' => $idx, 'item' => $entity->toArray()])
                                 @endforeach
 
-                                @if (empty(empty($entities)))
+                                @if (empty($entities))
                                     @include('backend.setting.image_slide._image', ['idx' => 0])
                                 @endif
                             </div>
