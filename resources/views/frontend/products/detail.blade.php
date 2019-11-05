@@ -195,6 +195,31 @@
 </section>
 @endif
 
+<!-- Viewed Products -->
+@if (count($viewedProducts) > 0)
+    <section class="relateproduct bgwhite p-t-45 p-b-138">
+        <div class="container">
+            <div class="sec-title p-b-60">
+                <h3 class="home-title-product m-text5 t-center">
+                    Sản phẩm đã xem
+                </h3>
+            </div>
+
+            <!-- Slide2 -->
+            <div class="wrap-slick2">
+                <div class="slick2">
+                    @foreach($viewedProducts as $viewedProduct)
+                        <div class="item-slick2 p-l-15 p-r-15">
+                            @include('frontend.products._product', ['product' => $viewedProduct])
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
+    </section>
+@endif
+
 <!-- Container Selection -->
 <div id="dropDownSelectSize"></div>
 <div id="dropDownSelectColor"></div>

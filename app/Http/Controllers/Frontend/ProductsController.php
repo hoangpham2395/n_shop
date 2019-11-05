@@ -8,6 +8,10 @@ use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use Session;
 
+/**
+ * Class ProductsController
+ * @package App\Http\Controllers\Frontend
+ */
 class ProductsController extends BaseController
 {
 	protected $_categoryRepository;
@@ -65,8 +69,12 @@ class ProductsController extends BaseController
 		}
 
 		$otherProducts = $this->getRepository()->getListForDetail($product->id, $product->category_id);
+		$viewedProductIds = Session::has('viewed_product_ids') ? Session::get('viewed_product_ids') : [];
+		$viewedProductIds = array_merge($viewedProductIds, [$product->id]);
+		Session::put('viewed_product_ids', $viewedProductIds);
+		$viewedProducts = $this->getRepository()->getModel()->whereIn('id', $viewedProductIds)->orderBy('id', 'desc')->paginate(8);
 		$this->setTitle($product->product_name);
-		return $this->render('frontend.products.detail', compact('product', 'otherProducts'));
+		return $this->render('frontend.products.detail', compact('product', 'otherProducts', 'viewedProducts'));
 	}
 
 	public function new()
