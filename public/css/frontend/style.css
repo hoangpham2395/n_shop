@@ -68,6 +68,11 @@ section.bgwhite {
     top: 73px;
 }
 
+.header-icons-mobile .header-cart {
+    top: 56px;
+    right: -84px;
+}
+
 /*  */
 .text-app-name {
     font-size: 25px;

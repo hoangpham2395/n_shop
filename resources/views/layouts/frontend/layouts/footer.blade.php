@@ -16,6 +16,12 @@
                     <a href="{{getConfig('owner.instagram_url')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-instagram" title="Theo dõi trên Instagram"></a>
                     <a href="mailto:{{getConfig('owner.email')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-envelope-o" title="Gửi chúng tôi một email"></a>
                     <a href="tel:{{getConfig('owner.phone2')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-volume-control-phone" title="Gọi cho chúng tôi"></a>
+                    <a href="{{getConfig('owner.zalo_url')}}" target="_blank" class="fs-18 color-nuong p-r-20" title="Theo dõi trên zalo">
+                        <img src="{{asset('images/icons/zalo.png')}}" width="20px">
+                    </a>
+                    <a href="{{getConfig('owner.shopee_url')}}" target="_blank" class="fs-18 color-nuong p-r-20" title="Theo dõi trên shopee">
+                        <img src="{{asset('images/icons/shopee.png')}}" width="20px">
+                    </a>
 {{--                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-pinterest-p" title="Theo dõi trên Pinterest"></a>--}}
 {{--                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-youtube-play" title="Theo dõi trên Youtube"></a>--}}
                 </div>

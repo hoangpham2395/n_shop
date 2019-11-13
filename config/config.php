@@ -34,6 +34,8 @@ return [
         'bank_name' => env('BANK_NAME'),
         'bank_owner' => env('BANK_OWNER'),
         'instagram_url' => env('OWNER_INSTAGRAM_URL'),
+        'zalo_url' => env('OWNER_ZALO_URL'),
+        'shopee_url' => env('OWNER_SHOPEE_URL'),
 	],
     'topbar' => [
         'order' => 'Đặt hàng nhanh: ' . env('OWNER_PHONE_NUMBER'),
