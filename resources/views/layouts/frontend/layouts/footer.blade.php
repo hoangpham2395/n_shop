@@ -12,18 +12,24 @@
                     hoặc gọi trực tiếp qua số điện thoại <strong class="red">{{getConfig('owner.phone')}}</strong> để được cửa hàng tư vấn, giải đáp thắc mắc cũng như để đặt hàng trực tiếp.
                 </p>
                 <div class="flex-m p-t-30">
-                    <a href="{{getConfig('owner.facebook_url')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-facebook" title="Theo dõi trên Facebook"></a>
-                    <a href="{{getConfig('owner.instagram_url')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-instagram" title="Theo dõi trên Instagram"></a>
+                    @php
+                        $facebookUrl = getConfig('owner.facebook_url');
+                        $instagramUrl = getConfig('owner.instagram_url');
+                        $zaloUrl = getConfig('owner.zalo_url');
+                        $shopeeUrl = getConfig('owner.shopee_url');
+                    @endphp
+                    <a href="{{getUrl($facebookUrl)}}" @if (!empty($facebookUrl)) target="_blank" @endif class="fs-18 color-nuong p-r-20 fa fa-facebook" title="Theo dõi trên Facebook"></a>
+                    <a href="{{getUrl($instagramUrl)}}" @if (!empty($instagramUrl)) target="_blank" @endif class="fs-18 color-nuong p-r-20 fa fa-instagram" title="Theo dõi trên Instagram"></a>
                     <a href="mailto:{{getConfig('owner.email')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-envelope-o" title="Gửi chúng tôi một email"></a>
                     <a href="tel:{{getConfig('owner.phone2')}}" target="_blank" class="fs-18 color-nuong p-r-20 fa fa-volume-control-phone" title="Gọi cho chúng tôi"></a>
-                    <a href="{{getConfig('owner.zalo_url')}}" target="_blank" class="fs-18 color-nuong p-r-20" title="Theo dõi trên zalo">
+                    <a href="{{getUrl($zaloUrl)}}" @if (!empty($zaloUrl)) target="_blank" @endif class="fs-18 color-nuong p-r-20" title="Theo dõi trên zalo">
                         <img src="{{asset('images/icons/zalo.png')}}" width="20px">
                     </a>
-                    <a href="{{getConfig('owner.shopee_url')}}" target="_blank" class="fs-18 color-nuong p-r-20" title="Theo dõi trên shopee">
+                    <a href="{{getUrl($shopeeUrl)}}" @if (!empty($shopeeUrl)) target="_blank" @endif class="fs-18 color-nuong p-r-20" title="Theo dõi trên shopee">
                         <img src="{{asset('images/icons/shopee.png')}}" width="20px">
                     </a>
-{{--                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-pinterest-p" title="Theo dõi trên Pinterest"></a>--}}
-{{--                    <a href="#" class="fs-18 color-nuong p-r-20 fa fa-youtube-play" title="Theo dõi trên Youtube"></a>--}}
+                    {{--<a href="#" class="fs-18 color-nuong p-r-20 fa fa-pinterest-p" title="Theo dõi trên Pinterest"></a>--}}
+                    {{--<a href="#" class="fs-18 color-nuong p-r-20 fa fa-youtube-play" title="Theo dõi trên Youtube"></a>--}}
                 </div>
             </div>
 		</div>
@@ -54,7 +60,7 @@
 		<!-- Info -->
 		<div class="p-l-15 p-t-30 p-r-15 respon3" style="width: {{isMobile() ? '100%' : '25%'}}">
             <h4 class="s-text12 p-b-15 ">{{transa('connect_us')}}</h4>
-            <div class="text-center @if (isMobile()) p-t-30 @endif">
+            <div class="@if (isMobile())text-center p-t-30 @endif">
                 @include('layouts.frontend.facebook.fb_group')
             </div>
 		</div>

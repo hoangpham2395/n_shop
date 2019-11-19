@@ -248,3 +248,21 @@ if (!function_exists('redirectHome')) {
         return redirect()->route('frontend.home.index');
     }
 }
+
+if (!function_exists('getUrl')) {
+    /**
+     * @param $url
+     * @return string
+     */
+    function getUrl($url)
+    {
+        if (empty($url)) {
+            $url = 'javascript:void(0);';
+        }
+//        if (filter_var($url, FILTER_VALIDATE_URL)) {
+//            $url = asset($url);
+//        }
+
+        return $url;
+    }
+}
