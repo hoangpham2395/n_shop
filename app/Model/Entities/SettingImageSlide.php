@@ -16,5 +16,5 @@ class SettingImageSlide extends Base
 
     protected $table = 'setting_image_slide';
     protected $primaryKey = 'id';
-    protected $fillable = ['image', 'sort', 'ins_id', 'upd_id'];
+    protected $fillable = ['image', 'title', 'detail', 'url', 'sort', 'ins_id', 'upd_id'];
 }

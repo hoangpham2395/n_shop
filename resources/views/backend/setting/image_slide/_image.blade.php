@@ -40,6 +40,39 @@
                 <div class="row padding-top">
                     <div class="col-sm-4">
                         <div class="form-group">
+                            <label class="required">{{transm('setting_image_slide.title')}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
+                                {!! Form::text('imageSlide[' . $idx .'][title]', !empty($item) ? $item['title'] : null, ['class' => 'form-control image_slide_title', 'placeholder' => transm('setting_image_slide.title')]) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row padding-top">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="required">{{transm('setting_image_slide.detail')}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-info"></i></span>
+                                {!! Form::text('imageSlide[' . $idx .'][detail]', !empty($item) ? $item['detail'] : null, ['class' => 'form-control image_slide_detail', 'placeholder' => transm('setting_image_slide.detail')]) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row padding-top">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="required">{{transm('setting_image_slide.url')}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                                {!! Form::text('imageSlide[' . $idx .'][url]', !empty($item) ? $item['url'] : null, ['class' => 'form-control image_slide_url', 'placeholder' => transm('setting_image_slide.url')]) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row padding-top">
+                    <div class="col-sm-4">
+                        <div class="form-group">
                             <label class="required">{{transm('setting_image_slide.sort')}}</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>

@@ -88,5 +88,8 @@ return [
     'setting_image_slide' => [
         'image' => 'Ảnh',
         'sort' => 'Thứ tự',
+        'title' => 'Tiêu đề',
+        'detail' => 'Chi tiết',
+        'url' => 'Đường dẫn',
     ],
 ];

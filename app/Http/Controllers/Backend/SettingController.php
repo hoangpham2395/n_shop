@@ -31,7 +31,7 @@ class SettingController extends BaseController
             $data = $this->_getFormData();
             $oldImageSlides = $this->getRepository()->getList();
             $oldIds = !empty($oldImageSlides) ? $oldImageSlides->pluck('id')->toArray() : [];
-            $deleteIds = explode(',', array_get($data, 'delete_ids'));
+            $deleteIds = explode(',', data_get($data, 'delete_ids'));
             $deleteImages = [];
             $deleteIds = array_intersect($deleteIds, $oldIds);
             foreach ($deleteIds as $deleteId) {
@@ -43,13 +43,16 @@ class SettingController extends BaseController
                 $this->getRepository()->destroy($deleteId);
             }
 
-            $data['imageSlide'] = array_get($data, 'imageSlide', []);
+            $data['imageSlide'] = data_get($data, 'imageSlide', []);
             // Add new image
             foreach ($data['imageSlide'] as $key => $imageSlide) {
                 $imageName = $this->_uploadFile($request, 'imageSlide.'. $key . '.image');
                 $dataImageSlide = [
-                    'image' => !empty($imageName) ? $imageName : array_get($imageSlide, 'image'),
-                    'sort' => (int) array_get($imageSlide, 'sort'),
+                    'image' => !empty($imageName) ? $imageName : data_get($imageSlide, 'image'),
+                    'title' => data_get($imageSlide, 'title'),
+                    'detail' => data_get($imageSlide, 'detail'),
+                    'url' => data_get($imageSlide, 'url'),
+                    'sort' => (int) data_get($imageSlide, 'sort'),
                 ];
                 if (!empty($imageSlide['id'])) {
                     $dataImageSlide['upd_id'] = backendGuard()->user()->id;

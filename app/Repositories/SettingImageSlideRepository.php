@@ -17,6 +17,6 @@ class SettingImageSlideRepository extends BaseRepository
 
     public function getListImageSlide()
     {
-        return $this->getModel()->orderBy('sort', 'asc')->orderBy('id', 'desc')->get()->pluck('image')->toArray();
+        return $this->getModel()->select(['image', 'title', 'detail', 'url'])->orderBy('sort', 'asc')->orderBy('id', 'desc')->get()->toArray();
     }
 }

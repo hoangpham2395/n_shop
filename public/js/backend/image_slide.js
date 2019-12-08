@@ -94,5 +94,17 @@ var ImageSlideController = {
         var nameSort = $(className).find('.image_slide_sort').attr('name');
         nameSort = nameSort.replace(prefix, number);
         $(className).find('.image_slide_sort').attr('name', nameSort);
+
+        var nameTitle = $(className).find('.image_slide_title').attr('name');
+        nameTitle = nameTitle.replace(prefix, number);
+        $(className).find('.image_slide_title').attr('name', nameTitle);
+
+        var nameDetail = $(className).find('.image_slide_detail').attr('name');
+        nameDetail = nameDetail.replace(prefix, number);
+        $(className).find('.image_slide_detail').attr('name', nameDetail);
+
+        var nameUrl = $(className).find('.image_slide_url').attr('name');
+        nameUrl = nameUrl.replace(prefix, number)
+        $(className).find('.image_slide_url').attr('name', nameUrl);
     }
 };

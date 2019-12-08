@@ -32,6 +32,7 @@ return [
 	'send' => 'Gửi',
 	'add_to_cart' => 'Thêm vào giỏ',
 	'see' => 'Xem',
+	'now_see' => 'Xem ngay',
 	'buy' => 'Mua',
 	'payment' => 'Thanh toán',
 	'continue_view' => 'Xem tiếp',
